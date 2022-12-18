@@ -18,7 +18,7 @@ class _SignUpEmailState extends State<SignUpEmail> {
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: SizedBox(
-          height: MediaQuery.of(context).size.height,
+          // height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +74,7 @@ class _SignUpEmailState extends State<SignUpEmail> {
                     ),
                     const SizedBox(height: 10),
                     nameField("Address"),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Phone number",
                       style: GoogleFonts.comfortaa(
@@ -108,13 +108,24 @@ class _SignUpEmailState extends State<SignUpEmail> {
                     const SizedBox(height: 10),
                     passwordField("at least 8 characters"),
                     const SizedBox(height: 20),
+                    Text(
+                      "Confirm Password",
+                      style: GoogleFonts.comfortaa(
+                        fontSize: 14,
+                        color: accent1Color,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    passwordField("Re-enter password"),
+                    const SizedBox(height: 20),
                     customButton1("Sign In", "", context),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Dont have an account yet?",
+                          "Already have an account?",
                           style: GoogleFonts.comfortaa(
                             fontSize: 14,
                             color: accent1Color,
@@ -123,10 +134,10 @@ class _SignUpEmailState extends State<SignUpEmail> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, "sign_up_email");
+                            Navigator.pushNamed(context, "sign_in_email");
                           },
                           child: Text(
-                            "Sign Up",
+                            "Sign In",
                             style: GoogleFonts.comfortaa(
                               fontSize: 14,
                               color: primaryColor,

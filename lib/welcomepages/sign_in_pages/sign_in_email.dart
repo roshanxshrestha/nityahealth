@@ -18,7 +18,6 @@ class _SignInEmailState extends State<SignInEmail> {
       body: SingleChildScrollView(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: SizedBox(
-          height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,17 +62,6 @@ class _SignInEmailState extends State<SignInEmail> {
                     ),
                     const SizedBox(height: 10),
                     passwordField("at least 8 characters"),
-                    const SizedBox(height: 20),
-                    Text(
-                      "Confirm Password",
-                      style: GoogleFonts.comfortaa(
-                        fontSize: 14,
-                        color: accent1Color,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    passwordField("Re-enter password"),
                     const SizedBox(height: 30),
                     customButton1("Sign In", "", context),
                     const SizedBox(height: 10),
@@ -81,7 +69,7 @@ class _SignInEmailState extends State<SignInEmail> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Dont have an account yet?",
+                          "Don't have an account yet?",
                           style: GoogleFonts.comfortaa(
                             fontSize: 14,
                             color: accent1Color,

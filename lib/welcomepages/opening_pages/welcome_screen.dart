@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          // width: MediaQuery.of(context).size.width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
