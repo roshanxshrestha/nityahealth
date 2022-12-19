@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/constants/app_constants.dart';
-import 'package:nityahealth/welcomepages/sign_in_pages/sign_in.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard.dart';
+import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding1.dart';
+import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -50,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
       floatingActionButton: SizedBox(
         child: InkWell(
           onTap: () {
-            Get.to(const SignIn());
+            Get.to(OnBoardingPage());
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,

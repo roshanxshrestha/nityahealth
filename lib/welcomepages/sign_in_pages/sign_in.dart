@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/constants/app_constants.dart';
-import 'package:nityahealth/constants/buttons.dart';
+import 'package:nityahealth/constants/custom_widgets.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -44,7 +44,7 @@ class _SignInState extends State<SignIn> {
                         "Sign in to continue",
                         style: GoogleFonts.comfortaa(
                           fontSize: 12,
-                          color: accent1Color,
+                          color: accent3Color,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -56,13 +56,40 @@ class _SignInState extends State<SignIn> {
                         "or",
                         style: GoogleFonts.comfortaa(
                           fontSize: 14,
-                          color: accent1Color,
+                          color: accent3Color,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                       const SizedBox(height: 20),
                       customButton1(
                           "Sign in with facebook", "welcome", context),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Don't have an account yet?",
+                            style: GoogleFonts.comfortaa(
+                              fontSize: 14,
+                              color: accent3Color,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, "sign_up_email");
+                            },
+                            child: Text(
+                              "Sign Up",
+                              style: GoogleFonts.comfortaa(
+                                fontSize: 14,
+                                color: primaryColor,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                       const SizedBox(height: 10),
                       const Skip(),
                     ],
@@ -77,7 +104,7 @@ class _SignInState extends State<SignIn> {
                   "By signing in, you accept our",
                   style: GoogleFonts.comfortaa(
                     fontSize: 12,
-                    color: accent1Color,
+                    color: accent3Color,
                     fontWeight: FontWeight.w700,
                   ),
                 ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/constants/app_constants.dart';
-import 'package:nityahealth/constants/buttons.dart';
+import 'package:nityahealth/constants/custom_widgets.dart';
 
 class SignInEmail extends StatefulWidget {
   const SignInEmail({super.key});
@@ -45,25 +45,25 @@ class _SignInEmailState extends State<SignInEmail> {
                       "Email address",
                       style: GoogleFonts.comfortaa(
                         fontSize: 14,
-                        color: accent1Color,
+                        color: accent3Color,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 5),
                     emailField(),
                     const SizedBox(height: 20),
                     Text(
                       "Password",
                       style: GoogleFonts.comfortaa(
                         fontSize: 14,
-                        color: accent1Color,
+                        color: accent3Color,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 5),
                     passwordField("at least 8 characters"),
                     const SizedBox(height: 30),
-                    customButton1("Sign In", "", context),
+                    customButton1("Sign In", "dashboard", context),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -72,7 +72,7 @@ class _SignInEmailState extends State<SignInEmail> {
                           "Don't have an account yet?",
                           style: GoogleFonts.comfortaa(
                             fontSize: 14,
-                            color: accent1Color,
+                            color: accent3Color,
                             fontWeight: FontWeight.w400,
                           ),
                         ),

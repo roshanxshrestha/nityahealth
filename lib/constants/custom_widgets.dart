@@ -111,7 +111,7 @@ Widget emailField() {
       filled: true,
       hintText: 'someone@example.com',
       hintStyle: const TextStyle(
-        color: primaryColor,
+        color: accent1Color,
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
@@ -130,7 +130,7 @@ Widget passwordField(String hintText) {
       filled: true,
       hintText: hintText,
       hintStyle: const TextStyle(
-        color: primaryColor,
+        color: accent1Color,
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
@@ -154,12 +154,35 @@ Widget nameField(String hintText) {
       filled: true,
       hintText: hintText,
       hintStyle: const TextStyle(
-        color: primaryColor,
+        color: accent1Color,
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
       ),
     ),
+  );
+}
+
+//address fields
+Widget addressField(String hintText) {
+  return TextFormField(
+    textInputAction: TextInputAction.next,
+    decoration: InputDecoration(
+      fillColor: Colors.white,
+      filled: true,
+      hintText: hintText,
+      hintStyle: const TextStyle(
+        color: accent1Color,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
+      label: const Padding(
+        padding: EdgeInsets.only(top: 0),
+        child: Icon(Icons.location_on),
+      ),
+    ),
+    obscureText: true,
   );
 }
 
@@ -176,10 +199,10 @@ Widget phoneField() {
       filled: true,
       hintText: 'Enter mobile number',
       hintStyle: const TextStyle(
-        color: primaryColor,
+        color: accent1Color,
       ),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(5),
       ),
       label: const Padding(
         padding: EdgeInsets.only(top: 0),
@@ -188,3 +211,95 @@ Widget phoneField() {
     ),
   );
 }
+
+//otp field
+Widget otpField(BuildContext context) {
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(5),
+      boxShadow: const [
+        BoxShadow(
+          color: Colors.black26,
+          offset: Offset(0, 0),
+          blurRadius: 5,
+          spreadRadius: 1,
+        ),
+      ],
+    ),
+    child: Padding(
+      padding: const EdgeInsets.only(bottom: 6.0, left: 7, right: 7),
+      child: Form(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            otpContainer(context, 1),
+            otpContainer(context, 2),
+            otpContainer(context, 3),
+            otpContainer(context, 4),
+            otpContainer(context, 5),
+            otpContainer(context, 6),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+//otp container
+Widget otpContainer(BuildContext context, int boxValue) {
+  return Container(
+    height: 50,
+    width: 42,
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5),
+      color: Colors.transparent,
+    ),
+    child: TextFormField(
+      onChanged: (value) {
+        if (value.length == 1) {
+          FocusScope.of(context).nextFocus();
+        }
+      },
+      onSaved: (boxValue) {},
+      // decoration: const InputDecoration(hintText: "."),
+      style: Theme.of(context).textTheme.headlineSmall,
+      keyboardType: TextInputType.number,
+      textAlign: TextAlign.center,
+      inputFormatters: [
+        LengthLimitingTextInputFormatter(1),
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+      obscureText: false,
+    ),
+  );
+}
+
+// //textbox1
+// Widget textBox1(
+//     String text, String linkText, String routeName, BuildContext context) {
+//   return Column(
+//     children: [
+//       Text(
+//         text,
+//         style: const TextStyle(
+//           color: primaryColor,
+//           fontSize: 12,
+//           fontWeight: FontWeight.normal,
+//         ),
+//       ),
+//       TextButton(
+//         onPressed: () {
+//           Navigator.pushNamed(context, 'routeName');
+//         },
+//         child: Text(
+//           linkText,
+//           style: const TextStyle(
+//             fontSize: 10,
+//             color: accent1Color,
+//           ),
+//         ),
+//       ),
+//     ],
+//   );
+// }
