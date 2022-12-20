@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nityahealth/inside_app/dashboard/container_widgets.dart/list_tile.dart';
 import 'package:nityahealth/inside_app/dashboard/dashboard.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/wellness.dart';
 import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding1.dart';
 import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding2.dart';
 import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding3.dart';
@@ -40,6 +42,12 @@ class MyApp extends StatelessWidget {
         "onboarding4": (context) => const OnBoarding4(),
         //logged in screens
         "dashboard": (context) => const Dashboard(),
+        "wellness": (context) => const Wellness(),
+        "tileitems": (context) => TileItems(
+              tileTitle: '',
+              isSelected: true,
+              onTap: () {},
+            ),
       },
     );
   }
