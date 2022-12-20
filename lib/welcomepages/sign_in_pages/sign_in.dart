@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        "images/Vector.png",
+                        "images/logo/Vector.png",
                         width: 150,
                         color: primaryColor,
                       ),

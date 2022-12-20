@@ -21,7 +21,7 @@ class WelcomeScreen extends StatelessWidget {
               Align(
                 // alignment: Alignment.center,
                 child: Image.asset(
-                  "images/Vector.png",
+                  "images/logo/Vector.png",
                   width: 150,
                 ),
               ),

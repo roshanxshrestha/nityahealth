@@ -25,7 +25,7 @@ class OnBoarding4 extends StatelessWidget {
                   Align(
                     // alignment: Alignment.center,
                     child: Image.asset(
-                      "images/boarding4.png",
+                      "images/boarding/boarding4.png",
                       height: 425,
                     ),
                   ),
