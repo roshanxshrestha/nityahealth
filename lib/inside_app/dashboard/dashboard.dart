@@ -61,61 +61,63 @@ class Dashboard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                height: 130,
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(60),
-                  ),
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomRight: Radius.circular(60),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Hello ",
-                            style: GoogleFonts.comfortaa(
-                              fontSize: 18,
-                              color: accent2Color,
-                              fontWeight: FontWeight.w700,
+                child: Container(
+                  height: 130,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    color: primaryColor,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              "Hello ",
+                              style: GoogleFonts.comfortaa(
+                                fontSize: 18,
+                                color: accent2Color,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Falano,",
-                            style: GoogleFonts.comfortaa(
-                              fontSize: 24,
-                              color: accent2Color,
-                              fontWeight: FontWeight.w700,
+                            Text(
+                              "Falano,",
+                              style: GoogleFonts.comfortaa(
+                                fontSize: 24,
+                                color: accent2Color,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Text(
-                            "Welcome to ",
-                            style: GoogleFonts.comfortaa(
-                              fontSize: 18,
-                              color: accent2Color,
-                              fontWeight: FontWeight.w400,
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        Row(
+                          children: [
+                            Text(
+                              "Welcome to ",
+                              style: GoogleFonts.comfortaa(
+                                fontSize: 18,
+                                color: accent2Color,
+                                fontWeight: FontWeight.w400,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "NityaHealth",
-                            style: GoogleFonts.comfortaa(
-                              fontSize: 20,
-                              color: accent2Color,
-                              fontWeight: FontWeight.w700,
+                            Text(
+                              "NityaHealth",
+                              style: GoogleFonts.comfortaa(
+                                fontSize: 20,
+                                color: accent2Color,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
