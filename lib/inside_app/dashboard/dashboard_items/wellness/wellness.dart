@@ -76,31 +76,6 @@ class _WellnessState extends State<Wellness> {
               );
             },
           ),
-          // child: ListView(
-          //   scrollDirection: Axis.horizontal,
-          //   children: [
-          //     TileItems(
-          //       title: "Fitness",
-          //       isSelected: true,
-          //       onTap: wellnessTypeSelected,
-          //     ),
-          //     TileItems(
-          //       title: "Food",
-          //       isSelected: false,
-          //       onTap: () {},
-          //     ),
-          //     TileItems(
-          //       title: "Personal Care",
-          //       isSelected: false,
-          //       onTap: () {},
-          //     ),
-          //     TileItems(
-          //       title: "Health Topics",
-          //       isSelected: false,
-          //       onTap: () {},
-          //     ),
-          //   ],
-          // ),
         ),
       ),
     );

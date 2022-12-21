@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/constants/app_constants.dart';
 import 'package:nityahealth/inside_app/dashboard/container_widgets.dart/grid_container.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/appbar_items/menu_items/menu_drawer.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/appbar_items/notification_center/notification.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/appbar_items/user_profile/user_profile_setting.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -9,9 +13,10 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MenuDrawer(),
       appBar: AppBar(
         // floating: true,
-        foregroundColor: primaryColor,
+        foregroundColor: accent2Color,
         shadowColor: Colors.transparent,
         backgroundColor: primaryColor,
         title: Text(
@@ -22,19 +27,13 @@ class Dashboard extends StatelessWidget {
             fontWeight: FontWeight.w300,
           ),
         ),
-        leading: GestureDetector(
-          onTap: () {},
-          child: const Icon(
-            Icons.menu,
-            color: accent2Color,
-            size: 25,
-          ),
-        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const NotificationUser());
+              },
               child: const Icon(
                 Icons.notifications,
                 size: 25,
@@ -45,9 +44,11 @@ class Dashboard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.to(() => const UserProfileSetting());
+              },
               child: const Icon(
-                Icons.person,
+                Icons.account_circle,
                 size: 25,
                 color: accent2Color,
               ),
@@ -158,7 +159,7 @@ class Dashboard extends StatelessWidget {
                     routeName: "",
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

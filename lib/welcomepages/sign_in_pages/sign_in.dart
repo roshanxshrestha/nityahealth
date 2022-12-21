@@ -22,6 +22,7 @@ class _SignInState extends State<SignIn> {
               children: [
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 1.1,
+                  width: MediaQuery.of(context).size.width / 1.1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -52,13 +53,23 @@ class _SignInState extends State<SignIn> {
                       customButton1(
                           "Sign in with email", "sign_in_email", context),
                       const SizedBox(height: 20),
-                      Text(
-                        "or",
-                        style: GoogleFonts.comfortaa(
-                          fontSize: 14,
-                          color: accent3Color,
-                          fontWeight: FontWeight.w700,
-                        ),
+                      Row(
+                        children: [
+                          const Expanded(
+                            child: Divider(color: accent4Color),
+                          ),
+                          Text(
+                            " or ",
+                            style: GoogleFonts.comfortaa(
+                              fontSize: 14,
+                              color: accent3Color,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const Expanded(
+                            child: Divider(color: accent4Color),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
                       customButton1(
@@ -87,7 +98,7 @@ class _SignInState extends State<SignIn> {
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       const SizedBox(height: 10),

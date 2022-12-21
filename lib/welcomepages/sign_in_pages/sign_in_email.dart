@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/constants/app_constants.dart';
 import 'package:nityahealth/constants/custom_widgets.dart';
+import 'package:nityahealth/welcomepages/sign_in_pages/password_reset.dart';
 
 class SignInEmail extends StatefulWidget {
   const SignInEmail({super.key});
@@ -68,6 +69,42 @@ class _SignInEmailState extends State<SignInEmail> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        TextButton(
+                          onPressed: () {
+                            Get.to(() => const GetPhoneNumber());
+                          },
+                          child: Text(
+                            "Forgot password?",
+                            style: GoogleFonts.comfortaa(
+                              fontSize: 14,
+                              color: primaryColor,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: Divider(color: accent4Color),
+                        ),
+                        Text(
+                          " or ",
+                          style: GoogleFonts.comfortaa(
+                            fontSize: 14,
+                            color: accent3Color,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const Expanded(
+                          child: Divider(color: accent4Color),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         Text(
                           "Don't have an account yet?",
                           style: GoogleFonts.comfortaa(
@@ -88,7 +125,7 @@ class _SignInEmailState extends State<SignInEmail> {
                               fontWeight: FontWeight.w400,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ],
