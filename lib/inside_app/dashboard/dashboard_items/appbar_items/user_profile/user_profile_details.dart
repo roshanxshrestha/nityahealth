@@ -105,6 +105,8 @@ class _UserProfileDetailsState extends State<UserProfileDetails> {
               const SizedBox(height: 30),
               textF16W700("Personal Details"),
               const SizedBox(height: 10),
+              button2("Name", Icons.drive_file_rename_outline, "Falano", "",
+                  context),
               button2("Gender", Icons.female, "Female", "", context),
               button2("Address", Icons.location_city, "Kathmandu", "", context),
               button2("Contact", Icons.phone, "9828211111", "", context),
