@@ -4,6 +4,11 @@ import 'package:nityahealth/inside_app/dashboard/dashboard.dart';
 import 'package:nityahealth/inside_app/dashboard/dashboard_items/appbar_items/menu_items/menu_drawer.dart';
 import 'package:nityahealth/inside_app/dashboard/dashboard_items/appbar_items/notification_center/notification.dart';
 import 'package:nityahealth/inside_app/dashboard/dashboard_items/appbar_items/user_profile/user_profile_setting.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/consultants/consultant.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/diet/bmi_calculator.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/diet/food/dietplan.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/health_topics/health_topics.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/news_articles/news.dart';
 import 'package:nityahealth/inside_app/dashboard/dashboard_items/wellness/wellness.dart';
 import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding1.dart';
 import 'package:nityahealth/welcomepages/opening_pages/onboarding_pages/onboarding2.dart';
@@ -41,18 +46,24 @@ class MyApp extends StatelessWidget {
         "phone_verification": (context) => const PhoneVerification(),
         "getphonenumber": (context) => const GetPhoneNumber(),
         "set_location": (context) => const SetLocation(),
+        //boarding pages
         "onboarding_page": (context) => OnBoardingPage(),
         "onboarding1": (context) => const OnBoarding1(),
         "onboarding2": (context) => const OnBoarding2(),
         "onboarding3": (context) => const OnBoarding3(),
         "onboarding4": (context) => const OnBoarding4(),
         //logged in screens
+        "menudrawer": (context) => const MenuDrawer(),
         "dashboard": (context) => const Dashboard(),
-        "wellness": (context) => const Wellness(),
+        "notification": (context) => const NotificationUser(),
         "userprofiledetails": (context) => const UserProfileDetails(),
         "userprofilesetting": (context) => const UserProfileSetting(),
-        "notification": (context) => const NotificationUser(),
-        "menudrawer": (context) => const MenuDrawer(),
+        "wellness": (context) => const Wellness(),
+        "consultant": (context) => const Consultant(),
+        "healthtopics": (context) => const HealthTopics(),
+        "news": (context) => const NewsArticles(),
+        "bmicalc": (context) => const BMICalculator(),
+        "dietplan": (context) => const DietPlan(),
       },
     );
   }

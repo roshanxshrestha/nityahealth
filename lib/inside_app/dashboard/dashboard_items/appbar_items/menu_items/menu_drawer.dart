@@ -61,11 +61,11 @@ class MenuDrawer extends StatelessWidget {
           ),
           const Divider(color: accent4Color),
           ListTile(
-            title: textF16W700L("Fitness", "", context),
+            title: textF16W700L("Fitness", "wellness", context),
           ),
           const Divider(color: accent4Color),
           ListTile(
-            title: textF16W700L("Food", "", context),
+            title: textF16W700L("Diet", "dietplan", context),
           ),
           const Divider(color: accent4Color),
           ListTile(

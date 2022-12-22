@@ -2,29 +2,29 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/constants/app_constants.dart';
-import 'package:nityahealth/inside_app/dashboard/dashboard_items/wellness/fitness.dart';
-import 'package:nityahealth/inside_app/dashboard/dashboard_items/wellness/food.dart';
-import 'package:nityahealth/inside_app/dashboard/dashboard_items/wellness/personal_care.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/news_articles/articles.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/news_articles/covid.dart';
+import 'package:nityahealth/inside_app/dashboard/dashboard_items/news_articles/hiv.dart';
 
-class Wellness extends StatefulWidget {
-  const Wellness({super.key});
+class NewsArticles extends StatefulWidget {
+  const NewsArticles({super.key});
 
   @override
-  State<Wellness> createState() => _WellnessState();
+  State<NewsArticles> createState() => _WellnessState();
 }
 
-class _WellnessState extends State<Wellness> {
+class _WellnessState extends State<NewsArticles> {
   final List _isSelected = [true, false, false, false];
 
   List<Widget> wellnessCategories = [
-    const Fitness(),
-    const Food(),
-    const PersonalCare(),
+    const Articles(),
+    const Covid(),
+    const HIV(),
   ];
   final List<String> categories = [
-    "Fitness",
-    "Food",
-    "Personal Care",
+    "All articles",
+    "Covid-19",
+    "HIV/AIDS",
   ];
 
   @override
@@ -40,7 +40,7 @@ class _WellnessState extends State<Wellness> {
         shadowColor: Colors.transparent,
         backgroundColor: primaryColor,
         title: Text(
-          "Wellness",
+          "News/Articles",
           style: GoogleFonts.comfortaa(
             fontSize: 18,
             color: accent2Color,

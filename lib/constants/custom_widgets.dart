@@ -275,31 +275,46 @@ Widget otpContainer(BuildContext context, int boxValue) {
   );
 }
 
-// //textbox1
-// Widget textBox1(
-//     String text, String linkText, String routeName, BuildContext context) {
-//   return Column(
-//     children: [
-//       Text(
-//         text,
-//         style: const TextStyle(
-//           color: primaryColor,
-//           fontSize: 12,
-//           fontWeight: FontWeight.normal,
-//         ),
-//       ),
-//       TextButton(
-//         onPressed: () {
-//           Navigator.pushNamed(context, 'routeName');
-//         },
-//         child: Text(
-//           linkText,
-//           style: const TextStyle(
-//             fontSize: 10,
-//             color: accent1Color,
-//           ),
-//         ),
-//       ),
-//     ],
-//   );
-// }
+// or divider
+Widget orDivider() {
+  return Row(
+    children: [
+      const Expanded(
+        child: Divider(color: accent4Color),
+      ),
+      Text(
+        " or ",
+        style: GoogleFonts.comfortaa(
+          fontSize: 14,
+          color: accent3Color,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+      const Expanded(
+        child: Divider(color: accent4Color),
+      ),
+    ],
+  );
+}
+
+//input for height and weight
+Widget inputNumberField() {
+  return TextFormField(
+    inputFormatters: [
+      LengthLimitingTextInputFormatter(10),
+      FilteringTextInputFormatter.digitsOnly,
+    ],
+    keyboardType: TextInputType.phone,
+    decoration: InputDecoration(
+      fillColor: Colors.white,
+      filled: true,
+      hintText: 'Enter height in cm',
+      hintStyle: const TextStyle(
+        color: accent1Color,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5),
+      ),
+    ),
+  );
+}

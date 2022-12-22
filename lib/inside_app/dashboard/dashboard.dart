@@ -122,43 +122,46 @@ class Dashboard extends StatelessWidget {
                   ),
                 ),
               ),
-              GridView(
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
-                children: const [
-                  GridItems(
-                    imagepath: "images/dashboard/Wellness.png",
-                    title: "Wellness",
-                    routeName: "wellness",
-                  ),
-                  GridItems(
-                    imagepath: "images/dashboard/consultants.png",
-                    title: "Consultants",
-                    routeName: "",
-                  ),
-                  GridItems(
-                    imagepath: "images/dashboard/healthtopics.png",
-                    title: "Health Topics",
-                    routeName: "",
-                  ),
-                  GridItems(
-                    imagepath: "images/dashboard/news.png",
-                    title: "News/Articles",
-                    routeName: "",
-                  ),
-                  GridItems(
-                    imagepath: "images/dashboard/activities.png",
-                    title: "Activities",
-                    routeName: "",
-                  ),
-                  GridItems(
-                    imagepath: "images/dashboard/profile.png",
-                    title: "Profile",
-                    routeName: "",
-                  ),
-                ],
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: GridView(
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  children: const [
+                    GridItems(
+                      imagepath: "images/dashboard/Wellness.png",
+                      title: "Wellness",
+                      routeName: "wellness",
+                    ),
+                    GridItems(
+                      imagepath: "images/dashboard/consultants.png",
+                      title: "Consultants",
+                      routeName: "consultant",
+                    ),
+                    GridItems(
+                      imagepath: "images/dashboard/healthtopics.png",
+                      title: "Health Topics",
+                      routeName: "healthtopics",
+                    ),
+                    GridItems(
+                      imagepath: "images/dashboard/news.png",
+                      title: "News/Articles",
+                      routeName: "news",
+                    ),
+                    GridItems(
+                      imagepath: "images/dashboard/activities.png",
+                      title: "Activities",
+                      routeName: "",
+                    ),
+                    GridItems(
+                      imagepath: "images/dashboard/profile.png",
+                      title: "Profile",
+                      routeName: "",
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

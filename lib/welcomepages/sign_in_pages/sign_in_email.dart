@@ -84,24 +84,7 @@ class _SignInEmailState extends State<SignInEmail> {
                         ),
                       ],
                     ),
-                    Row(
-                      children: [
-                        const Expanded(
-                          child: Divider(color: accent4Color),
-                        ),
-                        Text(
-                          " or ",
-                          style: GoogleFonts.comfortaa(
-                            fontSize: 14,
-                            color: accent3Color,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        const Expanded(
-                          child: Divider(color: accent4Color),
-                        ),
-                      ],
-                    ),
+                    orDivider(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

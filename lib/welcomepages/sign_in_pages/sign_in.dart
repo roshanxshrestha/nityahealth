@@ -53,24 +53,7 @@ class _SignInState extends State<SignIn> {
                       customButton1(
                           "Sign in with email", "sign_in_email", context),
                       const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Divider(color: accent4Color),
-                          ),
-                          Text(
-                            " or ",
-                            style: GoogleFonts.comfortaa(
-                              fontSize: 14,
-                              color: accent3Color,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          const Expanded(
-                            child: Divider(color: accent4Color),
-                          ),
-                        ],
-                      ),
+                      orDivider(),
                       const SizedBox(height: 20),
                       customButton1(
                           "Sign in with facebook", "welcome", context),

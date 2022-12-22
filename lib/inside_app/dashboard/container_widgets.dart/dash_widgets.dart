@@ -97,6 +97,64 @@ Widget button2(String title, IconData icon, String info, String routeName,
   );
 }
 
+//button 3 with forward arrow
+Widget button3(
+    String title, IconData icon, String routeName, BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 16),
+    child: InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, routeName);
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: secondaryColor,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: const EdgeInsets.only(right: 20, left: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton.icon(
+              onPressed: (() {
+                Navigator.pushNamed(context, routeName);
+              }),
+              icon: Container(
+                height: 30,
+                width: 30,
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.circular(7),
+                ),
+                child: Icon(
+                  icon,
+                  color: accent2Color,
+                  size: 23,
+                ),
+              ),
+              label: Text(
+                title,
+                style: GoogleFonts.comfortaa(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: accent3Color,
+                ),
+              ),
+            ),
+            const Icon(
+              Icons.double_arrow,
+              color: primaryColor,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+//text
 Widget textF16W700(String title) {
   return Text(
     title,
@@ -104,6 +162,8 @@ Widget textF16W700(String title) {
         fontSize: 16, fontWeight: FontWeight.w700, color: accent3Color),
   );
 }
+
+//text
 
 Widget textF16W700L(String title, String routeName, BuildContext context) {
   return InkWell(

@@ -37,6 +37,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   flutter_feather_icons: ^2.0.0+1
   material_design_icons_flutter: ^6.0.7096
+  carousel_slider: ^4.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -70,6 +71,9 @@ flutter:
     - images/logo/
     - images/dashboard/
     - images/profile/
+    - images/consultant/
+    - images/fitness/
+    - images/personalcare/
     - images/profile/user/
 
   # An image asset can refer to one or more resolution-specific "variants", see
