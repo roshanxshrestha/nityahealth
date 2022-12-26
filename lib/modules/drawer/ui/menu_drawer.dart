@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/common/dash_widgets.dart';
+import 'package:nityahealth/common/profile_setting_buttons.dart';
 import 'package:nityahealth/modules/profile/ui/user_profile_details.dart';
 
 class MenuDrawer extends StatelessWidget {
@@ -57,7 +58,7 @@ class MenuDrawer extends StatelessWidget {
           ),
           const Divider(color: accent4Color),
           ListTile(
-            title: textF16W700L("Doctors", "", context),
+            title: textF16W700L("Doctors", "doctors", context),
           ),
           const Divider(color: accent4Color),
           ListTile(

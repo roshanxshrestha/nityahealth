@@ -10,7 +10,7 @@ Widget customButton1(String title, String routeName, BuildContext context) {
     },
     child: Container(
       alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width / 1.1,
+      width: MediaQuery.of(context).size.width,
       height: 50,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),

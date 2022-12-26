@@ -153,27 +153,3 @@ Widget button3(
     ),
   );
 }
-
-//text
-Widget textF16W700(String title) {
-  return Text(
-    title,
-    style: GoogleFonts.comfortaa(
-        fontSize: 16, fontWeight: FontWeight.w700, color: accent3Color),
-  );
-}
-
-//text
-
-Widget textF16W700L(String title, String routeName, BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.pushNamed(context, routeName);
-    },
-    child: Text(
-      title,
-      style: GoogleFonts.comfortaa(
-          fontSize: 16, fontWeight: FontWeight.w700, color: accent3Color),
-    ),
-  );
-}

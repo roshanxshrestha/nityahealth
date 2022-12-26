@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/common/dash_widgets.dart';
+import 'package:nityahealth/common/profile_setting_buttons.dart';
 
 class HealthTopics extends StatefulWidget {
   const HealthTopics({super.key});

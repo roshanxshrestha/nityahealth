@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   bool? isNumber;
   bool? isPassword;
   IconData? icon;
+  TextEditingController? controller;
 
   CustomTextField({
     super.key,
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.isNumber,
     this.icon,
     this.isPassword,
+    this.controller,
   });
 
   @override
@@ -25,6 +27,7 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       keyboardType: TextInputType.name,
       textInputAction: TextInputAction.next,
+      controller: controller,
       decoration: InputDecoration(
         fillColor: Colors.white,
         filled: true,
