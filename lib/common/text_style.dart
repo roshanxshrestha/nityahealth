@@ -13,6 +13,20 @@ Widget textF16W700(String title) {
   );
 }
 
+Widget textF14W300(String title) {
+  return Text(
+    title,
+    style: GoogleFonts.comfortaa(
+      fontSize: 14,
+      fontWeight: FontWeight.w300,
+      color: accent3Color,
+      height: 1.2,
+    ),
+    overflow: TextOverflow.visible,
+    textAlign: TextAlign.justify,
+  );
+}
+
 //text
 
 Widget textF16W700L(String title, String routeName, BuildContext context) {

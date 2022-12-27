@@ -199,7 +199,8 @@ class _BMICalculatorState extends State<BMICalculator> {
                 const SizedBox(height: 30),
                 Visibility(
                   visible: _textResult.isNotEmpty,
-                  child: customButton1("Continue", "", context),
+                  child:
+                      customButton1("Get your diet plan", "foodlist", context),
                 ),
               ],
             ),

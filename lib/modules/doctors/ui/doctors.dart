@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/doctors/ui/doctor_dental.dart';
+import 'package:nityahealth/modules/doctors/ui/dotor_profile.dart';
 import 'package:nityahealth/modules/profile/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
@@ -195,37 +195,42 @@ Widget doctorCategories(
 
 //top doctors list
 Widget topDoctorsList(String name, String info, String imageurl) {
-  return Container(
-    padding: const EdgeInsets.only(left: 23, right: 23),
-    height: 87,
-    decoration: BoxDecoration(
-      color: accent2Color,
-      borderRadius: BorderRadius.circular(10),
-      boxShadow: const [
-        BoxShadow(color: accent5Color, blurRadius: 5, spreadRadius: 2),
-      ],
-    ),
-    child: Row(
-      // mainAxisAlignment: MainAxisAlignment.space,
-      children: [
-        Image.asset(imageurl),
-        const SizedBox(width: 16),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            textF16W700(name),
-            const SizedBox(height: 10),
-            Text(
-              info,
-              style: GoogleFonts.comfortaa(
-                fontSize: 14,
-                fontWeight: FontWeight.w300,
-              ),
-            )
-          ],
-        ),
-      ],
+  return GestureDetector(
+    onTap: () {
+      Get.to(() => const DoctorProfile());
+    },
+    child: Container(
+      padding: const EdgeInsets.only(left: 23, right: 23),
+      height: 87,
+      decoration: BoxDecoration(
+        color: accent2Color,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(color: accent5Color, blurRadius: 5, spreadRadius: 2),
+        ],
+      ),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.space,
+        children: [
+          Image.asset(imageurl),
+          const SizedBox(width: 16),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              textF16W700(name),
+              const SizedBox(height: 10),
+              Text(
+                info,
+                style: GoogleFonts.comfortaa(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w300,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     ),
   );
 }

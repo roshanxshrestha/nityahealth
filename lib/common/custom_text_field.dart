@@ -35,8 +35,19 @@ class CustomTextField extends StatelessWidget {
         hintStyle: const TextStyle(
           color: accent1Color,
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: accent1Color,
+            width: 1,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: primaryColor,
+            width: 1,
+          ),
         ),
       ),
       obscureText: isPassword ?? false,
