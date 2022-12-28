@@ -153,7 +153,7 @@ class Dashboard extends StatelessWidget {
                     GridItems(
                       imagepath: "assets/images/dashboard/activities.png",
                       title: "Activities",
-                      routeName: "",
+                      routeName: "activities",
                     ),
                     GridItems(
                       imagepath: "assets/images/dashboard/profile.png",

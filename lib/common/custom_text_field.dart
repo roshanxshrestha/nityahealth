@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 // ignore: must_be_immutable
@@ -32,8 +33,10 @@ class CustomTextField extends StatelessWidget {
         fillColor: Colors.white,
         filled: true,
         hintText: hintText ?? "",
-        hintStyle: const TextStyle(
+        hintStyle: GoogleFonts.comfortaa(
           color: accent1Color,
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -45,7 +48,7 @@ class CustomTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(
-            color: primaryColor,
+            color: Colors.blue,
             width: 1,
           ),
         ),

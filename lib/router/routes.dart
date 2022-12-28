@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:nityahealth/modules/dashboard/activities/ui/activities.dart';
 import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
+import 'package:nityahealth/modules/diet/ui/food_details.dart';
 import 'package:nityahealth/modules/diet/ui/food_list.dart';
 import 'package:nityahealth/modules/doctors/ui/doctor_appointment.dart';
 import 'package:nityahealth/modules/doctors/ui/doctors.dart';
@@ -56,9 +58,11 @@ class AppRoutes {
       GetPage(name: '/consultant', page: () => const Consultant()),
       GetPage(name: '/healthtopics', page: () => const HealthTopics()),
       GetPage(name: '/news', page: () => const NewsArticles()),
+      GetPage(name: '/activities', page: () => const MyActivities()),
       GetPage(name: '/bmicalc', page: () => const BMICalculator()),
       GetPage(name: '/dietplan', page: () => const DietPlan()),
       GetPage(name: '/foodlist', page: () => const FoodList()),
+      GetPage(name: '/fooddetails', page: () => const FoodDetails()),
       GetPage(name: '/doctors', page: () => const FindDoctors()),
       GetPage(name: '/dentaldoctors', page: () => const DentalDoctor()),
       GetPage(name: '/doctorprofile', page: () => const DoctorProfile()),

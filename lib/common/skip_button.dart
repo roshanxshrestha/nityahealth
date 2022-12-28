@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 //skip widget with dialog
@@ -41,7 +43,9 @@ class Skip extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () => Navigator.pushNamed(context, 'guest_page'),
+              onPressed: () {
+                Get.to(() => const Dashboard());
+              },
               child: Text(
                 'Continue',
                 style: GoogleFonts.comfortaa(
