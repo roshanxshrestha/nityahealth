@@ -26,7 +26,7 @@ class _FitnessState extends State<Fitness> {
           GridItems(
             imagepath: "assets/images/fitness/yoga.png",
             title: "Yoga",
-            routeName: "trainers",
+            routeName: "yogamenu",
           ),
           GridItems(
             imagepath: "assets/images/fitness/gym.png",
