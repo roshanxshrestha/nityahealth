@@ -34,7 +34,9 @@ class _ExerciseTimerState extends State<ExerciseTimer> {
               const SizedBox(width: 20),
               TimerButton(
                 icon: Icons.restart_alt,
-                onClicked: stopTimer,
+                onClicked: () {
+                  stopTimer();
+                },
               ),
             ],
           )

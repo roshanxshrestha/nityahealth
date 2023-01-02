@@ -4,22 +4,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/or_divider.dart';
-import 'package:nityahealth/modules/authentication/controller/login_controller/login_controller.dart';
-import 'package:nityahealth/network/api/base_api.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
 
-class SignInEmail extends StatefulWidget {
-  const SignInEmail({super.key});
+import '../controller/login_controller/google_login_controller.dart';
+
+class GoogleLogin extends StatefulWidget {
+  const GoogleLogin({super.key});
 
   @override
-  State<SignInEmail> createState() => _SignInEmailState();
+  State<GoogleLogin> createState() => _GoogleLoginState();
 }
 
-class _SignInEmailState extends State<SignInEmail> {
-  final _controller = Get.put(LoginController());
-  var usernameController = TextEditingController();
-  var passwordController = TextEditingController();
+class _GoogleLoginState extends State<GoogleLogin> {
+  final _controller = Get.put(GoogleLoginController());
+
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var idController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -37,7 +38,7 @@ class _SignInEmailState extends State<SignInEmail> {
                 shadowColor: Colors.transparent,
                 backgroundColor: Colors.transparent,
                 title: Text(
-                  "Sign In",
+                  "Login with Google",
                   style: GoogleFonts.comfortaa(
                     fontSize: 18,
                     color: primaryColor,
@@ -54,6 +55,21 @@ class _SignInEmailState extends State<SignInEmail> {
                     children: [
                       const SizedBox(height: 20),
                       Text(
+                        "Full name",
+                        style: GoogleFonts.comfortaa(
+                          fontSize: 14,
+                          color: accent3Color,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      CustomTextField(
+                        controller: nameController,
+                        hintText: "Full name",
+                        message: "name required",
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
                         "Email address",
                         style: GoogleFonts.comfortaa(
                           fontSize: 14,
@@ -63,13 +79,13 @@ class _SignInEmailState extends State<SignInEmail> {
                       ),
                       const SizedBox(height: 5),
                       CustomTextField(
-                        controller: usernameController,
+                        controller: emailController,
                         hintText: "email",
                         message: "email required",
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        "Password",
+                        "Google ID",
                         style: GoogleFonts.comfortaa(
                           fontSize: 14,
                           color: accent3Color,
@@ -78,19 +94,21 @@ class _SignInEmailState extends State<SignInEmail> {
                       ),
                       const SizedBox(height: 5),
                       CustomTextField(
-                        hintText: "Password",
-                        controller: passwordController,
-                        isPassword: true,
-                        message: "enter password",
+                        hintText: "Google id",
+                        controller: idController,
+                        message: "google id required",
                       ),
                       const SizedBox(height: 30),
                       customButton2("Sign In", context, () {
                         if (_formKey.currentState?.validate() == true) {
                           _formKey.currentState?.save();
-                          var email = usernameController.text.trim();
-                          var password = passwordController.text.trim();
+                          var name = nameController.text.trim();
+                          var email = emailController.text.trim();
+                          var googleId = idController.text.trim();
 
-                          _controller.login(email, password).then((value) {
+                          _controller
+                              .googleLogin(name, email, googleId)
+                              .then((value) {
                             if (value != null) {
                               Get.offAllNamed("dashboard");
                             }
@@ -98,24 +116,6 @@ class _SignInEmailState extends State<SignInEmail> {
                         }
                       }),
                       const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              Get.to(() => const GetPhoneNumber());
-                            },
-                            child: Text(
-                              "Forgot password?",
-                              style: GoogleFonts.comfortaa(
-                                fontSize: 14,
-                                color: primaryColor,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
                       orDivider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

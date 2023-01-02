@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/otpfield.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/authentication/ui/sign_up_email.dart';
+import 'package:nityahealth/modules/authentication/ui/register_screen.dart';
 
 class PhoneVerification extends StatefulWidget {
   const PhoneVerification({super.key});
@@ -85,7 +85,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                               TextButton(
                                 onPressed: () {
                                   Get.to(
-                                    const SignUpEmail(),
+                                    const RegisterScreen(),
                                   );
                                 },
                                 child: Text(

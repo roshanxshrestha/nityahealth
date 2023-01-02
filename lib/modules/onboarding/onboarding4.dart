@@ -44,7 +44,7 @@ class OnBoarding4 extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Get.to(() => const LoginOption());
+                Get.offAll(const LoginOption());
               },
               child: Container(
                 alignment: Alignment.center,

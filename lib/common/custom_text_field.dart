@@ -11,22 +11,23 @@ class CustomTextField extends StatelessWidget {
   bool? isPassword;
   IconData? icon;
   TextEditingController? controller;
+  String? message;
 
-  CustomTextField({
-    super.key,
-    this.name,
-    this.address,
-    this.hintText,
-    this.isNumber,
-    this.icon,
-    this.isPassword,
-    this.controller,
-  });
+  CustomTextField(
+      {super.key,
+      this.name,
+      this.address,
+      this.hintText,
+      this.isNumber,
+      this.icon,
+      this.isPassword,
+      this.controller,
+      this.message});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       controller: controller,
       decoration: InputDecoration(
@@ -54,6 +55,13 @@ class CustomTextField extends StatelessWidget {
         ),
       ),
       obscureText: isPassword ?? false,
+      validator: ((value) {
+        if (value?.isEmpty == true) {
+          return message;
+        } else {
+          return null;
+        }
+      }),
     );
   }
 }

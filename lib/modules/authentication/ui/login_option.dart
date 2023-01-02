@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/or_divider.dart';
 import 'package:nityahealth/common/skip_button.dart';
-import 'package:nityahealth/modules/authentication/ui/sign_up_email.dart';
+import 'package:nityahealth/modules/authentication/ui/register_screen.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 class LoginOption extends StatefulWidget {
@@ -60,7 +60,7 @@ class _LoginOptionState extends State<LoginOption> {
                       orDivider(),
                       const SizedBox(height: 20),
                       customButton1(
-                          "Sign in with facebook", "dashboard", context),
+                          "Sign in with Google", "google_login", context),
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -75,7 +75,7 @@ class _LoginOptionState extends State<LoginOption> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Get.to(() => const SignUpEmail());
+                              Get.to(() => const RegisterScreen());
                             },
                             child: Text(
                               "Sign Up",

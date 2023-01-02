@@ -49,7 +49,7 @@ class OnBoardingPage extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    Get.to(() => const LoginOption());
+                    Get.offAll(const LoginOption());
                   },
                   child: Text(
                     "Skip",
