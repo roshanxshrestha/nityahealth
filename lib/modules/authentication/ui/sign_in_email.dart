@@ -5,7 +5,7 @@ import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/or_divider.dart';
 import 'package:nityahealth/modules/authentication/controller/login_controller/login_controller.dart';
-import 'package:nityahealth/network/api/base_api.dart';
+import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
 
@@ -22,6 +22,7 @@ class _SignInEmailState extends State<SignInEmail> {
   var passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +67,7 @@ class _SignInEmailState extends State<SignInEmail> {
                         controller: usernameController,
                         hintText: "email",
                         message: "email required",
+                        isEmail: true,
                       ),
                       const SizedBox(height: 20),
                       Text(
@@ -85,17 +87,27 @@ class _SignInEmailState extends State<SignInEmail> {
                       ),
                       const SizedBox(height: 30),
                       customButton2("Sign In", context, () {
-                        if (_formKey.currentState?.validate() == true) {
+                        if (_formKey.currentState!.validate()) {
                           _formKey.currentState?.save();
                           var email = usernameController.text.trim();
                           var password = passwordController.text.trim();
 
                           _controller.login(email, password).then((value) {
-                            if (value != null) {
-                              Get.offAllNamed("dashboard");
+                            _controller.loginProcess.value == false;
+                            if (value == null) {
+                              Get.snackbar("Error", "Something went wrong!");
+                            } else {
+                              if (value.success!) {
+                                Get.offAll(const Dashboard());
+                              } else {
+                                Get.snackbar("Error", value.message.toString());
+                              }
                             }
                           });
                         }
+                        // else{
+                        //   Scaffold.of(context).showSnackBar(SnackBar(content: Text(context.read<SubjectBloc>().error)));
+                        // }
                       }),
                       const SizedBox(height: 10),
                       Row(

@@ -1,12 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/modules/authentication/controller/register_controller/register_controller.dart';
-import 'package:nityahealth/modules/authentication/model/login_response.dart';
-import 'package:nityahealth/modules/authentication/model/register_response.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import '../../../common/custom_text_field.dart';
+import '../../../network/api/base_api.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -23,10 +24,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var cPasswordController = TextEditingController();
   var addressController = TextEditingController();
   var phoneController = TextEditingController();
+  final bool _emailInUse = false;
 
   final _formKey = GlobalKey<FormState>();
 
   get message => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +64,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         Text(
                           "Full Name",
                           style: GoogleFonts.comfortaa(
@@ -102,6 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(
+                          isPhone: true,
                           hintText: "Phone number",
                           controller: phoneController,
                           message: "phone required",
@@ -116,10 +120,62 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        CustomTextField(
-                          hintText: "email",
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
                           controller: emailController,
-                          message: "email required",
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "email",
+                            hintStyle: GoogleFonts.comfortaa(
+                              color: accent1Color,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: accent1Color,
+                                width: 1,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Colors.blue,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          validator: ((value) {
+                            if (value?.isEmpty == false) {
+                              if (RegExp(
+                                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                                  .hasMatch(value.toString())) {
+                                {
+                                  _checkEmail().then((inUse) {
+                                    if (inUse) {
+                                      setState(() {
+                                        _emailInUse == true;
+                                      });
+                                    }
+                                  });
+                                  if (_emailInUse == true) {
+                                    return "email already in use";
+                                  }
+                                }
+
+                                //
+                              } else {
+                                return "enter valid email";
+                              }
+                              // return null;
+                            } else {
+                              return "email required";
+                            }
+                            return null;
+                          }),
                         ),
                         const SizedBox(height: 20),
                         Text(
@@ -147,16 +203,58 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        CustomTextField(
-                          message: "password required",
-                          hintText: "password",
-                          isPassword: true,
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
                           controller: cPasswordController,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "re-enter password",
+                            hintStyle: GoogleFonts.comfortaa(
+                              color: accent1Color,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: accent1Color,
+                                width: 1,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: const BorderSide(
+                                color: Colors.blue,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          obscureText: true,
+                          validator: ((value) {
+                            if (value?.isEmpty == true) {
+                              return "re-enter password";
+                            }
+                            if (passwordController.text.trim() !=
+                                cPasswordController.text.trim()) {
+                              return "password does not match";
+                            }
+                            return null;
+                          }),
                         ),
+                        // CustomTextField(
+                        //   isCPassword: true,
+                        //   message: "re-enter password",
+                        //   hintText: "password",
+                        //   isPassword: true,
+                        //   controller: cPasswordController,
+                        // ),
                         const SizedBox(height: 25),
-                        customButton2("Sign up", context, () {
+                        customButton2("Sign up", context, () async {
                           if (_formKey.currentState?.validate() == true) {
                             _formKey.currentState?.save();
+
                             var name = nameController.text.trim();
                             var email = emailController.text.trim();
                             var password = passwordController.text.trim();
@@ -167,10 +265,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 .register(name, email, password, cPassword,
                                     address, phone)
                                 .then((value) {
-                              if (value != null) {
-                                Get.toNamed("phone_verification");
+                              if (value == null) {
+                                Get.snackbar("Error", "Something went wrong!");
+                              } else {
+                                if (value.success!) {
+                                  Get.toNamed("phone_verification");
+                                } else {
+                                  Get.snackbar(
+                                      "Error", value.message.toString());
+                                }
                               }
                             });
+                            SnackBar(
+                              content: Text(jsonDecode(message)),
+                            );
                           }
                         }),
                         const SizedBox(height: 10),
@@ -210,5 +318,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+
+  Future<bool> _checkEmail() async {
+    final response = await http.post(
+      'http://health.sajiloweb.com/api/register',
+      data: jsonEncode({
+        'email': emailController.text,
+      }),
+    );
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.data);
+      return data['inUse'];
+    } else {
+      // Error handling
+      return false;
+    }
   }
 }

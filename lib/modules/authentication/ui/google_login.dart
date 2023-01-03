@@ -82,6 +82,7 @@ class _GoogleLoginState extends State<GoogleLogin> {
                         controller: emailController,
                         hintText: "email",
                         message: "email required",
+                        isEmail: true,
                       ),
                       const SizedBox(height: 20),
                       Text(
@@ -109,8 +110,14 @@ class _GoogleLoginState extends State<GoogleLogin> {
                           _controller
                               .googleLogin(name, email, googleId)
                               .then((value) {
-                            if (value != null) {
-                              Get.offAllNamed("dashboard");
+                            if (value == null) {
+                              Get.snackbar("Error", "Something went wrong!");
+                            } else {
+                              if (value.success!) {
+                                Get.offAllNamed("dashboard");
+                              } else {
+                                Get.snackbar("Error", value.message.toString());
+                              }
                             }
                           });
                         }

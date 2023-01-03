@@ -4,6 +4,7 @@ import 'package:nityahealth/modules/authentication/model/register_response.dart'
 import '../../../network/api/base_api.dart';
 
 class RegisterWebService {
+  late String error;
   Future<RegisterResponseModel?> register(String name, String email,
       String password, String cPassword, String address, String phone) async {
     Map<String, String> map = {};
@@ -16,10 +17,14 @@ class RegisterWebService {
 
     Map<String, String> headersmap = {};
     headersmap["Content-type"] = "Application/json";
-
-    var response = await http.post("register", data: json.encode(map));
-    print("response =$response");
-    return RegisterResponseModel.fromJson(response.data);
+    try {
+      var response = await http.post("register", data: json.encode(map));
+      print("response =$response");
+      return RegisterResponseModel.fromJson(response.data);
+    } catch (ex) {
+      error = ex.toString();
+      print(ex);
+    }
 
     // try {
     //   var response = await http.post("register", data: json.encode(map));

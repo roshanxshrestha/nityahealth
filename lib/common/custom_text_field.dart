@@ -9,20 +9,25 @@ class CustomTextField extends StatelessWidget {
   String? hintText;
   bool? isNumber;
   bool? isPassword;
+  bool? isEmail = false;
+  bool? isPhone = false;
   IconData? icon;
   TextEditingController? controller;
   String? message;
 
-  CustomTextField(
-      {super.key,
-      this.name,
-      this.address,
-      this.hintText,
-      this.isNumber,
-      this.icon,
-      this.isPassword,
-      this.controller,
-      this.message});
+  CustomTextField({
+    super.key,
+    this.name,
+    this.address,
+    this.hintText,
+    this.isNumber,
+    this.isEmail,
+    this.icon,
+    this.isPassword,
+    this.isPhone,
+    this.controller,
+    this.message,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +61,19 @@ class CustomTextField extends StatelessWidget {
       ),
       obscureText: isPassword ?? false,
       validator: ((value) {
-        if (value?.isEmpty == true) {
-          return message;
-        } else {
+        if (value?.isEmpty == false) {
+          if (isEmail == true &&
+              !RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                  .hasMatch(value.toString())) {
+            return "enter valid email";
+          } else if (isPhone == true) {
+            if (value?.length != 10) {
+              return "enter 10 digits mobile number";
+            }
+          }
           return null;
+        } else {
+          return message;
         }
       }),
     );

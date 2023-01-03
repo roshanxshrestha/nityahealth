@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/authentication/ui/google_login.dart';
+import 'package:nityahealth/modules/authentication/ui/sign_in_email.dart';
 import 'package:nityahealth/modules/onboarding/splash_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/course_detail.dart';
 import 'package:nityahealth/modules/dashboard/activities/ui/activities.dart';
@@ -29,7 +30,7 @@ import 'package:nityahealth/modules/authentication/ui/set_location.dart';
 import 'package:nityahealth/modules/authentication/ui/register_screen.dart';
 import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
 import 'package:nityahealth/modules/authentication/ui/login_option.dart';
-import 'package:nityahealth/modules/authentication/ui/sign_in_email.dart';
+
 import 'package:nityahealth/modules/profile/ui/user_profile_setting.dart';
 import 'package:nityahealth/modules/yoga/ui/exercise_list_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/exercise_timer.dart';
