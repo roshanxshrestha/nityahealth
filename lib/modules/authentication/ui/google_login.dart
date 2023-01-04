@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/or_divider.dart';
+import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 import '../controller/login_controller/google_login_controller.dart';
@@ -100,8 +101,9 @@ class _GoogleLoginState extends State<GoogleLogin> {
                         message: "google id required",
                       ),
                       const SizedBox(height: 30),
-                      customButton2("Sign In", context, () {
+                      customButton2("Sign In", context, () async {
                         if (_formKey.currentState?.validate() == true) {
+                          _controller.googleLoginProcess.value = true;
                           _formKey.currentState?.save();
                           var name = nameController.text.trim();
                           var email = emailController.text.trim();
@@ -109,14 +111,16 @@ class _GoogleLoginState extends State<GoogleLogin> {
 
                           _controller
                               .googleLogin(name, email, googleId)
-                              .then((value) {
-                            if (value == null) {
+                              .then((response) {
+                            _controller.googleLoginProcess.value = false;
+                            if (response == null) {
                               Get.snackbar("Error", "Something went wrong!");
                             } else {
-                              if (value.success!) {
-                                Get.offAllNamed("dashboard");
+                              if (response.success!) {
+                                Get.offAll(const Dashboard());
                               } else {
-                                Get.snackbar("Error", value.message.toString());
+                                Get.snackbar(
+                                    "Error", response.message.toString());
                               }
                             }
                           });

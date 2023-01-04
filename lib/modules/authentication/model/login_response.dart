@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+import 'package:nityahealth/network/api/api.dart';
+
+import '../../../network/api/base_api.dart';
+
 class LoginResponseModel {
   Data? data;
   String? message;
@@ -14,9 +20,9 @@ class LoginResponseModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['message'] = this.message;
-    data['success'] = this.success;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['message'] = message;
+    data['success'] = success;
     if (this.data != null) {
       data['data'] = this.data?.toJson();
     }
@@ -38,9 +44,9 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['token'] = this.token;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['token'] = token;
     return data;
   }
 }

@@ -1,12 +1,14 @@
 import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 import 'package:nityahealth/modules/authentication/model/register_response.dart';
+import 'package:nityahealth/utils/pref_manager.dart';
 
-import '../../../network/api/base_api.dart';
-
-class RegisterWebService {
-  late String error;
+class RegisterWebService extends GetConnect {
   Future<RegisterResponseModel?> register(String name, String email,
       String password, String cPassword, String address, String phone) async {
+    var baseUrl = "http://health.sajiloweb.com/api";
+
     Map<String, String> map = {};
     map["name"] = name;
     map["email"] = email;
@@ -17,21 +19,24 @@ class RegisterWebService {
 
     Map<String, String> headersmap = {};
     headersmap["Content-type"] = "Application/json";
-    try {
-      var response = await http.post("register", data: json.encode(map));
-      print("response =$response");
-      return RegisterResponseModel.fromJson(response.data);
-    } catch (ex) {
-      error = ex.toString();
-      print(ex);
-    }
 
-    // try {
-    //   var response = await http.post("register", data: json.encode(map));
-    //   print("response =$response");
-    //   return RegisterResponseModel.fromJson(response.data);
-    // } catch (ex) {
-    //   print("Exception =$ex");
-    // }
+    var response = await super.post(
+      "http://health.sajiloweb.com/api/register",
+      json.encode(map),
+      contentType: "Application/json",
+      headers: headersmap,
+    );
+    print("response=${response.statusCode},\n baseUrl= ${baseUrl}");
+    if (response.statusCode == 200) {
+      RegisterResponseModel model =
+          RegisterResponseModel.fromJson(response.body);
+
+      PrefManager.saveToken(
+          model.data!.token == null ? "" : model.data!.token!);
+      return model;
+    } else {
+      Get.snackbar("Error", "Something went wrong");
+      return null;
+    }
   }
 }

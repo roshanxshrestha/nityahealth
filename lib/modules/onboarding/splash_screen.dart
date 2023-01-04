@@ -18,13 +18,9 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
     bool _seen = (prefs.getBool("seen") ?? false);
     if (_seen) {
       Get.to(() => const LoginOption());
-      // Navigator.of(context).pushReplacement(
-      //     MaterialPageRoute(builder: (context) => const LoginOption()));
     } else {
       await prefs.setBool("seen", true);
       Get.to(() => const WelcomeScreen());
-      // Navigator.of(context).pushReplacement(
-      //     MaterialPageRoute(builder: (context) => const WelcomeScreen()));
     }
   }
 
