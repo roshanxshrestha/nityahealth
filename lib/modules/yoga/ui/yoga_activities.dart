@@ -5,7 +5,7 @@ import 'package:nityahealth/common/date_day.dart';
 import 'package:nityahealth/common/fitness_container.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
-import 'package:nityahealth/modules/profile/ui/user_profile_details.dart';
+import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 class YogaActivities extends StatefulWidget {
@@ -42,7 +42,7 @@ class _YogaActivitiesState extends State<YogaActivities> {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => const UserProfileDetails());
+                Get.to(() => UserProfileDetails());
               },
               child: const Icon(
                 Icons.account_circle,

@@ -5,7 +5,7 @@ import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/or_divider.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
-import 'package:nityahealth/modules/profile/ui/user_profile_setting.dart';
+import 'package:nityahealth/modules/settings.dart/user_profile_setting.dart';
 
 class DietPlan extends StatefulWidget {
   const DietPlan({super.key});

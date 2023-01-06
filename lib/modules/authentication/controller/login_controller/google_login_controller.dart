@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:nityahealth/utils/pref_manager.dart';
 
@@ -6,7 +8,6 @@ import '../../service/google_login_webservice.dart';
 
 class GoogleLoginController extends GetxController {
   var googleLoginProcess = false.obs;
-  String error = "";
 
   Future<GoogleLoginResponseModel?> googleLogin(
       String name, String email, String googleId) async {
@@ -17,6 +18,7 @@ class GoogleLoginController extends GetxController {
       PrefManager.saveToken(authToken);
       PrefManager.isGoogleLogin(true);
     }
+    print("Response: ${json.encode(response)}");
     return response;
   }
 }

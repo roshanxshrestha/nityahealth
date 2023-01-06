@@ -1,9 +1,3 @@
-import 'dart:convert';
-
-import 'package:nityahealth/network/api/api.dart';
-
-import '../../../network/api/base_api.dart';
-
 class LoginResponseModel {
   Data? data;
   String? message;

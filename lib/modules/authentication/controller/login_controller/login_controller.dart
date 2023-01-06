@@ -13,7 +13,7 @@ class LoginController extends GetxController {
     if (response?.success == true) {
       var authToken = response?.data?.token ?? "";
       PrefManager.saveToken(authToken);
-      PrefManager.isLogin(true);
+      PrefManager.setIsLogin(true);
       // Map mapResponse = json.decode(response?.data);
       // Map dataResponse = mapResponse["message"];
 

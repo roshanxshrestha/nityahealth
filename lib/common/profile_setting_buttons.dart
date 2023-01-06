@@ -46,13 +46,26 @@ Widget button1(
   );
 }
 
+class Button2 extends StatefulWidget {
+  const Button2({super.key});
+
+  @override
+  State<Button2> createState() => _Button2State();
+}
+
+class _Button2State extends State<Button2> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
 //button 2 with icon, title and info
 Widget button2(String title, IconData icon, String info, String routeName,
     BuildContext context) {
-  return InkWell(
-    onTap: () {
-      Navigator.pushNamed(context, routeName);
-    },
+  bool isTapped = false;
+  return GestureDetector(
+    onTap: () {},
     child: Container(
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
@@ -91,6 +104,23 @@ Widget button2(String title, IconData icon, String info, String routeName,
               color: accent3Color,
             ),
           ),
+          // Container(
+          //   width: 100,
+          //   child: isTapped? TextField(
+          //           decoration: InputDecoration(
+          //             border: InputBorder.none,
+          //             hintText: info,
+          //           ),
+          //         )
+          //       : Text(
+          //           info,
+          //           style: GoogleFonts.comfortaa(
+          //             fontSize: 12,
+          //             fontWeight: FontWeight.w700,
+          //             color: accent3Color,
+          //           ),
+          //         ),
+          // )
         ],
       ),
     ),

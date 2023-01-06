@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/authentication/ui/google_login.dart';
-import 'package:nityahealth/modules/authentication/ui/sign_in_email.dart';
+import 'package:nityahealth/modules/authentication/ui/login.dart';
 import 'package:nityahealth/modules/onboarding/splash_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/course_detail.dart';
 import 'package:nityahealth/modules/dashboard/activities/ui/activities.dart';
@@ -31,13 +31,13 @@ import 'package:nityahealth/modules/authentication/ui/register_screen.dart';
 import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
 import 'package:nityahealth/modules/authentication/ui/login_option.dart';
 
-import 'package:nityahealth/modules/profile/ui/user_profile_setting.dart';
+import 'package:nityahealth/modules/settings.dart/user_profile_setting.dart';
 import 'package:nityahealth/modules/yoga/ui/exercise_list_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/exercise_timer.dart';
 import 'package:nityahealth/modules/yoga/ui/yoga_activities.dart';
 import 'package:nityahealth/modules/yoga/ui/yoga_menu.dart';
 
-import '../modules/profile/ui/user_profile_details.dart';
+import '../modules/user/ui/user_profile_details.dart';
 
 class AppRoutes {
   static List<GetPage> generateRoute() {
@@ -60,8 +60,7 @@ class AppRoutes {
       GetPage(name: '/menudrawer', page: () => const MenuDrawer()),
       GetPage(name: '/dashboard', page: () => const Dashboard()),
       GetPage(name: '/notification', page: () => const NotificationUser()),
-      GetPage(
-          name: '/userprofiledetails', page: () => const UserProfileDetails()),
+      GetPage(name: '/userprofiledetails', page: () => UserProfileDetails()),
       GetPage(
           name: '/userprofilesetting', page: () => const UserProfileSetting()),
       GetPage(name: '/wellness', page: () => const Wellness()),

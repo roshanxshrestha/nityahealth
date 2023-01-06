@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:get/instance_manager.dart';
 import 'package:nityahealth/modules/authentication/model/register_response.dart';
 import 'package:nityahealth/utils/pref_manager.dart';
 
@@ -27,7 +26,7 @@ class RegisterWebService extends GetConnect {
       headers: headersmap,
     );
     print("response=${response.statusCode},\n baseUrl= ${baseUrl}");
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response.body["success"] == true) {
       RegisterResponseModel model =
           RegisterResponseModel.fromJson(response.body);
 
@@ -35,7 +34,7 @@ class RegisterWebService extends GetConnect {
           model.data!.token == null ? "" : model.data!.token!);
       return model;
     } else {
-      Get.snackbar("Error", "Something went wrong");
+      Get.snackbar("Error", response.body["message"]);
       return null;
     }
   }

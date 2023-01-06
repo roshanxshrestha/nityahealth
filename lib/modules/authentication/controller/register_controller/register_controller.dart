@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/state_manager.dart';
 import 'package:nityahealth/modules/authentication/model/register_response.dart';
 import 'package:nityahealth/modules/authentication/service/register_webservice.dart';
@@ -16,6 +18,7 @@ class RegisterController extends GetxController {
       PrefManager.saveToken(authToken);
       PrefManager.isRegister(true);
     }
+    print("Response - ${json.encode(response)}");
     return response;
   }
 }

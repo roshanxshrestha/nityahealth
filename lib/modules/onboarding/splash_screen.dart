@@ -5,6 +5,8 @@ import 'package:nityahealth/modules/authentication/ui/login_option.dart';
 import 'package:nityahealth/modules/onboarding/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../utils/constants/app_theme.dart';
+
 class Splash extends StatefulWidget {
   const Splash({super.key});
 
@@ -14,6 +16,15 @@ class Splash extends StatefulWidget {
 
 class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
   Future checkFirstSeen() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+            child: CircularProgressIndicator(
+          color: AppColor.primaryColor,
+        ));
+      },
+    );
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool("seen") ?? false);
     if (_seen) {
@@ -31,8 +42,8 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Loading...'),
-      ),
+          // child: Text('Loading...'),
+          ),
     );
   }
 }

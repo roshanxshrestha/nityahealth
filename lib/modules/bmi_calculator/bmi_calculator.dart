@@ -6,7 +6,7 @@ import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
-import '../profile/ui/user_profile_setting.dart';
+import '../settings.dart/user_profile_setting.dart';
 
 class BMICalculator extends StatefulWidget {
   const BMICalculator({super.key});

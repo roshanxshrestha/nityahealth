@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,7 +5,6 @@ import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/modules/authentication/controller/register_controller/register_controller.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import '../../../common/custom_text_field.dart';
-import '../../../network/api/base_api.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -24,7 +21,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var cPasswordController = TextEditingController();
   var addressController = TextEditingController();
   var phoneController = TextEditingController();
-  final bool _emailInUse = false;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -149,25 +145,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                           ),
                           validator: ((value) {
-                            if (value?.isEmpty == false) {
-                              if (RegExp(
+                            if (value!.isNotEmpty) {
+                              if (!RegExp(
                                       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
                                   .hasMatch(value.toString())) {
-                                {
-                                  _checkEmail().then((inUse) {
-                                    if (inUse) {
-                                      setState(() {
-                                        _emailInUse == true;
-                                      });
-                                    }
-                                  });
-                                  if (_emailInUse == true) {
-                                    return "email already in use";
-                                  }
-                                }
-
-                                //
-                              } else {
                                 return "enter valid email";
                               }
                               // return null;
@@ -243,15 +224,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             return null;
                           }),
                         ),
-                        // CustomTextField(
-                        //   isCPassword: true,
-                        //   message: "re-enter password",
-                        //   hintText: "password",
-                        //   isPassword: true,
-                        //   controller: cPasswordController,
-                        // ),
                         const SizedBox(height: 25),
                         customButton2("Sign up", context, () async {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                  child: CircularProgressIndicator(
+                                color: AppColor.primaryColor,
+                              ));
+                            },
+                          );
                           if (_formKey.currentState?.validate() == true) {
                             _formKey.currentState?.save();
 
@@ -266,19 +249,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     address, phone)
                                 .then((value) {
                               if (value == null) {
-                                Get.snackbar("Error", "Something went wrong!");
+                                // Get.snackbar("Error", "Something went wrong!");
                               } else {
                                 if (value.success!) {
                                   Get.toNamed("phone_verification");
-                                } else {
-                                  Get.snackbar(
-                                      "Error", value.message.toString());
                                 }
                               }
                             });
-                            SnackBar(
-                              content: Text(jsonDecode(message)),
-                            );
                           }
                         }),
                         const SizedBox(height: 10),
@@ -318,21 +295,5 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
-  }
-
-  Future<bool> _checkEmail() async {
-    final response = await http.post(
-      'http://health.sajiloweb.com/api/register',
-      data: jsonEncode({
-        'email': emailController.text,
-      }),
-    );
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.data);
-      return data['inUse'];
-    } else {
-      // Error handling
-      return false;
-    }
   }
 }

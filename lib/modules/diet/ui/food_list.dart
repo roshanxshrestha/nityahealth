@@ -5,7 +5,7 @@ import 'package:nityahealth/common/food_container.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/diet/ui/food_details.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
-import 'package:nityahealth/modules/profile/ui/user_profile_details.dart';
+import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 class FoodList extends StatelessWidget {
@@ -15,6 +15,7 @@ class FoodList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MenuDrawer(),
+      // appBar: PreferredSize(preferredSize: const Size.fromWidth(200),child: Container(),),
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
@@ -37,7 +38,7 @@ class FoodList extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => const UserProfileDetails());
+                Get.to(() => UserProfileDetails());
               },
               child: const Icon(
                 Icons.account_circle,

@@ -102,6 +102,15 @@ class _GoogleLoginState extends State<GoogleLogin> {
                       ),
                       const SizedBox(height: 30),
                       customButton2("Sign In", context, () async {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const Center(
+                                child: CircularProgressIndicator(
+                              color: AppColor.primaryColor,
+                            ));
+                          },
+                        );
                         if (_formKey.currentState?.validate() == true) {
                           _controller.googleLoginProcess.value = true;
                           _formKey.currentState?.save();
@@ -114,13 +123,10 @@ class _GoogleLoginState extends State<GoogleLogin> {
                               .then((response) {
                             _controller.googleLoginProcess.value = false;
                             if (response == null) {
-                              Get.snackbar("Error", "Something went wrong!");
+                              // Get.snackbar("Error", "Something went wrong!");
                             } else {
                               if (response.success!) {
                                 Get.offAll(const Dashboard());
-                              } else {
-                                Get.snackbar(
-                                    "Error", response.message.toString());
                               }
                             }
                           });

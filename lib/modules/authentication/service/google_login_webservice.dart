@@ -23,7 +23,7 @@ class GoogleLoginWebService extends GetConnect {
     );
 
     print("response= ${response.statusCode},\n baseUrl= ${baseUrl}");
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response.body["success"] == true) {
       GoogleLoginResponseModel model =
           GoogleLoginResponseModel.fromJson(response.body);
 
@@ -32,7 +32,7 @@ class GoogleLoginWebService extends GetConnect {
 
       return model;
     } else {
-      Get.snackbar("Error", "Something went wrong");
+      Get.snackbar("Error", response.body["message"]);
       return null;
     }
   }

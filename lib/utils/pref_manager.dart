@@ -15,11 +15,11 @@ class PrefManager {
     return await PrefsUtils.getString(PrefKey.AUTHORIZATION_TOKEN, "");
   }
 
-  static void isLogin(bool isLogin) {
+  static void setIsLogin(bool isLogin) {
     PrefsUtils.putBoolean(PrefKey.IS_LOGIN, isLogin);
   }
 
-  static Future<bool> getBoolean() async {
+  static Future<bool> getIsLogin() async {
     return await PrefsUtils.getBoolean(PrefKey.IS_LOGIN, false);
   }
 

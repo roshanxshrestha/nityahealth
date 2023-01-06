@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/profile/ui/user_profile_details.dart';
+import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});
@@ -34,7 +34,7 @@ class MenuDrawer extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
               child: GestureDetector(
                 onTap: () {
-                  Get.to(() => const UserProfileDetails());
+                  Get.to(() => UserProfileDetails());
                 },
                 child: ClipOval(
                   child: Image.asset("assets/images/profile/user/profile.jpeg"),

@@ -5,7 +5,6 @@ import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/or_divider.dart';
 import 'package:nityahealth/modules/authentication/controller/login_controller/login_controller.dart';
-import 'package:nityahealth/modules/authentication/model/login_response.dart';
 import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
@@ -87,31 +86,38 @@ class _SignInEmailState extends State<SignInEmail> {
                         message: "enter password",
                       ),
                       const SizedBox(height: 30),
-                      customButton2("Sign In", context, () async {
-                        if (_formKey.currentState!.validate()) {
-                          _controller.loginProcess.value = true;
-                          _formKey.currentState?.save();
-                          var email = usernameController.text.trim();
-                          var password = passwordController.text.trim();
-
-                          _controller.login(email, password).then(
-                            (response) {
-                              _controller.loginProcess.value = false;
-                              if (response == null) {
-                                Get.snackbar("Error", "Something went wrong!");
-                              } else if (response.success!) {
-                                Get.offAll(const Dashboard());
-                              } else {
-                                Get.snackbar(
-                                    "Error", response.message.toString());
-                              }
+                      customButton2(
+                        "Sign In",
+                        context,
+                        () async {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return const Center(
+                                  child: CircularProgressIndicator(
+                                color: AppColor.primaryColor,
+                              ));
                             },
                           );
-                        }
-                        // else{
-                        //   Scaffold.of(context).showSnackBar(SnackBar(content: Text(context.read<SubjectBloc>().error)));
-                        // }
-                      }),
+                          if (_formKey.currentState!.validate()) {
+                            _controller.loginProcess.value = true;
+                            _formKey.currentState?.save();
+                            var email = usernameController.text.trim();
+                            var password = passwordController.text.trim();
+
+                            _controller.login(email, password).then(
+                              (response) {
+                                _controller.loginProcess.value = false;
+                                if (response == null) {
+                                  // Get.snackbar("Error", "Something went wrong!");
+                                } else if (response.success!) {
+                                  Get.offAll(const Dashboard());
+                                }
+                              },
+                            );
+                          }
+                        },
+                      ),
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

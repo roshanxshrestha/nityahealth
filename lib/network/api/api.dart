@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
+import 'package:nityahealth/utils/pref_manager.dart';
 
 // must be a top-level function
 _parseAndDecode(String response) {
@@ -29,33 +31,19 @@ class HeaderInterceptor extends InterceptorsWrapper {
   onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     options.connectTimeout = 1000 * 30;
     options.receiveTimeout = 1000 * 30;
-    // options.contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
 
-    //var appVersion = await PlatformUtils.getAppVersion();
-    // var version = Map()
-    //   ..addAll({
-    //     'appVerison': appVersion,
-    //   });
-    //options.headers['version'] = version;
     // options.headers['X-Requested-With'] = 'XMLHttpRequest';
     // ignore: unrelated_type_equality_checks
-    // GetStorage storage = GetStorage();
-    // dynamic accessToken = storage.read("accessTokenKey");
+    var token = await PrefManager.getToken();
 
-    // if (accessToken != null) {
-    //   options.headers['Authorization'] = "Bearer $accessToken";
-    // }
+    var isLogin = await PrefManager.getIsLogin();
 
-    // if (StorageManager.sharedPreferences.containsKey(isLoggedInKey)) {
-    //   final storage = new FlutterSecureStorage();
-    //   String token = await storage.read(key: acccessTokenKey);
-    //   options.headers['Authorization'] = "Bearer $token";
-    // } else {
-    //   print("User is not logged in");
-    // }
-    // options.headers['API-Key'] =
-    //     '16c9c17b5f17cba2edd2981deb74a46d123a9848d443c9d59ea4231f54892ada3391542f48609387';
-    // print('Headers is ${options.headers}');
+    if (isLogin && token.isNotEmpty) {
+      options.headers['Authorization'] = "Bearer $token";
+    }
+
+    options.headers['Accept'] = "application/json";
+    print('Headers is ${options.headers}');
     return handler.next(options);
   }
 }

@@ -24,16 +24,14 @@ class LoginWebService extends GetConnect {
 
     print("response = ${response.statusCode}, \n  baseUrl= ${baseUrl}");
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 200 && response.body["success"] == true) {
       LoginResponseModel model = LoginResponseModel.fromJson(response.body);
 
       PrefManager.saveToken(
           model.data!.token == null ? "" : model.data!.token!);
-      // PrefManager.setIsLogin(true);
-      // PrefManager.saveName(model.data!.name.toString());
       return model;
     } else {
-      Get.snackbar("Error", "Something went wrong");
+      Get.snackbar("Error", response.body["message"]);
       return null;
     }
   }

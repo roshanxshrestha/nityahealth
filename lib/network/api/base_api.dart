@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
+import 'package:nityahealth/utils/util.dart';
 import 'api.dart';
 
 final Http http = Http();
@@ -58,14 +60,17 @@ class ResponseData extends BaseResponseData {
     // code = json['code'];
     // print("Error is ${json['error']}");
 
+    if (json.containsKey('success') == false) {
+      Util.showSnackBar("Error", json['message']);
+    }
+
     if (json.containsKey('message')) {
       Errors jsonerror = Errors(cause: 'Login', detail: json['message']);
       error = [jsonerror];
     }
     if (json.containsKey('error')) {
-      error = json['error']
-          .map<Errors>((item) => Errors.fromJsonMap(item))
-          .toList();
+      error =
+          json['eror'].map<Errors>((item) => Errors.fromJsonMap(item)).toList();
     }
 
     // print("Error detail is ${error.first.detail}");

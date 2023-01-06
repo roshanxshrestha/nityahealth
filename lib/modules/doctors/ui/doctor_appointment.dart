@@ -7,7 +7,7 @@ import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/ratings.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
-import 'package:nityahealth/modules/profile/ui/user_profile_details.dart';
+import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 class DoctorAppointment extends StatefulWidget {
@@ -18,6 +18,12 @@ class DoctorAppointment extends StatefulWidget {
 }
 
 class _DoctorAppointmentState extends State<DoctorAppointment> {
+  var nameController = TextEditingController();
+  var phoneController = TextEditingController();
+  var ageController = TextEditingController();
+  var dateController = TextEditingController();
+  var timeController = TextEditingController();
+  var addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +50,7 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => const UserProfileDetails());
+                Get.to(() => UserProfileDetails());
               },
               child: const Icon(
                 Icons.account_circle,
@@ -73,20 +79,44 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
             const SizedBox(height: 16),
             textF16W700("Appointment Form"),
             const SizedBox(height: 16),
-            CustomTextField(hintText: "Patient's Name"),
+            CustomTextField(
+              hintText: "Patient's Name",
+              message: "name required",
+              controller: nameController,
+            ),
             const SizedBox(height: 8),
-            CustomTextField(hintText: "Contact Number"),
+            CustomTextField(
+              hintText: "Contact Number",
+              controller: phoneController,
+              message: "phone required",
+            ),
             const SizedBox(height: 8),
-            CustomTextField(hintText: "Age"),
+            CustomTextField(
+              hintText: "Age",
+              controller: ageController,
+              message: "age required",
+            ),
             const SizedBox(height: 8),
             const GenderDropdown(),
             const SizedBox(height: 8),
             // DatePicker(),
-            CustomTextField(hintText: "Date"),
+            CustomTextField(
+              hintText: "Date",
+              controller: dateController,
+              message: "date required",
+            ),
             const SizedBox(height: 8),
-            CustomTextField(hintText: "Time"),
+            CustomTextField(
+              hintText: "Time",
+              controller: timeController,
+              message: "time required",
+            ),
             const SizedBox(height: 8),
-            CustomTextField(hintText: "Address"),
+            CustomTextField(
+              hintText: "Address",
+              controller: addressController,
+              message: "address required",
+            ),
             const SizedBox(height: 16),
             appointmentConfirmedDialog(context),
           ],
