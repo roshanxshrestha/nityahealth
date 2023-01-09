@@ -1,5 +1,6 @@
 //text
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
@@ -46,7 +47,7 @@ Widget customText(String title, double fontSize, fontWeight) {
 Widget textF16W700L(String title, String routeName, BuildContext context) {
   return GestureDetector(
     onTap: () {
-      Navigator.pushNamed(context, routeName);
+      Get.toNamed(routeName);
     },
     child: Text(
       title,

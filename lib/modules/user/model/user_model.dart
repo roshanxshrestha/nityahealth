@@ -9,8 +9,8 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
+    if (user != null) {
+      data['user'] = user!.toJson();
     }
     return data;
   }
@@ -75,17 +75,17 @@ class User {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['age'] = this.age;
-    data['gender'] = this.gender;
-    data['weight'] = this.weight;
-    data['height'] = this.height;
-    data['address'] = this.address;
-    data['meals'] = this.meals;
-    data['phone'] = this.phone;
-    data['image'] = this.image;
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['age'] = age;
+    data['gender'] = gender;
+    data['weight'] = weight;
+    data['height'] = height;
+    data['address'] = address;
+    data['meals'] = meals;
+    data['phone'] = phone;
+    data['image'] = image;
     // if (this.mconditions != null) {
     //   data['mconditions'] = this.mconditions!.map((v) => v.toJson()).toList();
     // }

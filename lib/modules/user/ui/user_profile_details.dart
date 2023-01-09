@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/user/controller/user_profile_controller.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/profile_setting_buttons.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
-import 'package:nityahealth/modules/settings.dart/user_profile_setting.dart';
 
 class UserProfileDetails extends StatelessWidget {
   UserProfileDetails({super.key});
@@ -18,39 +17,7 @@ class UserProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MenuDrawer(),
-      appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(15),
-          ),
-        ),
-        foregroundColor: accent2Color,
-        shadowColor: Colors.transparent,
-        backgroundColor: primaryColor,
-        title: Text(
-          "My Profile",
-          style: GoogleFonts.comfortaa(
-            fontSize: 18,
-            color: accent2Color,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                Get.to(() => const UserProfileSetting());
-              },
-              child: const Icon(
-                Icons.account_circle,
-                size: 25,
-                color: accent2Color,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(title: "My Profile"),
       body: Padding(
         padding: const EdgeInsets.only(left: 16, right: 16),
         child: GestureDetector(
@@ -113,10 +80,23 @@ class UserProfileDetails extends StatelessWidget {
                     "",
                     context),
                 button2(
-                    "Gender", MdiIcons.genderMaleFemale, "Female", "", context),
+                    "Gender",
+                    MdiIcons.genderMaleFemale,
+                    _controller.userprofile.value.user?.gender ?? "",
+                    "",
+                    context),
                 button2(
-                    "Address", Icons.location_city, "Kathmandu", "", context),
-                button2("Contact", Icons.phone, "9828211111", "", context),
+                    "Address",
+                    Icons.location_city,
+                    _controller.userprofile.value.user?.address ?? "",
+                    "",
+                    context),
+                button2(
+                    "Contact",
+                    Icons.phone,
+                    _controller.userprofile.value.user?.phone ?? "",
+                    "",
+                    context),
                 button2(
                     "Email",
                     Icons.mail,
@@ -126,10 +106,28 @@ class UserProfileDetails extends StatelessWidget {
                 const SizedBox(height: 30),
                 textF16W700("Health Details"),
                 const SizedBox(height: 10),
-                button2("Height", MdiIcons.ruler, "5.9ft", "", context),
-                button2("Weight", Icons.monitor_weight, "59 kg", "", context),
-                button2("Blood Group", Icons.bloodtype, "O+", "", context),
-                button2("Food Type", Icons.restaurant, "Vegan", "", context),
+                button2("Age", MdiIcons.ruler,
+                    _controller.userprofile.value.user?.age ?? "", "", context),
+                button2(
+                    "Height",
+                    MdiIcons.ruler,
+                    _controller.userprofile.value.user?.height ?? "",
+                    "",
+                    context),
+                button2(
+                    "Weight",
+                    Icons.monitor_weight,
+                    _controller.userprofile.value.user?.weight ?? "",
+                    "",
+                    context),
+                button2("Blood Group", Icons.bloodtype,
+                    "section not available in api", "", context),
+                button2(
+                    "Food Type",
+                    Icons.restaurant,
+                    _controller.userprofile.value.user?.meals ?? "",
+                    "",
+                    context),
                 const SizedBox(height: 30),
                 textF16W700("Medical Condition"),
                 const SizedBox(height: 10),

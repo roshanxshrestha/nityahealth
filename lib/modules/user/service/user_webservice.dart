@@ -7,10 +7,10 @@ class UserWebservice {
     try {
       var response = await http.get("users/1");
       var model = UserModel.fromJson(response.data);
+      return model;
     } catch (ex) {
       print("Error = ${ex.toString()}");
     }
-
     return null;
   }
 }

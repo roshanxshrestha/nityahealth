@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/grid_container.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
 import 'package:nityahealth/modules/notification/notification.dart';
-import 'package:nityahealth/modules/settings.dart/user_profile_setting.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -45,7 +45,7 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.only(right: 20.0),
             child: GestureDetector(
               onTap: () {
-                Get.to(() => const UserProfileSetting());
+                Get.to(() => UserProfileDetails());
               },
               child: const Icon(
                 Icons.account_circle,
