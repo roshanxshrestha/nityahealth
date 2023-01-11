@@ -1,5 +1,6 @@
 //custom button 1
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
@@ -7,7 +8,7 @@ import 'package:nityahealth/utils/constants/app_theme.dart';
 Widget customButton1(String title, String routeName, BuildContext context) {
   return GestureDetector(
     onTap: () {
-      Navigator.pushNamed(context, routeName);
+      Get.toNamed(routeName);
     },
     child: Container(
       alignment: Alignment.center,

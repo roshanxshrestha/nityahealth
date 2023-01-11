@@ -6,7 +6,7 @@ class DietPlanModel {
   factory DietPlanModel.fromJson(Map<String, dynamic> json) {
     return DietPlanModel(
       purpose: json['purpose'] != null
-          ? (json["purpose"] as List).map((v) => Purpose.fromJson(v)).toList()
+          ? (json["purpose"] as List).map((i) => Purpose.fromJson(i)).toList()
           : null,
     );
   }

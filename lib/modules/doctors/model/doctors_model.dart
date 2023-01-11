@@ -1,39 +1,14 @@
 class DoctorsModel {
-  bool? success;
-  Data? data;
-  String? message;
-
-  DoctorsModel({this.success, this.data, this.message});
-
-  DoctorsModel.fromJson(Map<String, dynamic> json) {
-    success = json['success'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    message = json['message'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['success'] = success;
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    data['message'] = message;
-    return data;
-  }
-}
-
-class Data {
   List<Doctors>? doctors;
 
-  Data({this.doctors});
+  DoctorsModel({this.doctors});
 
-  Data.fromJson(Map<String, dynamic> json) {
-    if (json['doctors'] != null) {
-      doctors = <Doctors>[];
-      json['doctors'].forEach((v) {
-        doctors!.add(Doctors.fromJson(v));
-      });
-    }
+  factory DoctorsModel.fromJson(Map<String, dynamic> json) {
+    return DoctorsModel(
+      doctors: json['doctors'] != null
+          ? (json["doctors"] as List).map((i) => Doctors.fromJson(i)).toList()
+          : null,
+    );
   }
 
   Map<String, dynamic> toJson() {

@@ -14,6 +14,7 @@ class DietPlanController extends GetxController {
   getDietPlanList() async {
     try {
       var response = await DietPlanWebservice.getDietPlan();
+      dietPlan.value = response;
       print("Response : ${response}");
     } catch (ex) {
       print("Response : ${ex.toString()}");

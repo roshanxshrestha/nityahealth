@@ -15,7 +15,7 @@ import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
 import 'package:nityahealth/modules/notification/notification.dart';
 import 'package:nityahealth/modules/dashboard/consultants/ui/consultant.dart';
 import 'package:nityahealth/modules/bmi_calculator/bmi_calculator.dart';
-import 'package:nityahealth/modules/diet/ui/dietplanlistscreen.dart/dietplan.dart';
+import 'package:nityahealth/modules/diet/ui/dietplan.dart';
 import 'package:nityahealth/modules/dashboard/health_topics/ui/health_topics.dart';
 import 'package:nityahealth/modules/dashboard/news_articles/ui/news.dart';
 import 'package:nityahealth/modules/dashboard/wellness/ui/wellness.dart';
@@ -70,12 +70,12 @@ class AppRoutes {
       GetPage(name: '/activities', page: () => const MyActivities()),
       GetPage(name: '/bmicalc', page: () => const BMICalculator()),
       GetPage(name: '/dietplan', page: () => DietPlan()),
-      GetPage(name: '/foodlist', page: () => const FoodList()),
+      GetPage(name: '/foodlist', page: () => FoodList()),
       GetPage(name: '/fooddetails', page: () => const FoodDetails()),
       GetPage(name: '/yogamenu', page: () => const YogaMenu()),
       GetPage(name: '/yogaactivities', page: () => const YogaActivities()),
       GetPage(name: '/coursedetail', page: () => const CourseDetail()),
-      GetPage(name: '/doctors', page: () => const FindDoctors()),
+      GetPage(name: '/doctors', page: () => FindDoctors()),
       GetPage(name: '/dentaldoctors', page: () => const DentalDoctor()),
       GetPage(name: '/doctorprofile', page: () => const DoctorProfile()),
       GetPage(name: '/exerciselist', page: () => const ExerciseList()),
