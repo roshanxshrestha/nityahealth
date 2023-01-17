@@ -4,6 +4,7 @@ import 'package:nityahealth/modules/diet/services/diet_plan_webservice.dart';
 
 class DietPlanController extends GetxController {
   var dietPlan = DietPlanModel().obs;
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -12,6 +13,8 @@ class DietPlanController extends GetxController {
   }
 
   getDietPlanList() async {
+    isLoading.value = true;
+
     try {
       var response = await DietPlanWebservice.getDietPlan();
       dietPlan.value = response;
@@ -19,5 +22,6 @@ class DietPlanController extends GetxController {
     } catch (ex) {
       print("Response : ${ex.toString()}");
     }
+    isLoading.value = false;
   }
 }

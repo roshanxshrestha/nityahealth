@@ -72,7 +72,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 5),
                         CustomTextField(
                           message: "name required",
-                          hintText: "Full name",
+                          hintText: "full name",
                           controller: nameController,
                         ),
                         const SizedBox(height: 20),
@@ -86,7 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const SizedBox(height: 5),
                         CustomTextField(
-                          hintText: "Address",
+                          hintText: "address",
                           controller: addressController,
                           message: "address required",
                         ),
@@ -102,7 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 5),
                         CustomTextField(
                           isPhone: true,
-                          hintText: "Phone number",
+                          hintText: "phone number",
                           controller: phoneController,
                           message: "phone required",
                         ),

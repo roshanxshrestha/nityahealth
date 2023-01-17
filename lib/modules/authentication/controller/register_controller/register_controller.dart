@@ -7,10 +7,18 @@ import 'package:nityahealth/utils/pref_manager.dart';
 
 class RegisterController extends GetxController {
   var registerProcess = false.obs;
+  var isLoading = false.obs;
   String error = "";
 
-  Future<RegisterResponseModel?> register(String name, String email,
-      String password, String cPassword, String address, String phone) async {
+  Future<RegisterResponseModel?> register(
+    String name,
+    String email,
+    String password,
+    String cPassword,
+    String address,
+    String phone,
+  ) async {
+    isLoading.value = true;
     var response = await RegisterWebService()
         .register(name, email, password, cPassword, address, phone);
     if (response?.success == true) {

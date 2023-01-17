@@ -20,14 +20,14 @@ class User {
   int? id;
   String? name;
   String? email;
-  Null? age;
-  Null? gender;
-  Null? weight;
-  Null? height;
-  Null? address;
-  Null? meals;
-  Null? phone;
-  Null? image;
+  String? age;
+  String? gender;
+  String? weight;
+  String? height;
+  String? address;
+  String? meals;
+  String? phone;
+  String? image;
   // List<dynamic>? mconditions;
   // List<dynamic>? mrecords;
 

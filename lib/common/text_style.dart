@@ -37,7 +37,7 @@ Widget customText(String title, double fontSize, fontWeight) {
       color: accent3Color,
       height: 1.2,
     ),
-    overflow: TextOverflow.visible,
+    overflow: TextOverflow.ellipsis,
     textAlign: TextAlign.justify,
   );
 }
@@ -45,14 +45,17 @@ Widget customText(String title, double fontSize, fontWeight) {
 //text
 
 Widget textF16W700L(String title, String routeName, BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      Get.toNamed(routeName);
-    },
-    child: Text(
-      title,
-      style: GoogleFonts.comfortaa(
-          fontSize: 16, fontWeight: FontWeight.w700, color: accent3Color),
+  return MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: () {
+        Get.toNamed(routeName);
+      },
+      child: Text(
+        title,
+        style: GoogleFonts.comfortaa(
+            fontSize: 16, fontWeight: FontWeight.w700, color: accent3Color),
+      ),
     ),
   );
 }

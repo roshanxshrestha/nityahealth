@@ -7,8 +7,28 @@ import 'package:nityahealth/common/grid_container.dart';
 import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
 import 'package:nityahealth/modules/notification/notification.dart';
 
-class Dashboard extends StatelessWidget {
+import '../../../utils/pref_manager.dart';
+
+class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
+  var name = "";
+  getName() async {
+    setState(() async {
+      name = await PrefManager.getName();
+    });
+  }
+
+  @override
+  void initState() {
+    getName();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +77,7 @@ class Dashboard extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.only(top: 0.0),
           child: Column(
@@ -87,7 +108,7 @@ class Dashboard extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              "Falano,",
+                              name,
                               style: GoogleFonts.comfortaa(
                                 fontSize: 24,
                                 color: accent2Color,

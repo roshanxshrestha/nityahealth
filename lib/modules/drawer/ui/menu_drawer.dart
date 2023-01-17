@@ -48,40 +48,47 @@ class MenuDrawer extends StatelessWidget {
               ),
             ),
           ),
-          ListTile(
-            title: textF16W700L("Profile", "userprofiledetails", context),
+          Column(
+            children: [
+              dashboardItems(context, "Profile", "userprofiledetails"),
+              dashboardItems(context, "My Appointment", "doctorappointment"),
+              dashboardItems(context, "Doctors", "doctors"),
+              dashboardItems(context, "Fitness", "fitness"),
+              dashboardItems(context, "Diet", "dietplan"),
+              dashboardItems(context, "Yoga", "yogaactivities"),
+              dashboardItems(context, "My Reports", ""),
+              dashboardItems(context, "My Accounts", "userprofilesetting"),
+            ],
           ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("My Appointment", "", context),
-          ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("Doctors", "doctors", context),
-          ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("Fitness", "wellness", context),
-          ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("Diet", "dietplan", context),
-          ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("Yoga", "yogaactivities", context),
-          ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("My Reports", "", context),
-          ),
-          const Divider(color: accent4Color),
-          ListTile(
-            title: textF16W700L("My Accounts", "userprofilesetting", context),
-          ),
-          const Divider(color: accent4Color),
         ],
       ),
     );
   }
+}
+
+Widget dashboardItems(BuildContext context, String title, String routeName) {
+  return GestureDetector(
+    onTap: () {
+      Get.toNamed(routeName);
+    },
+    child: Container(
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: AppColor.accent1Color),
+        ),
+      ),
+      width: MediaQuery.of(context).size.width,
+      height: 60,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: textF16W700(title),
+          ),
+        ],
+      ),
+    ),
+  );
 }

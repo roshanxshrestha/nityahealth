@@ -4,8 +4,14 @@ import 'package:nityahealth/modules/authentication/model/register_response.dart'
 import 'package:nityahealth/utils/pref_manager.dart';
 
 class RegisterWebService extends GetConnect {
-  Future<RegisterResponseModel?> register(String name, String email,
-      String password, String cPassword, String address, String phone) async {
+  Future<RegisterResponseModel?> register(
+    String name,
+    String email,
+    String password,
+    String cPassword,
+    String address,
+    String phone,
+  ) async {
     var baseUrl = "http://health.sajiloweb.com/api";
 
     Map<String, String> map = {};

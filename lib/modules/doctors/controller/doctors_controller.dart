@@ -5,6 +5,7 @@ import '../service/doctors_webservice.dart';
 
 class DoctorsController extends GetxController {
   var doctorModel = DoctorsModel().obs;
+  var isLoading = false.obs;
   @override
   void onInit() {
     super.onInit();
@@ -12,6 +13,7 @@ class DoctorsController extends GetxController {
   }
 
   getDoctorData() async {
+    isLoading.value = true;
     try {
       var response = await DoctorsWebservice.getDoctorData();
       doctorModel.value = response;
@@ -19,5 +21,6 @@ class DoctorsController extends GetxController {
     } catch (ex) {
       print("Exception = ${ex.toString()}");
     }
+    isLoading.value = false;
   }
 }

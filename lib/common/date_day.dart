@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
+import '../utils/pref_manager.dart';
+
 class DateDay extends StatefulWidget {
   const DateDay({super.key});
 
@@ -12,6 +14,18 @@ class DateDay extends StatefulWidget {
 
 class _DateDayState extends State<DateDay> {
   int selected = 4;
+  var name = "Falano";
+  getName() async {
+    setState(() async {
+      name = await PrefManager.getName();
+    });
+  }
+
+  @override
+  void initState() {
+    getName();
+    super.initState();
+  }
 
   Widget customDateRadio(String day, int date, int index) {
     return GestureDetector(
@@ -114,7 +128,7 @@ class _DateDayState extends State<DateDay> {
       children: [
         customText("Welcome back,", 12, FontWeight.w700),
         const SizedBox(height: 5),
-        customText("Falano", 18, FontWeight.w700),
+        customText(name, 18, FontWeight.w700),
         const SizedBox(height: 16),
         Container(
           height: 50,

@@ -4,6 +4,7 @@ import 'package:nityahealth/modules/user/service/user_webservice.dart';
 
 class UserProfileController extends GetxController {
   var userprofile = UserModel().obs;
+  var isLoading = false.obs;
 
   @override
   onInit() {
@@ -12,10 +13,13 @@ class UserProfileController extends GetxController {
   }
 
   getUserProfile() async {
+    isLoading.value = true;
     var response = await UserWebservice().getUserInfo();
+
     if (response != null) {
       userprofile.value = response;
     }
+    isLoading.value = false;
     print("Response: ${response}");
   }
 }

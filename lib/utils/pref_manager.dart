@@ -27,7 +27,19 @@ class PrefManager {
     PrefsUtils.putBoolean(PrefKey.IS_REGISTER, isRegister);
   }
 
+  static void isUpdateProfile(bool isUpdateProfile) {
+    PrefsUtils.putBoolean(PrefKey.IS_UPDATE_PROFILE, isUpdateProfile);
+  }
+
   static void isGoogleLogin(bool isGoogleLogin) {
     PrefsUtils.putBoolean(PrefKey.IS_GOOGLE_LOGIN, isGoogleLogin);
+  }
+
+  static void setName(String name) {
+    PrefsUtils.putString(PrefKey.NAME, name);
+  }
+
+  static Future<String> getName() async {
+    return await PrefsUtils.getString(PrefKey.NAME, "");
   }
 }

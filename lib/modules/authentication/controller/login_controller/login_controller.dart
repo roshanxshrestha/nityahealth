@@ -14,6 +14,10 @@ class LoginController extends GetxController {
       var authToken = response?.data?.token ?? "";
       PrefManager.saveToken(authToken);
       PrefManager.setIsLogin(true);
+      PrefManager.setName(response?.data?.name ?? "");
+
+      // var name = await PrefManager.getName();
+
       // Map mapResponse = json.decode(response?.data);
       // Map dataResponse = mapResponse["message"];
 

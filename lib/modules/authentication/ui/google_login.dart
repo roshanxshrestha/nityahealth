@@ -126,7 +126,7 @@ class _GoogleLoginState extends State<GoogleLogin> {
                               // Get.snackbar("Error", "Something went wrong!");
                             } else {
                               if (response.success!) {
-                                Get.offAll(const Dashboard());
+                                Get.offAll(Dashboard());
                               }
                             }
                           });

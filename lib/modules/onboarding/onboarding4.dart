@@ -42,37 +42,6 @@ class OnBoarding4 extends StatelessWidget {
                 ],
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Get.offAll(const LoginOption());
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: 30,
-                width: 180,
-                decoration: BoxDecoration(
-                  color: primaryColor,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: secondaryColor,
-                      offset: Offset(0, 0),
-                      blurRadius: 5,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-                child: Text(
-                  "Proceed to Login",
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.comfortaa(
-                    color: accent2Color,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:nityahealth/modules/authentication/ui/google_login.dart';
 import 'package:nityahealth/modules/authentication/ui/login.dart';
 import 'package:nityahealth/modules/onboarding/splash_screen.dart';
+import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/course_detail.dart';
 import 'package:nityahealth/modules/dashboard/activities/ui/activities.dart';
 import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
@@ -18,19 +19,18 @@ import 'package:nityahealth/modules/bmi_calculator/bmi_calculator.dart';
 import 'package:nityahealth/modules/diet/ui/dietplan.dart';
 import 'package:nityahealth/modules/dashboard/health_topics/ui/health_topics.dart';
 import 'package:nityahealth/modules/dashboard/news_articles/ui/news.dart';
-import 'package:nityahealth/modules/dashboard/wellness/ui/wellness.dart';
+import 'package:nityahealth/modules/wellness/wellness_presentation/ui/wellness.dart';
 import 'package:nityahealth/modules/onboarding/onboarding1.dart';
 import 'package:nityahealth/modules/onboarding/onboarding2.dart';
 import 'package:nityahealth/modules/onboarding/onboarding3.dart';
 import 'package:nityahealth/modules/onboarding/onboarding4.dart';
-import 'package:nityahealth/modules/onboarding/onboarding_page.dart';
+import 'package:nityahealth/modules/onboarding/onboarding_controller.dart';
 import 'package:nityahealth/modules/onboarding/welcome_screen.dart';
 import 'package:nityahealth/modules/authentication/ui/phone_verification.dart';
 import 'package:nityahealth/modules/authentication/ui/set_location.dart';
 import 'package:nityahealth/modules/authentication/ui/register_screen.dart';
 import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
 import 'package:nityahealth/modules/authentication/ui/login_option.dart';
-
 import 'package:nityahealth/modules/settings.dart/user_profile_setting.dart';
 import 'package:nityahealth/modules/yoga/ui/exercise_list_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/exercise_timer.dart';
@@ -58,19 +58,20 @@ class AppRoutes {
       GetPage(name: '/onboarding3', page: () => const OnBoarding3()),
       GetPage(name: '/onboarding4', page: () => const OnBoarding4()),
       GetPage(name: '/menudrawer', page: () => const MenuDrawer()),
-      GetPage(name: '/dashboard', page: () => const Dashboard()),
+      GetPage(name: '/dashboard', page: () => Dashboard()),
       GetPage(name: '/notification', page: () => const NotificationUser()),
       GetPage(name: '/userprofiledetails', page: () => UserProfileDetails()),
+      GetPage(name: '/profileupdate', page: () => const UpdateProfile()),
       GetPage(
           name: '/userprofilesetting', page: () => const UserProfileSetting()),
-      GetPage(name: '/wellness', page: () => const Wellness()),
+      GetPage(name: '/wellness', page: () => WellnessDashboard()),
       GetPage(name: '/consultant', page: () => const Consultant()),
       GetPage(name: '/healthtopics', page: () => const HealthTopics()),
       GetPage(name: '/news', page: () => const NewsArticles()),
       GetPage(name: '/activities', page: () => const MyActivities()),
       GetPage(name: '/bmicalc', page: () => const BMICalculator()),
       GetPage(name: '/dietplan', page: () => DietPlan()),
-      GetPage(name: '/foodlist', page: () => FoodList()),
+      GetPage(name: '/foodlist', page: () => FoodList(0)),
       GetPage(name: '/fooddetails', page: () => const FoodDetails()),
       GetPage(name: '/yogamenu', page: () => const YogaMenu()),
       GetPage(name: '/yogaactivities', page: () => const YogaActivities()),

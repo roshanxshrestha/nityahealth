@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/custom_text_field.dart';
+import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 class GetPhoneNumber extends StatefulWidget {
@@ -28,7 +29,7 @@ class _GetPhoneNumberState extends State<GetPhoneNumber> {
                 shadowColor: Colors.transparent,
                 foregroundColor: primaryColor,
                 title: Text(
-                  "Enter Phone Number",
+                  "Recover your account",
                   style: GoogleFonts.comfortaa(
                     fontSize: 18,
                     color: primaryColor,
@@ -36,6 +37,8 @@ class _GetPhoneNumberState extends State<GetPhoneNumber> {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
+              textF14W300("Enter phone number"),
               const SizedBox(height: 10),
               Text(
                 "A 6-digit otp will be sent to your phone number",

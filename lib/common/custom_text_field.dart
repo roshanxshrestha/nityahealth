@@ -7,7 +7,6 @@ class CustomTextField extends StatelessWidget {
   String? name;
   String? address;
   String? hintText;
-  bool? isNumber;
   bool? isPassword;
   bool? isEmail = false;
   bool? isPhone = false;
@@ -20,7 +19,6 @@ class CustomTextField extends StatelessWidget {
     this.name,
     this.address,
     this.hintText,
-    this.isNumber,
     this.isEmail,
     this.icon,
     this.isPassword,

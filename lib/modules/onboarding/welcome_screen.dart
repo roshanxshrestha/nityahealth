@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/onboarding/onboarding_page.dart';
+import 'package:nityahealth/modules/onboarding/onboarding_controller.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -67,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                 Icons.keyboard_arrow_right,
                 color: accent2Color,
                 size: 20,
-              )
+              ),
             ],
           ),
         ),
