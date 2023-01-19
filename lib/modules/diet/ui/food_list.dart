@@ -7,9 +7,7 @@ import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/diet/controller/food_controller.dart';
 import 'package:nityahealth/modules/diet/model/food_model.dart';
-
-import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
-
+import 'package:nityahealth/modules/diet/ui/food_details.dart';
 import '../../../utils/constants/app_theme.dart';
 
 class FoodList extends StatelessWidget {
@@ -59,95 +57,102 @@ class FoodList extends StatelessWidget {
                                 model?.posts == null ? 0 : model?.posts?.length,
                             itemBuilder: (BuildContext context, int index) {
                               Post? post = model?.posts?[index];
-                              return Container(
-                                margin:
-                                    const EdgeInsets.only(left: 0, right: 16),
-                                width: 160,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: AppColor.accent2Color,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: accent4Color.withOpacity(0.1),
-                                        offset: const Offset(3, 3),
-                                        blurRadius: 5,
-                                        spreadRadius: 1),
-                                  ],
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      height: 110,
-                                      decoration: BoxDecoration(
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10),
-                                        ),
-                                        image: DecorationImage(
-                                          image:
-                                              NetworkImage(post?.image ?? ""),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 10),
-                                      height: 40,
-                                      child: Text(
-                                        post?.title ?? "",
-                                        style: GoogleFonts.comfortaa(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 12, right: 12),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              Icon(
-                                                MdiIcons.clockOutline,
-                                                color: AppColor.accent3Color
-                                                    .withOpacity(0.7),
-                                                size: 18,
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "not available",
-                                                style: GoogleFonts.comfortaa(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
-                                            ],
+                              return GestureDetector(
+                                onTap: () {
+                                  _controller.id.value = post?.id ?? 0;
+                                  Get.to(FoodDetails());
+                                },
+                                child: Container(
+                                  margin:
+                                      const EdgeInsets.only(left: 0, right: 16),
+                                  width: 160,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: AppColor.accent2Color,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: accent4Color.withOpacity(0.1),
+                                          offset: const Offset(3, 3),
+                                          blurRadius: 5,
+                                          spreadRadius: 1),
+                                    ],
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 110,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(10),
+                                            topRight: Radius.circular(10),
                                           ),
-                                          const SizedBox(height: 12),
-                                          Row(
-                                            children: [
-                                              const Icon(
-                                                MdiIcons.flash,
-                                                color: AppColor.accent3Color,
-                                                size: 18,
-                                              ),
-                                              const SizedBox(width: 10),
-                                              Text(
-                                                "not available",
-                                                style: GoogleFonts.comfortaa(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ),
-                                            ],
+                                          image: DecorationImage(
+                                            image:
+                                                NetworkImage(post?.image ?? ""),
+                                            fit: BoxFit.cover,
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      Container(
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 10),
+                                        height: 40,
+                                        child: Text(
+                                          post?.title ?? "",
+                                          style: GoogleFonts.comfortaa(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 12, right: 12),
+                                        child: Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  MdiIcons.clockOutline,
+                                                  color: AppColor.accent3Color
+                                                      .withOpacity(0.7),
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(width: 10),
+                                                Text(
+                                                  "not available",
+                                                  style: GoogleFonts.comfortaa(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 12),
+                                            Row(
+                                              children: [
+                                                const Icon(
+                                                  MdiIcons.flash,
+                                                  color: AppColor.accent3Color,
+                                                  size: 18,
+                                                ),
+                                                const SizedBox(width: 10),
+                                                Text(
+                                                  "not available",
+                                                  style: GoogleFonts.comfortaa(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               );
                             },

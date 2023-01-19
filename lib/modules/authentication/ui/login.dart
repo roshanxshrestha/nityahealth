@@ -80,7 +80,7 @@ class _SignInEmailState extends State<SignInEmail> {
                       ),
                       const SizedBox(height: 5),
                       CustomTextField(
-                        hintText: "Password",
+                        hintText: "password",
                         controller: passwordController,
                         isPassword: true,
                         message: "enter password",

@@ -14,8 +14,10 @@ class SinglePostPage extends StatelessWidget {
     print("id= ${_controller.id.value}");
     _controller.getSinglePostData(_controller.id.value);
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(title: "Post Details"),
       body: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 105),
         child: Column(
           children: [
             _controller.singlePost.value.post?.image != null

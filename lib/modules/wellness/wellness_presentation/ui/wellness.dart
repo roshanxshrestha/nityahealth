@@ -64,17 +64,14 @@ class WellnessDashboard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Container(
-                          height: MediaQuery.of(context).size.height,
-                          child: TabBarView(
-                            children: [
-                              for (Wellness wellness
-                                  in _wellnessController.wellnessList)
-                                GridViewList(wellness.id!),
-                            ],
-                          ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: TabBarView(
+                          children: [
+                            for (Wellness wellness
+                                in _wellnessController.wellnessList)
+                              GridViewList(wellness.id!),
+                          ],
                         ),
                       ),
                     ],

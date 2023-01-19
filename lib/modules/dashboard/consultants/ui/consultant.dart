@@ -43,7 +43,7 @@ class _ConsultantState extends State<Consultant> {
             GridItems(
               imagepath: "assets/images/consultant/doctor.png",
               title: "Doctors",
-              routeName: "",
+              routeName: "doctors",
             ),
             GridItems(
               imagepath: "assets/images/consultant/trainer.png",
@@ -53,7 +53,7 @@ class _ConsultantState extends State<Consultant> {
             GridItems(
               imagepath: "assets/images/consultant/yoga.png",
               title: "Yoga Instructor",
-              routeName: "",
+              routeName: "yoga",
             ),
             GridItems(
               imagepath: "assets/images/consultant/gym.png",

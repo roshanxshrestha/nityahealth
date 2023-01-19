@@ -18,6 +18,7 @@ class WellnessCategoryChild extends StatelessWidget {
     print("pageId = ${_controller.pageId.value}");
     _controller.getWellnessListData(_controller.pageId.value);
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: const CustomAppBar(
         title: "Wellness List",
       ),

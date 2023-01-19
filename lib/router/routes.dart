@@ -72,7 +72,7 @@ class AppRoutes {
       GetPage(name: '/bmicalc', page: () => const BMICalculator()),
       GetPage(name: '/dietplan', page: () => DietPlan()),
       GetPage(name: '/foodlist', page: () => FoodList(0)),
-      GetPage(name: '/fooddetails', page: () => const FoodDetails()),
+      GetPage(name: '/fooddetails', page: () => FoodDetails()),
       GetPage(name: '/yogamenu', page: () => const YogaMenu()),
       GetPage(name: '/yogaactivities', page: () => const YogaActivities()),
       GetPage(name: '/coursedetail', page: () => const CourseDetail()),

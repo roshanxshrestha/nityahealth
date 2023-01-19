@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/or_divider.dart';
 import 'package:nityahealth/common/skip_button.dart';
@@ -14,7 +15,24 @@ class LoginOption extends StatefulWidget {
   State<LoginOption> createState() => _LoginOptionState();
 }
 
+final GoogleSignIn _googleSignIn = GoogleSignIn(
+  scopes: ["email"],
+);
+
 class _LoginOptionState extends State<LoginOption> {
+  GoogleSignInAccount? _currentUser;
+
+  @override
+  void initState() {
+    _googleSignIn.onCurrentUserChanged.listen((account) {
+      setState(() {
+        _currentUser = account;
+      });
+    });
+    _googleSignIn.signInSilently();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

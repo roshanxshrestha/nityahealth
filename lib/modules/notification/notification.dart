@@ -49,26 +49,29 @@ class _NotificationUserState extends State<NotificationUser> {
           ),
         ],
       ),
-      body: Padding(
+      body: Container(
         padding: const EdgeInsets.all(16),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
           },
           child: ListView(
-            padding: const EdgeInsets.only(top: 30),
             children: [
-              textF16W700("New Yoga class has been updated"),
+              customText(
+                  "New Yoga class has been updated", 16, FontWeight.w700),
               const Divider(color: accent4Color),
-              textF16W700("Time for Workout"),
+              customText("Time for Workout", 16, FontWeight.w700),
               const Divider(color: accent4Color),
-              textF16W700("Less than 24 hours left for doctors appointment"),
+              customText("Less than 24 hours left for doctors appointment", 16,
+                  FontWeight.w700),
               const Divider(color: accent4Color),
-              textF16W700("New Diet Plan is updated"),
+              customText("New Diet Plan is updated", 16, FontWeight.w700),
               const Divider(color: accent4Color),
-              textF16W700("Please Update your Phone number"),
+              customText(
+                  "Please Update your Phone number", 16, FontWeight.w700),
               const Divider(color: accent4Color),
-              textF16W700("Your Gym class has just started"),
+              customText(
+                  "Your Gym class has just started", 16, FontWeight.w700),
               const Divider(color: accent4Color),
             ],
           ),
