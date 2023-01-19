@@ -16,15 +16,15 @@ class Http extends BaseHttp {
     };
 
     // options.baseUrl = 'https://sajilobus.herokuapp.com/api/v1';
-    interceptors..add(ApiInterceptor());
+    interceptors.add(ApiInterceptor()); //.. was before
   }
 }
 
 class ApiInterceptor extends InterceptorsWrapper {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}' +
-        ' queryParameters: ${options.queryParameters}' +
+    debugPrint('---api-request--->url--> ${options.baseUrl}${options.path}'
+        ' queryParameters: ${options.queryParameters}'
         ' data: ${options.data}');
     handler.next(options);
     // return options;

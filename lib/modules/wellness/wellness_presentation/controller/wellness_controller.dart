@@ -18,6 +18,7 @@ class WellnessController extends GetxController {
 
   var pageId = 0.obs;
   var id = 0.obs;
+  var title = "Wellness".obs;
 
   @override
   void onInit() {

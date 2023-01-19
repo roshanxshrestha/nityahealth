@@ -16,11 +16,12 @@ class WellnessCategoryChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("pageId = ${_controller.pageId.value}");
+    print("page title = ${_controller.title.value}");
     _controller.getWellnessListData(_controller.pageId.value);
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const CustomAppBar(
-        title: "Wellness List",
+      appBar: CustomAppBar(
+        title: "${_controller.title.value}",
       ),
       body: SingleChildScrollView(
         child: Container(

@@ -50,33 +50,33 @@ class Food {
 }
 
 class Post {
-  String? created_at;
+  String? createdAt;
   String? description;
   String? full;
   int? id;
   String? image;
-  String? page_id;
+  String? pageId;
   String? short;
   String? title;
 
   Post(
-      {this.created_at,
+      {this.createdAt,
       this.description,
       this.full,
       this.id,
       this.image,
-      this.page_id,
+      this.pageId,
       this.short,
       this.title});
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-      created_at: json['created_at'],
+      createdAt: json['createdAt'],
       description: json['description'],
       full: json['full'],
       id: json['id'],
       image: json['image'],
-      page_id: json['page_id'],
+      pageId: json['pageId'],
       short: json['short'],
       title: json['title'],
     );
@@ -84,12 +84,12 @@ class Post {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['created_at'] = created_at;
+    data['createdAt'] = createdAt;
     data['description'] = description;
     data['full'] = full;
     data['id'] = id;
     data['image'] = image;
-    data['page_id'] = page_id;
+    data['pageId'] = pageId;
     data['title'] = title;
     return data;
   }
@@ -132,33 +132,33 @@ class Childs {
 }
 
 class Posts {
-  String? created_at;
+  String? createdAt;
   String? description;
   String? full;
   int? id;
   String? image;
-  String? page_id;
+  String? pageId;
   String? short;
   String? title;
 
   Posts(
-      {this.created_at,
+      {this.createdAt,
       this.description,
       this.full,
       this.id,
       this.image,
-      this.page_id,
+      this.pageId,
       this.short,
       this.title});
 
   factory Posts.fromJson(Map<String, dynamic> json) {
     return Posts(
-      created_at: json['created_at'],
+      createdAt: json['createdAt'],
       description: json['description'],
       full: json['full'],
       id: json['id'],
       image: json['image'],
-      page_id: json['page_id'],
+      pageId: json['pageId'],
       short: json['short'],
       title: json['title'],
     );
@@ -166,12 +166,12 @@ class Posts {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['created_at'] = created_at;
+    data['createdAt'] = createdAt;
     data['description'] = description;
     data['full'] = full;
     data['id'] = id;
     data['image'] = image;
-    data['page_id'] = page_id;
+    data['pageId'] = pageId;
     data['title'] = title;
     return data;
   }

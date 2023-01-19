@@ -20,6 +20,6 @@ class UserProfileController extends GetxController {
       userprofile.value = response;
     }
     isLoading.value = false;
-    print("Response: ${response}");
+    print("Response: $response");
   }
 }

@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/authentication/ui/google_login.dart';
 import 'package:nityahealth/modules/authentication/ui/login.dart';
+import 'package:nityahealth/modules/fitness/ui/fitness_screen.dart';
 import 'package:nityahealth/modules/onboarding/splash_screen.dart';
 import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/course_detail.dart';
@@ -58,19 +60,20 @@ class AppRoutes {
       GetPage(name: '/onboarding3', page: () => const OnBoarding3()),
       GetPage(name: '/onboarding4', page: () => const OnBoarding4()),
       GetPage(name: '/menudrawer', page: () => const MenuDrawer()),
-      GetPage(name: '/dashboard', page: () => Dashboard()),
+      GetPage(name: '/dashboard', page: () => const Dashboard()),
       GetPage(name: '/notification', page: () => const NotificationUser()),
       GetPage(name: '/userprofiledetails', page: () => UserProfileDetails()),
       GetPage(name: '/profileupdate', page: () => const UpdateProfile()),
       GetPage(
           name: '/userprofilesetting', page: () => const UserProfileSetting()),
       GetPage(name: '/wellness', page: () => WellnessDashboard()),
+      GetPage(name: "/fitness", page: () => FitnessScreen(0)),
       GetPage(name: '/consultant', page: () => const Consultant()),
       GetPage(name: '/healthtopics', page: () => const HealthTopics()),
       GetPage(name: '/news', page: () => const NewsArticles()),
       GetPage(name: '/activities', page: () => const MyActivities()),
       GetPage(name: '/bmicalc', page: () => const BMICalculator()),
-      GetPage(name: '/dietplan', page: () => DietPlan()),
+      GetPage(name: '/dietplan', page: () => const DietPlan()),
       GetPage(name: '/foodlist', page: () => FoodList(0)),
       GetPage(name: '/fooddetails', page: () => FoodDetails()),
       GetPage(name: '/yogamenu', page: () => const YogaMenu()),

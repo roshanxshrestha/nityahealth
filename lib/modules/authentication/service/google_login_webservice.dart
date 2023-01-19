@@ -22,7 +22,7 @@ class GoogleLoginWebService extends GetConnect {
       headers: headersmap,
     );
 
-    print("response= ${response.statusCode},\n baseUrl= ${baseUrl}");
+    print("response= ${response.statusCode},\n baseUrl= $baseUrl");
     if (response.statusCode == 200 && response.body["success"] == true) {
       GoogleLoginResponseModel model =
           GoogleLoginResponseModel.fromJson(response.body);

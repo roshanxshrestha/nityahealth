@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
@@ -63,7 +64,7 @@ class _Button2State extends State<Button2> {
 //button 2 with icon, title and info
 Widget button2(String title, IconData icon, String info, String routeName,
     BuildContext context) {
-  bool isTapped = false;
+  // bool isTapped = false;
   return GestureDetector(
     onTap: () {},
     child: Container(
@@ -80,7 +81,7 @@ Widget button2(String title, IconData icon, String info, String routeName,
         children: [
           TextButton.icon(
             onPressed: (() {
-              Navigator.pushNamed(context, routeName);
+              Get.toNamed(routeName);
             }),
             icon: Icon(
               icon,

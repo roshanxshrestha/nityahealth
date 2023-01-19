@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
@@ -18,7 +17,7 @@ abstract class BaseHttp extends DioForNative {
   BaseHttp() {
     /// Initialization Add app general processing
     (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
-    interceptors..add(HeaderInterceptor());
+    interceptors.add(HeaderInterceptor()); // .. before
     init();
   }
 

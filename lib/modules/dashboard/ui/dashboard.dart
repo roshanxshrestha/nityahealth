@@ -83,7 +83,7 @@ class _DashboardState extends State<Dashboard> {
           child: Stack(
             // mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: GridView(
                   shrinkWrap: true,

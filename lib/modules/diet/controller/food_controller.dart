@@ -23,7 +23,7 @@ class FoodController extends GetxController {
     try {
       var response = await FoodWebService.getFood();
       foodModel.value = response;
-      print("response = ${response}");
+      print("response = $response");
     } catch (error) {
       print("Exception = ${error.toString()}");
     }

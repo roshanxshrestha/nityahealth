@@ -26,8 +26,8 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
       },
     );
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool _seen = (prefs.getBool("seen") ?? false);
-    if (_seen) {
+    bool seen = (prefs.getBool("seen") ?? false);
+    if (seen) {
       Get.off(() => const LoginOption());
     } else {
       await prefs.setBool("seen", true);

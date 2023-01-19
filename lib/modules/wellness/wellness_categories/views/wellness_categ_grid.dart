@@ -52,6 +52,7 @@ class GridViewList extends StatelessWidget {
                   return InkWell(
                     onTap: () {
                       _controller.pageId.value = model?.id ?? 0;
+                      _controller.title.value = model?.title ?? "Wellness";
                       Get.to(WellnessCategoryChild());
                     },
                     child: SingleChildScrollView(

@@ -55,8 +55,8 @@ class FoodList extends StatelessWidget {
                             shrinkWrap: true,
                             itemCount:
                                 model?.posts == null ? 0 : model?.posts?.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              Post? post = model?.posts?[index];
+                            itemBuilder: (BuildContext context, int ind) {
+                              Post? post = model?.posts?[ind];
                               return GestureDetector(
                                 onTap: () {
                                   _controller.id.value = post?.id ?? 0;

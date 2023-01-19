@@ -31,7 +31,7 @@ class RegisterWebService extends GetConnect {
       contentType: "Application/json",
       headers: headersmap,
     );
-    print("response=${response.statusCode},\n baseUrl= ${baseUrl}");
+    print("response=${response.statusCode},\n baseUrl= $baseUrl");
     if (response.statusCode == 200 && response.body["success"] == true) {
       RegisterResponseModel model =
           RegisterResponseModel.fromJson(response.body);

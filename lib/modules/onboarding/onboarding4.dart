@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/authentication/ui/login_option.dart';
 
 class OnBoarding4 extends StatelessWidget {
   const OnBoarding4({super.key});
