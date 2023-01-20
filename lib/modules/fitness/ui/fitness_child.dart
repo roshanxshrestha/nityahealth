@@ -5,8 +5,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/fitness/controller/fitness_controller.dart';
+import 'package:nityahealth/modules/fitness/ui/single_post.dart';
 
 import '../../../utils/constants/app_theme.dart';
+import '../../wellness/wellness_categories/views/single_post_page.dart';
 import '../model/fitness_model.dart';
 
 class FitnessChild extends StatelessWidget {
@@ -19,7 +21,7 @@ class FitnessChild extends StatelessWidget {
     print("pageId = ${_controller.pageId.value}");
     print("pageTitle = ${_controller.title.value}");
     return Scaffold(
-      appBar: CustomAppBar(title: "${_controller.title.value}"),
+      appBar: CustomAppBar(title: _controller.title.value),
       body: SingleChildScrollView(
         child: Obx(
           () {
@@ -53,7 +55,10 @@ class FitnessChild extends StatelessWidget {
                               itemBuilder: (context, id) {
                                 Posts? post = childs?.posts?[id];
                                 return GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    _controller.id.value = post?.id ?? 0;
+                                    Get.to(() => FitnessSinglePost());
+                                  },
                                   child: Container(
                                     margin: const EdgeInsets.only(
                                         left: 0, right: 16),
@@ -171,39 +176,3 @@ class FitnessChild extends StatelessWidget {
     );
   }
 }
-
-
-// return Column(
-//             children: [
-//               ListView.builder(
-//                 physics: AlwaysScrollableScrollPhysics(),
-//                 padding: const EdgeInsets.all(16.0),
-//                 shrinkWrap: true,
-//                 itemCount: _controller.fitnessModel.value.fitness == null
-//                     ? 0
-//                     : _controller.fitnessModel.value.fitness?.length,
-//                 itemBuilder: (context, index) {
-//                   Fitness? model =
-//                       _controller.fitnessModel.value.fitness?[index];
-//                   return Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       customText(model?.title ?? "", 18, FontWeight.w700),
-//                       SizedBox(
-//                         child: ListView.builder(
-//                           physics: const NeverScrollableScrollPhysics(),
-//                           shrinkWrap: true,
-//                           itemCount:
-//                               model?.childs == null ? 0 : model?.childs?.length,
-//                           itemBuilder: (context, index) {
-//                             Childs? child = model?.childs?[index];
-                            
-//                           },
-//                         ),
-//                       ),
-//                     ],
-//                   );
-//                 },
-//               ),
-//             ],
-//           );

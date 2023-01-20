@@ -1,4 +1,4 @@
-import 'package:nityahealth/modules/wellness/wellness_categories/model/singlepost_model.dart';
+import 'package:nityahealth/common/singlepost_model.dart';
 import 'package:nityahealth/modules/wellness/wellness_categories/model/wellness_list_model.dart';
 import '../../../../network/api/base_api.dart';
 

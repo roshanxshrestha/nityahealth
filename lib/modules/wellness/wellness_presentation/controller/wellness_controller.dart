@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
-import 'package:nityahealth/modules/wellness/wellness_categories/model/singlepost_model.dart';
+import 'package:nityahealth/common/singlepost_model.dart';
 import 'package:nityahealth/modules/wellness/wellness_categories/model/wellness_list_model.dart';
 import 'package:nityahealth/modules/wellness/wellness_categories/webservice/wellness_category_service.dart';
 import 'package:nityahealth/modules/wellness/wellness_presentation/model/wellness_child_model.dart';
