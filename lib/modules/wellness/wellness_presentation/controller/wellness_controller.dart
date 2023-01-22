@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:nityahealth/common/singlepost_model.dart';
@@ -31,9 +32,9 @@ class WellnessController extends GetxController {
     try {
       var response = await WellnessWebservices.getWellness();
       wellnessList.value = response.wellness!;
-      print("getWellnessList ${json.encode(wellnessList.value)}");
+      log("getWellnessList ${json.encode(wellnessList)}");
     } catch (ex) {
-      print("Exception = ${ex.toString()}");
+      log("Exception = ${ex.toString()}");
     }
     // isLoading.value = false;
   }
@@ -43,9 +44,9 @@ class WellnessController extends GetxController {
     try {
       var response = await WellnessWebservices.getWellnessChild(wellnessId);
       wellnessChildList.value = response;
-      print("getWellnessChildList ${json.encode(wellnessChildList.value)}");
+      log("getWellnessChildList ${json.encode(wellnessChildList.value)}");
     } catch (ex) {
-      print("exception = ${ex.toString()}");
+      log("exception = ${ex.toString()}");
     }
     // isLoading.value = false;
   }
@@ -55,9 +56,9 @@ class WellnessController extends GetxController {
     try {
       var response = await WellnessCategoryServices.getWellnessList(pageId);
       wellnessCategChild.value = response;
-      print("response = ${json.encode(wellnessCategChild.value)}");
+      log("response = ${json.encode(wellnessCategChild.value)}");
     } catch (ex) {
-      print("Exception = ${ex.toString()}");
+      log("Exception = ${ex.toString()}");
     }
     // isLoading.value = false;
   }
@@ -67,9 +68,9 @@ class WellnessController extends GetxController {
     try {
       var response = await WellnessCategoryServices.getSinglePost(id);
       singlePost.value = response;
-      print("response = ${json.encode(singlePost.value)}");
+      log("response = ${json.encode(singlePost.value)}");
     } catch (ex) {
-      print("exception = ${ex.toString()}");
+      log("exception = ${ex.toString()}");
     }
     // isLoading.value = false;
   }

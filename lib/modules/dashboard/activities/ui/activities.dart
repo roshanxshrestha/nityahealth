@@ -5,7 +5,6 @@ import 'package:nityahealth/common/date_day.dart';
 import 'package:nityahealth/common/fitness_container.dart';
 import 'package:nityahealth/common/food_container.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
@@ -115,7 +114,6 @@ class _MyActivitiesState extends State<MyActivities> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const MenuDrawer(),
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(

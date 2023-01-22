@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +10,6 @@ import 'package:nityahealth/modules/fitness/controller/fitness_controller.dart';
 import 'package:nityahealth/modules/fitness/ui/single_post.dart';
 
 import '../../../utils/constants/app_theme.dart';
-import '../../wellness/wellness_categories/views/single_post_page.dart';
 import '../model/fitness_model.dart';
 
 class FitnessChild extends StatelessWidget {
@@ -18,8 +19,8 @@ class FitnessChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("pageId = ${_controller.pageId.value}");
-    print("pageTitle = ${_controller.title.value}");
+    log("pageId = ${_controller.pageId.value}");
+    log("pageTitle = ${_controller.title.value}");
     return Scaffold(
       appBar: CustomAppBar(title: _controller.title.value),
       body: SingleChildScrollView(

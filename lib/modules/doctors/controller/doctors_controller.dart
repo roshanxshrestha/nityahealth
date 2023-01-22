@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/doctors/model/doctors_model.dart';
 
@@ -17,9 +19,10 @@ class DoctorsController extends GetxController {
     try {
       var response = await DoctorsWebservice.getDoctorData();
       doctorModel.value = response;
-      print("response = $response");
+
+      log("response = $response");
     } catch (ex) {
-      print("Exception = ${ex.toString()}");
+      log("Exception = ${ex.toString()}");
     }
     isLoading.value = false;
   }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/authentication/model/login_response.dart';
 import '../../../utils/pref_manager.dart';
@@ -22,7 +23,7 @@ class LoginWebService extends GetConnect {
       headers: headersmap,
     );
 
-    print("response = ${response.statusCode}, \n  baseUrl= $baseUrl");
+    log("response = ${response.statusCode}, \n  baseUrl= $baseUrl");
 
     if (response.statusCode == 200 && response.body["success"] == true) {
       LoginResponseModel model = LoginResponseModel.fromJson(response.body);

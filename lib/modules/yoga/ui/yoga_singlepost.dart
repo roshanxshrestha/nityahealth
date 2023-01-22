@@ -1,22 +1,20 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:nityahealth/common/custom_appbar.dart';
-import 'package:nityahealth/modules/fitness/controller/fitness_controller.dart';
+import 'package:nityahealth/common/text_style.dart';
+import 'package:nityahealth/modules/yoga/controller/yoga_controller.dart';
+import '../../../common/custom_appbar.dart';
 
-import '../../../common/text_style.dart';
-
-class FitnessSinglePost extends StatelessWidget {
-  FitnessSinglePost({super.key});
-  final _controller = Get.put(FitnessController());
+class YogaSinglePost extends StatelessWidget {
+  YogaSinglePost({super.key});
+  final _controller = Get.put(YogaController());
 
   @override
   Widget build(BuildContext context) {
     log("id= ${_controller.id.value}");
     log("pagetitle= ${_controller.title.value}");
-    _controller.getSingleFitnessPost(_controller.id.value);
+    _controller.getSingleYogaPost(_controller.id.value);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(title: _controller.title.value),

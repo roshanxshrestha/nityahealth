@@ -110,16 +110,6 @@ class Childs {
       posts: json['posts'] != null
           ? (json["posts"] as List).map((i) => Posts.fromJson(i)).toList()
           : null,
-      // if (json['posts'] != null) {
-      //   posts = <Posts>[];
-      //   json['posts'].forEach((v) {
-      //     posts!.add(new Posts.fromJson(v));
-      //   });
-      // }
-      // if (json['childs'] != null) {
-      //   childs = <Null>[];
-      //   json['childs'].forEach((v) {
-      //     childs!.add(Posts.fromJson(v));
     );
   }
   Map<String, dynamic> toJson() {

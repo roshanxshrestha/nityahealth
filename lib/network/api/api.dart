@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
@@ -42,7 +43,7 @@ class HeaderInterceptor extends InterceptorsWrapper {
     }
 
     options.headers['Accept'] = "application/json";
-    print('Headers is ${options.headers}');
+    log('Headers is ${options.headers}');
     return handler.next(options);
   }
 }

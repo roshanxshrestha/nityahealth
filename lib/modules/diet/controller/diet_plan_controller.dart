@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/diet/model/diet_plan_model.dart';
 import 'package:nityahealth/modules/diet/services/diet_plan_webservice.dart';
@@ -18,9 +20,9 @@ class DietPlanController extends GetxController {
     try {
       var response = await DietPlanWebservice.getDietPlan();
       dietPlan.value = response;
-      print("Response : $response");
+      log("Response : $response");
     } catch (ex) {
-      print("Response : ${ex.toString()}");
+      log("Response : ${ex.toString()}");
     }
     isLoading.value = false;
   }

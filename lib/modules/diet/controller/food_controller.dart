@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/diet/model/single_post_model.dart';
@@ -7,6 +8,8 @@ import '../services/food_webservice.dart';
 
 class FoodController extends GetxController {
   var id = 0.obs;
+  var index = 0.obs;
+  var ind = 0.obs;
   // FoodController(this.id);
   var foodModel = FoodModel().obs;
   var isLoading = false.obs;
@@ -23,9 +26,9 @@ class FoodController extends GetxController {
     try {
       var response = await FoodWebService.getFood();
       foodModel.value = response;
-      print("response = $response");
+      log("response = $response");
     } catch (error) {
-      print("Exception = ${error.toString()}");
+      log("Exception = ${error.toString()}");
     }
     isLoading.value = false;
   }
@@ -35,9 +38,9 @@ class FoodController extends GetxController {
     try {
       var response = await FoodWebService.getSinglePost(id);
       singlePost.value = response;
-      print("response = ${json.encode(singlePost.value)}");
+      log("response = ${json.encode(singlePost.value)}");
     } catch (ex) {
-      print("exception = ${ex.toString()}");
+      log("exception = ${ex.toString()}");
     }
     // isLoading.value = false;
   }

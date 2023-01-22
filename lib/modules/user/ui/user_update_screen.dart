@@ -40,15 +40,20 @@ class _UpdateProfileState extends State<UpdateProfile> {
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(15),
+              ),
+            ),
             floating: true,
-            foregroundColor: AppColor.primaryColor,
+            foregroundColor: AppColor.accent2Color,
             shadowColor: Colors.transparent,
-            backgroundColor: Colors.transparent,
+            backgroundColor: AppColor.primaryColor,
             title: Text(
               "Edit Profile",
               style: GoogleFonts.comfortaa(
                 fontSize: 18,
-                color: primaryColor,
+                color: AppColor.accent2Color,
                 fontWeight: FontWeight.w700,
               ),
             ),

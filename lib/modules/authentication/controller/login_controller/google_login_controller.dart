@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:nityahealth/utils/pref_manager.dart';
@@ -18,7 +19,7 @@ class GoogleLoginController extends GetxController {
       PrefManager.saveToken(authToken);
       PrefManager.isGoogleLogin(true);
     }
-    print("Response: ${json.encode(response)}");
+    log("Response: ${json.encode(response)}");
     return response;
   }
 }

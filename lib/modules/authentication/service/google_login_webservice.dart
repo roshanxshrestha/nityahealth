@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:nityahealth/utils/pref_manager.dart';
 import '../model/google_login_response.dart';
@@ -22,7 +23,7 @@ class GoogleLoginWebService extends GetConnect {
       headers: headersmap,
     );
 
-    print("response= ${response.statusCode},\n baseUrl= $baseUrl");
+    log("response= ${response.statusCode},\n baseUrl= $baseUrl");
     if (response.statusCode == 200 && response.body["success"] == true) {
       GoogleLoginResponseModel model =
           GoogleLoginResponseModel.fromJson(response.body);

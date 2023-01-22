@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -22,9 +24,8 @@ class FitnessScreen extends StatelessWidget {
 
       body: Obx(
         () {
-          print(
-              "fitness count = ${_controller.fitnessModel.value.fitness?.length}");
-          print("fitness id = $id");
+          log("fitness count = ${_controller.fitnessModel.value.fitness?.length}");
+          log("fitness id = $id");
           return LoadingOverlay(
             progressIndicator:
                 const CircularProgressIndicator(color: AppColor.primaryColor),

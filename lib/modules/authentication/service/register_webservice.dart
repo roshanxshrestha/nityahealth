@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/authentication/model/register_response.dart';
 import 'package:nityahealth/utils/pref_manager.dart';
@@ -31,7 +32,7 @@ class RegisterWebService extends GetConnect {
       contentType: "Application/json",
       headers: headersmap,
     );
-    print("response=${response.statusCode},\n baseUrl= $baseUrl");
+    log("response=${response.statusCode},\n baseUrl= $baseUrl");
     if (response.statusCode == 200 && response.body["success"] == true) {
       RegisterResponseModel model =
           RegisterResponseModel.fromJson(response.body);

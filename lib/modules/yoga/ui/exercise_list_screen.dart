@@ -5,7 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
-import 'package:nityahealth/modules/yoga/ui/exercise_detail.dart';
+import 'package:nityahealth/modules/yoga/ui/yoga_singlepost.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 class ExerciseList extends StatelessWidget {
@@ -182,7 +182,7 @@ Widget exerciseList(
     String title, String description, String imagePath, BuildContext context) {
   return GestureDetector(
     onTap: () {
-      Get.to(() => const ExerciseDetail());
+      Get.to(() => YogaSinglePost());
     },
     child: Container(
       height: 100,
