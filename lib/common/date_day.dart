@@ -13,7 +13,7 @@ class DateDay extends StatefulWidget {
 }
 
 class _DateDayState extends State<DateDay> {
-  int selected = 4;
+  int selected = 0;
   var name = "Falano";
   getName() async {
     setState(() async {
@@ -146,13 +146,13 @@ class _DateDayState extends State<DateDay> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              customDateRadio("SUN", 22, 1),
-              customDateRadio("MON", 23, 2),
-              customDateRadio("TUE", 24, 3),
-              customDateRadio("WED", 25, 4),
-              customDateRadio("THU", 26, 5),
-              customDateRadio("FRI", 27, 6),
-              customDateRadio("SAT", 28, 7),
+              customDateRadio("SUN", DateTime.now().day - 2, 1),
+              customDateRadio("MON", DateTime.now().day - 1, 2),
+              customDateRadio("TUE", DateTime.now().day - 0, 3),
+              customDateRadio("WED", DateTime.now().day + 1, 4),
+              customDateRadio("THU", DateTime.now().day + 2, 5),
+              customDateRadio("FRI", DateTime.now().day + 3, 6),
+              customDateRadio("SAT", DateTime.now().day + 4, 7),
             ],
           ),
         ),

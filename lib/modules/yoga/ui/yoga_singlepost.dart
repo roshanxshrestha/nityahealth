@@ -15,6 +15,7 @@ class YogaSinglePost extends StatelessWidget {
     log("id= ${_controller.id.value}");
     log("pagetitle= ${_controller.title.value}");
     _controller.getSingleYogaPost(_controller.id.value);
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(title: _controller.title.value),

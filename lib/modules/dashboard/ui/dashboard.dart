@@ -17,7 +17,13 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  var name = "";
+  final int hour = DateTime.now().hour;
+
+  // late String greet =(if(hour < 12)
+  // {return "Good Morning"}else if{});
+  //     // (hour > 12 ? "Good Afternoon" : "Good Morning");
+
+  var name = "Falano";
   getName() async {
     setState(() async {
       name = await PrefManager.getName();
@@ -135,30 +141,49 @@ class _DashboardState extends State<Dashboard> {
                     color: primaryColor,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Hello ",
-                              style: GoogleFonts.comfortaa(
-                                fontSize: 18,
-                                color: accent2Color,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Text(
-                              "$name,",
-                              style: GoogleFonts.comfortaa(
-                                fontSize: 24,
-                                color: accent2Color,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ],
+                        LayoutBuilder(
+                          builder: (context, constraints) {
+                            if (hour < 12) {
+                              return Text(
+                                "Good Morning,",
+                                style: GoogleFonts.comfortaa(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.accent2Color),
+                              );
+                            } else if (hour > 18) {
+                              return Text(
+                                "Good Evening,",
+                                style: GoogleFonts.comfortaa(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.accent2Color),
+                              );
+                            } else {
+                              return Text(
+                                "Good Afternoon,",
+                                style: GoogleFonts.comfortaa(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.accent2Color),
+                              );
+                            }
+                          },
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 8),
+                        Text(
+                          "$name,",
+                          style: GoogleFonts.comfortaa(
+                            fontSize: 24,
+                            color: accent2Color,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
                         Row(
                           children: [
                             Text(

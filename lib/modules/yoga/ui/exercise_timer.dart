@@ -6,6 +6,8 @@ import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
+import '../../../common/custom_appbar.dart';
+
 class ExerciseTimer extends StatefulWidget {
   const ExerciseTimer({super.key});
 
@@ -78,39 +80,7 @@ class _ExerciseTimerState extends State<ExerciseTimer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(15),
-          ),
-        ),
-        foregroundColor: accent2Color,
-        shadowColor: Colors.transparent,
-        backgroundColor: primaryColor,
-        title: Text(
-          "Exercise",
-          style: GoogleFonts.comfortaa(
-            fontSize: 18,
-            color: accent2Color,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                Get.to(() => UserProfileDetails());
-              },
-              child: const Icon(
-                Icons.account_circle,
-                size: 25,
-                color: accent2Color,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(title: "Exercise"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

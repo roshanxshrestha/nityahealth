@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/dashboard/news_articles/ui/articles.dart';
-import 'package:nityahealth/modules/dashboard/news_articles/ui/covid.dart';
-import 'package:nityahealth/modules/dashboard/news_articles/ui/hiv.dart';
+import 'package:nityahealth/modules/news_articles/ui/articles.dart';
+import 'package:nityahealth/modules/news_articles/ui/covid.dart';
+import 'package:nityahealth/modules/news_articles/ui/hiv.dart';
 
 class NewsArticles extends StatefulWidget {
   const NewsArticles({super.key});

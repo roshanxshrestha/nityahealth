@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:get/state_manager.dart';
 import 'package:nityahealth/modules/authentication/model/register_response.dart';
 import 'package:nityahealth/modules/authentication/service/register_webservice.dart';

@@ -10,9 +10,8 @@ import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/profile_setting_buttons.dart';
 
 class UserProfileDetails extends StatelessWidget {
-  UserProfileDetails({super.key});
-
   final _controller = Get.put(UserProfileController());
+  UserProfileDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,10 +77,11 @@ class UserProfileDetails extends StatelessWidget {
                                 color: primaryColor,
                               ),
                               shape: BoxShape.circle,
-                              image: const DecorationImage(
+                              image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(
-                                    "assets/images/profile/user/profile.jpeg"),
+                                image: NetworkImage(
+                                    _controller.userprofile.value.user?.image ??
+                                        ""),
                               ),
                             ),
                           ),
@@ -100,8 +100,9 @@ class UserProfileDetails extends StatelessWidget {
                                 color: primaryColor,
                               ),
                               child: const Icon(
-                                Icons.edit,
+                                MdiIcons.cameraPlus,
                                 color: accent2Color,
+                                size: 18,
                               ),
                             ),
                           ),
@@ -162,8 +163,13 @@ class UserProfileDetails extends StatelessWidget {
                         _controller.userprofile.value.user?.weight ?? "",
                         "",
                         context),
-                    button2("Blood Group", Icons.bloodtype,
-                        "section not available in api", "", context),
+                    button2(
+                        "Blood Group",
+                        Icons.bloodtype,
+                        _controller.userprofile.value.user?.bloodGrp ??
+                            "section not available in api",
+                        "",
+                        context),
                     button2(
                         "Food Type",
                         Icons.restaurant,

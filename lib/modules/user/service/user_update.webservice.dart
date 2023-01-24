@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:get/get.dart';
 
 import 'package:nityahealth/modules/user/model/user_update_model.dart';
@@ -16,6 +17,7 @@ class UserUpdateWebservice extends GetConnect {
     age,
     height,
     weight,
+    blood,
   ) async {
     var baseUrl = "http://health.sajiloweb.com/api";
 
@@ -30,17 +32,18 @@ class UserUpdateWebservice extends GetConnect {
     map["age"] = age;
     map["height"] = height;
     map["weight"] = weight;
+    map["blood"] = blood;
 
     Map<String, String> headersmap = {};
     headersmap["Content-type"] = "Application/json";
 
     var response = await super.post(
-      "http://health.sajiloweb.com/api/update/User",
+      "http://health.sajiloweb.com/api/update/user/profile",
       json.encode(map),
       contentType: "Application/json",
       headers: headersmap,
     );
-    print("response=${response.statusCode},\n baseUrl= $baseUrl");
+    log("response=${response.statusCode},\n baseUrl= $baseUrl");
     if (response.statusCode == 200 && response.body["success"] == true) {
       UserUpdateModel model = UserUpdateModel.fromJson(response.body);
 
@@ -49,7 +52,7 @@ class UserUpdateWebservice extends GetConnect {
       return model;
     } else {
       Get.snackbar("Error", response.body["message"]);
-      print("error: ${response.body["message"]}");
+      log("error: ${response.body["message"]}");
       return null;
     }
   }

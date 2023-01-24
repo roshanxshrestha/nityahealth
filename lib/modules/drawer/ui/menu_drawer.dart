@@ -5,8 +5,29 @@ import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 
-class MenuDrawer extends StatelessWidget {
+import '../../../utils/pref_manager.dart';
+
+class MenuDrawer extends StatefulWidget {
   const MenuDrawer({super.key});
+
+  @override
+  State<MenuDrawer> createState() => _MenuDrawerState();
+}
+
+class _MenuDrawerState extends State<MenuDrawer> {
+  var name = "";
+
+  getName() async {
+    setState(() async {
+      name = await PrefManager.getName();
+    });
+  }
+
+  @override
+  void initState() {
+    getName();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +37,7 @@ class MenuDrawer extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             accountName: Text(
-              "Falano",
+              name,
               style: GoogleFonts.comfortaa(
                 fontSize: 18,
                 color: accent2Color,
@@ -31,15 +52,9 @@ class MenuDrawer extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            currentAccountPicture: CircleAvatar(
-              child: GestureDetector(
-                onTap: () {
-                  Get.to(() => UserProfileDetails());
-                },
-                child: ClipOval(
-                  child: Image.asset("assets/images/profile/user/profile.jpeg"),
-                ),
-              ),
+            currentAccountPicture: const CircleAvatar(
+              backgroundImage:
+                  AssetImage("assets/images/profile/user/profile.jpeg"),
             ),
             decoration: const BoxDecoration(
               color: primaryColor,

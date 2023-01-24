@@ -44,7 +44,7 @@ class Skip extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Get.to(() => const Dashboard());
+                Get.to(() => Dashboard());
               },
               child: Text(
                 'Continue',
