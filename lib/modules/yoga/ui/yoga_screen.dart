@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +14,7 @@ import '../../../common/date_day.dart';
 import '../model/yoga_model.dart';
 
 class YogaActivities extends StatefulWidget {
-  YogaActivities({super.key});
+  const YogaActivities({super.key});
 
   @override
   State<YogaActivities> createState() => _YogaActivitiesState();

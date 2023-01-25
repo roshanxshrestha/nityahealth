@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nityahealth/common/text_style.dart';
@@ -19,7 +21,7 @@ class GridViewList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _controller.getWellnessChildList(id);
-    print("wellnessId= $id");
+    log("wellnessId= $id");
 
     return Scaffold(
       key: _refreshKey,

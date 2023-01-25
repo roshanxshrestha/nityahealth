@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
-import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
-
 import '../../../utils/pref_manager.dart';
 
 class MenuDrawer extends StatefulWidget {

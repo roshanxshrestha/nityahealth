@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +11,7 @@ final Http http = Http();
 class Http extends BaseHttp {
   @override
   void init() {
-    print("Api call ");
+    log("Api call ");
     options.baseUrl = "http://health.sajiloweb.com/api/";
     options.validateStatus = (status) {
       return status! < 501;
@@ -41,7 +43,7 @@ class ApiInterceptor extends InterceptorsWrapper {
     } else if (response.statusCode == 401) {
       String message = response.data["error"].first["detail"];
       Exception error = NotSuccessException("Session Expired / $message");
-      print("Logout user");
+      log("Logout user");
       throw error;
     } else {
       ResponseData respData = ResponseData.fromJson(response.data);

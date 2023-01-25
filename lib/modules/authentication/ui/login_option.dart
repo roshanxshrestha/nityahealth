@@ -20,14 +20,10 @@ final GoogleSignIn _googleSignIn = GoogleSignIn(
 );
 
 class _LoginOptionState extends State<LoginOption> {
-  GoogleSignInAccount? _currentUser;
-
   @override
   void initState() {
     _googleSignIn.onCurrentUserChanged.listen((account) {
-      setState(() {
-        _currentUser = account;
-      });
+      setState(() {});
     });
     _googleSignIn.signInSilently();
     super.initState();

@@ -50,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
       floatingActionButton: SizedBox(
         child: InkWell(
           onTap: () {
-            Get.to(() => OnBoardingPage());
+            Get.to(() => const OnBoardingPage());
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,

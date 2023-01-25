@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,8 +28,7 @@ class _DietPlanState extends State<DietPlan> {
       appBar: const CustomAppBar(title: "Diet Plan"),
       body: Obx(
         () {
-          print(
-              "diet plan count = ${_controller.dietPlan.value.purpose?.length}");
+          log("diet plan count = ${_controller.dietPlan.value.purpose?.length}");
           return LoadingOverlay(
             progressIndicator:
                 const CircularProgressIndicator(color: AppColor.primaryColor),
@@ -153,7 +154,7 @@ class _DietPlanState extends State<DietPlan> {
       //                 child: ListView.builder(
       //                   itemCount: _controller.dietPlan.value.purpose?.length,
       //                   itemBuilder: (BuildContext context, int index) {
-      //                     print(
+      //                     log(
       //                         "Array size  = ${_controller.dietPlan.value.purpose?.length}");
       //                     Purpose? model =
       //                         _controller.dietPlan.value.purpose?[index];

@@ -68,7 +68,7 @@ Widget button2(String title, IconData icon, String info, String routeName,
   return GestureDetector(
     onTap: () {},
     child: Container(
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
         color: accent5Color,
         border: Border(

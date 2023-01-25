@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/user/controller/user_profile_controller.dart';
+import 'package:nityahealth/modules/user/model/user_model.dart';
 import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/profile_setting_buttons.dart';
@@ -179,16 +181,89 @@ class UserProfileDetails extends StatelessWidget {
                     const SizedBox(height: 30),
                     textF16W700("Medical Condition"),
                     const SizedBox(height: 10),
-                    button2(
-                        "Disease", (MdiIcons.virus), "Migraine", "", context),
-                    button2("Type", (Icons.category), "Headache", "", context),
-                    button2("Cured?", (MdiIcons.virus), "No", "", context),
-                    button2("Medicine Name", (MdiIcons.pill), "Bruffin", "",
-                        context),
-                    button2("Medicine Duration", (MdiIcons.timerAlert),
-                        "2 Weeks", "", context),
-                    button2(
-                        "Other Medicines?", (MdiIcons.pill), "No", "", context),
+                    SizedBox(
+                      child: Column(
+                        children: [
+                          ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            // scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: _controller.userprofile.value.user
+                                        ?.medicalConditions ==
+                                    null
+                                ? 0
+                                : _controller.userprofile.value.user
+                                    ?.medicalConditions?.length,
+                            itemBuilder: (context, id) {
+                              MedicalConditions? mcond = _controller.userprofile
+                                  .value.user?.medicalConditions?[id];
+                              return Column(
+                                children: [
+                                  const SizedBox(height: 16),
+                                  button2("Disease", (MdiIcons.virus),
+                                      mcond?.diseaseName ?? "", "", context),
+                                  button2("Type", (Icons.category),
+                                      mcond?.type ?? "", "", context),
+                                  button2("Cured?", (MdiIcons.virus),
+                                      mcond?.isCured ?? "", "", context),
+                                  _controller.userprofile.value.user
+                                              ?.medicalConditions?[id].id !=
+                                          _controller.userprofile.value.user
+                                              ?.mdicalRecords?[id].diseaseId
+                                      ? SizedBox(
+                                          child: ListView.builder(
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemCount: _controller
+                                                        .userprofile
+                                                        .value
+                                                        .user
+                                                        ?.mdicalRecords ==
+                                                    null
+                                                ? 0
+                                                : _controller
+                                                    .userprofile
+                                                    .value
+                                                    .user
+                                                    ?.mdicalRecords
+                                                    ?.length,
+                                            itemBuilder: (context, ind) {
+                                              MdicalRecords? mrecord =
+                                                  _controller
+                                                      .userprofile
+                                                      .value
+                                                      .user
+                                                      ?.mdicalRecords?[ind];
+                                              return Column(
+                                                children: [
+                                                  button2(
+                                                      "Medicine Name",
+                                                      (MdiIcons.pill),
+                                                      mrecord?.medicineName ??
+                                                          "",
+                                                      "",
+                                                      context),
+                                                  button2(
+                                                      "Medicine Duration",
+                                                      (MdiIcons.timerAlert),
+                                                      mrecord?.duration ?? "",
+                                                      "",
+                                                      context),
+                                                ],
+                                              );
+                                            },
+                                          ),
+                                        )
+                                      : const SizedBox(),
+                                  customButton1("Add Medicine", "", context),
+                                ],
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

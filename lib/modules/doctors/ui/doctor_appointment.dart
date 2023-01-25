@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/custom_text_field.dart';
 import 'package:nityahealth/common/ratings.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 import '../../../common/custom_appbar.dart';

@@ -14,7 +14,7 @@ class YogaWebservice {
 
   static Future getSingleYogaPost(int id) async {
     var response = await http.get("singlepost/$id");
-    print("response = $response");
+    log("response = $response");
     return SinglePostModel.fromJson(response.data);
   }
 }

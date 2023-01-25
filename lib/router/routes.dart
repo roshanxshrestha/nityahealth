@@ -52,7 +52,7 @@ class AppRoutes {
       GetPage(
           name: '/phone_verification', page: () => const PhoneVerification()),
       GetPage(name: '/set_location', page: () => const SetLocation()),
-      GetPage(name: '/onboarding_page', page: () => OnBoardingPage()),
+      GetPage(name: '/onboarding_page', page: () => const OnBoardingPage()),
       GetPage(name: '/onboarding1', page: () => const OnBoarding1()),
       GetPage(name: '/onboarding2', page: () => const OnBoarding2()),
       GetPage(name: '/onboarding3', page: () => const OnBoarding3()),
@@ -75,7 +75,7 @@ class AppRoutes {
       GetPage(name: '/foodlist', page: () => FoodList(0)),
       GetPage(name: '/fooddetails', page: () => FoodDetails()),
       GetPage(name: '/yogamenu', page: () => const YogaMenu()),
-      GetPage(name: '/yogaactivities', page: () => YogaActivities()),
+      GetPage(name: '/yogaactivities', page: () => const YogaActivities()),
       GetPage(name: '/coursedetail', page: () => const CourseDetail()),
       GetPage(name: '/doctors', page: () => FindDoctors()),
       GetPage(name: '/dentaldoctors', page: () => const DentalDoctor()),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -15,13 +17,13 @@ class WellnessCategoryChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("pageId = ${_controller.pageId.value}");
-    print("page title = ${_controller.title.value}");
+    log("pageId = ${_controller.pageId.value}");
+    log("page title = ${_controller.title.value}");
     _controller.getWellnessListData(_controller.pageId.value);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(
-        title: "${_controller.title.value}",
+        title: _controller.title.value,
       ),
       body: SingleChildScrollView(
         child: Container(

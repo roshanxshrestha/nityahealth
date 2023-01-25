@@ -111,7 +111,7 @@ class _SignInEmailState extends State<SignInEmail> {
                                 if (response == null) {
                                   // Get.snackbar("Error", "Something went wrong!");
                                 } else if (response.success!) {
-                                  Get.offAll(Dashboard());
+                                  Get.offAll(() => const Dashboard());
                                 }
                               },
                             );

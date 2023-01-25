@@ -13,7 +13,7 @@ class OnBoardingPage extends StatefulWidget {
   static const _kDuration = Duration(milliseconds: 300);
   static const _kCurve = Curves.ease;
 
-  OnBoardingPage({super.key});
+  const OnBoardingPage({super.key});
 
   @override
   State<OnBoardingPage> createState() => _OnBoardingPageState();

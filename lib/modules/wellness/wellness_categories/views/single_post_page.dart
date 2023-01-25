@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
@@ -11,7 +13,7 @@ class SinglePostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("id= ${_controller.id.value}");
+    log("id= ${_controller.id.value}");
     _controller.getSinglePostData(_controller.id.value);
     return Scaffold(
       extendBodyBehindAppBar: true,

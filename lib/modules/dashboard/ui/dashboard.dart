@@ -41,7 +41,6 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       drawer: const MenuDrawer(),
       appBar: AppBar(
-        // floating: true,
         foregroundColor: accent2Color,
         shadowColor: Colors.transparent,
         backgroundColor: primaryColor,
