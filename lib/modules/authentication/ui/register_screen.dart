@@ -198,15 +198,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const SizedBox(height: 25),
                         customButton2("Sign up", context, () async {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const Center(
-                                  child: CircularProgressIndicator(
-                                color: AppColor.primaryColor,
-                              ));
-                            },
-                          );
+                          // showDialog(
+                          //   context: context,
+                          //   builder: (context) {
+                          //     return const Center(
+                          //         child: CircularProgressIndicator(
+                          //       color: AppColor.primaryColor,
+                          //     ));
+                          //   },
+                          // );
                           if (_formKey.currentState?.validate() == true) {
                             _formKey.currentState?.save();
 
@@ -220,12 +220,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 .register(name, email, password, cPassword,
                                     address, phone)
                                 .then((value) {
-                              if (value == null) {
-                                // Get.snackbar("Error", "Something went wrong!");
-                              } else {
-                                if (value.success!) {
-                                  Get.toNamed("phone_verification");
-                                }
+                              if (value != null && value.success!) {
+                                Get.toNamed("phone_verification");
                               }
                             });
                           }

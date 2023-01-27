@@ -36,8 +36,8 @@ class UserUpdateController extends GetxController {
       blood,
     );
     if (response?.success == true) {
-      var authToken = response?.data?.token ?? "";
-      PrefManager.saveToken(authToken);
+      // var authToken = response?.data?.token ?? "";
+      // PrefManager.saveToken(authToken);
       PrefManager.isUpdateProfile(true);
     }
     log("Response - ${json.encode(response)}");

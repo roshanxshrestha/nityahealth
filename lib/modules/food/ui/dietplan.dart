@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
-import 'package:nityahealth/modules/diet/controller/diet_plan_controller.dart';
-import 'package:nityahealth/modules/diet/ui/food_list.dart';
-import 'package:nityahealth/modules/diet/model/diet_plan_model.dart';
+import 'package:nityahealth/modules/food/controller/diet_plan_controller.dart';
+import 'package:nityahealth/modules/food/ui/food_list.dart';
+import 'package:nityahealth/modules/food/model/diet_plan_model.dart';
 
 import '../../../utils/constants/app_theme.dart';
 

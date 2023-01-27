@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:loading_overlay/loading_overlay.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
@@ -22,12 +23,13 @@ class FitnessChild extends StatelessWidget {
     log("pageId = ${_controller.pageId.value}");
     log("pageTitle = ${_controller.title.value}");
     return Scaffold(
-      appBar: CustomAppBar(title: _controller.title.value),
-      body: SingleChildScrollView(
-        child: Obx(
-          () {
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        appBar: CustomAppBar(title: _controller.title.value),
+        body: SingleChildScrollView(
+            child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Obx(
+            () => LoadingOverlay(
+              isLoading: _controller.isLoading.value,
               child: Column(
                 children: [
                   ListView.builder(
@@ -170,10 +172,8 @@ class FitnessChild extends StatelessWidget {
                   )
                 ],
               ),
-            );
-          },
-        ),
-      ),
-    );
+            ),
+          ),
+        )));
   }
 }

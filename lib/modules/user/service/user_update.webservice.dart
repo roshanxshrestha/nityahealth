@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
-
 import 'package:nityahealth/modules/user/model/user_update_model.dart';
 import '../../../utils/pref_manager.dart';
 
@@ -47,12 +46,12 @@ class UserUpdateWebservice extends GetConnect {
     if (response.statusCode == 200 && response.body["success"] == true) {
       UserUpdateModel model = UserUpdateModel.fromJson(response.body);
 
-      PrefManager.saveToken(
-          model.data!.token == null ? "" : model.data!.token!);
+      // PrefManager.saveToken(
+      //     model.data!.token == null ? "" : model.data!.token!);
       return model;
     } else {
-      Get.snackbar("Error", response.body["message"]);
-      log("error: ${response.body["message"]}");
+      // Get.snackbar("Error", response.body["message"]);
+      // log("error: ${response.body["message"]}");
       return null;
     }
   }

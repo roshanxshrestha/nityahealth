@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:nityahealth/modules/diet/model/single_post_model.dart';
+import 'package:nityahealth/modules/food/model/single_post_model.dart';
 import '../model/food_model.dart';
 import '../services/food_webservice.dart';
 

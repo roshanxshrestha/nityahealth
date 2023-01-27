@@ -1,4 +1,4 @@
-import 'package:nityahealth/modules/diet/model/food_model.dart';
+import 'package:nityahealth/modules/food/model/food_model.dart';
 
 class YogaModel {
   List<Yoga>? yoga;

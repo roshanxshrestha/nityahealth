@@ -13,7 +13,8 @@ class MenuDrawer extends StatefulWidget {
 }
 
 class _MenuDrawerState extends State<MenuDrawer> {
-  var name = "";
+  var name = "Falano";
+  var address = "Kathmandu";
 
   getName() async {
     setState(() async {
@@ -43,7 +44,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               ),
             ),
             accountEmail: Text(
-              "Kathmandu, Nepal",
+              address,
               style: GoogleFonts.comfortaa(
                 fontSize: 14,
                 color: accent2Color,
@@ -67,7 +68,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               dashboardItems(context, "My Appointment", "doctorappointment"),
               dashboardItems(context, "Doctors", "doctors"),
               dashboardItems(context, "Fitness", "fitness"),
-              dashboardItems(context, "Diet", "dietplan"),
+              dashboardItems(context, "Food", "dietplan"),
               dashboardItems(context, "Yoga", "yogaactivities"),
               dashboardItems(context, "My Reports", ""),
               dashboardItems(context, "My Accounts", "userprofilesetting"),

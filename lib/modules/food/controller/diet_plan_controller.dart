@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:nityahealth/modules/diet/model/diet_plan_model.dart';
-import 'package:nityahealth/modules/diet/services/diet_plan_webservice.dart';
+import 'package:nityahealth/modules/food/model/diet_plan_model.dart';
+import 'package:nityahealth/modules/food/services/diet_plan_webservice.dart';
 
 class DietPlanController extends GetxController {
   var dietPlan = DietPlanModel().obs;

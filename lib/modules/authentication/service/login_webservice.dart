@@ -33,6 +33,7 @@ class LoginWebService extends GetConnect {
       return model;
     } else {
       Get.snackbar("Error", response.body["message"]);
+      log("message = ${response.statusText}");
       return null;
     }
   }

@@ -3,12 +3,13 @@ import 'package:nityahealth/modules/authentication/ui/google_login.dart';
 import 'package:nityahealth/modules/authentication/ui/login.dart';
 import 'package:nityahealth/modules/fitness/ui/fitness_screen.dart';
 import 'package:nityahealth/modules/onboarding/splash_screen.dart';
+import 'package:nityahealth/modules/user/ui/user_medical.dart';
 import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/course_detail.dart';
 import 'package:nityahealth/modules/activities/ui/activities.dart';
 import 'package:nityahealth/modules/dashboard/ui/dashboard.dart';
-import 'package:nityahealth/modules/diet/ui/food_details.dart';
-import 'package:nityahealth/modules/diet/ui/food_list.dart';
+import 'package:nityahealth/modules/food/ui/food_details.dart';
+import 'package:nityahealth/modules/food/ui/food_list.dart';
 import 'package:nityahealth/modules/doctors/ui/doctor_appointment.dart';
 import 'package:nityahealth/modules/doctors/ui/doctors.dart';
 import 'package:nityahealth/modules/doctors/ui/doctor_dental.dart';
@@ -17,7 +18,7 @@ import 'package:nityahealth/modules/drawer/ui/menu_drawer.dart';
 import 'package:nityahealth/modules/notification/notification.dart';
 import 'package:nityahealth/modules/consultants/ui/consultant.dart';
 import 'package:nityahealth/modules/bmi_calculator/bmi_calculator.dart';
-import 'package:nityahealth/modules/diet/ui/dietplan.dart';
+import 'package:nityahealth/modules/food/ui/dietplan.dart';
 import 'package:nityahealth/modules/health_topics/ui/health_topics.dart';
 import 'package:nityahealth/modules/news_articles/ui/news.dart';
 import 'package:nityahealth/modules/wellness/wellness_presentation/ui/wellness.dart';
@@ -80,6 +81,8 @@ class AppRoutes {
       GetPage(name: '/doctors', page: () => FindDoctors()),
       GetPage(name: '/dentaldoctors', page: () => const DentalDoctor()),
       GetPage(name: '/doctorprofile', page: () => const DoctorProfile()),
+      GetPage(
+          name: '/usermedicalrecords', page: () => const UserMedicalRecords()),
       // GetPage(name: '/exerciselist', page: () => const ExerciseList()),
       GetPage(name: '/exercisetimer', page: () => const ExerciseTimer()),
       GetPage(

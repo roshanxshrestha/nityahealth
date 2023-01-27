@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:nityahealth/modules/diet/model/diet_plan_model.dart';
+import 'package:nityahealth/modules/food/model/diet_plan_model.dart';
 
 import '../../../network/api/base_api.dart';
 

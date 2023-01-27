@@ -7,8 +7,8 @@ import 'package:loading_overlay/loading_overlay.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/diet/controller/food_controller.dart';
-import 'package:nityahealth/modules/diet/model/food_model.dart';
+import 'package:nityahealth/modules/food/controller/food_controller.dart';
+import 'package:nityahealth/modules/food/model/food_model.dart';
 import '../../../utils/constants/app_theme.dart';
 import 'food_details.dart';
 

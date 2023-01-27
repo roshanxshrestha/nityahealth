@@ -21,40 +21,43 @@ class YogaSinglePost extends StatelessWidget {
       appBar: CustomAppBar(title: _controller.title.value),
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 105),
-        child: Column(
-          children: [
-            _controller.singlePost.value.post?.image != null
-                ? SizedBox(
-                    height: 300,
-                    width: MediaQuery.of(context).size.width,
-                    child: Image.network(
-                      _controller.singlePost.value.post?.image ?? "",
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                : const SizedBox.shrink(),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16.0),
-                    child: Center(
-                      child: customText(
-                        _controller.singlePost.value.post?.title ?? "",
-                        18,
-                        FontWeight.w700,
+        child: Obx(
+          () => Column(
+            children: [
+              _controller.singlePost.value.post?.image != null
+                  ? SizedBox(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      child: Image.network(
+                        _controller.singlePost.value.post?.image ?? "",
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: Center(
+                        child: customText(
+                          _controller.singlePost.value.post?.title ?? "",
+                          18,
+                          FontWeight.w700,
+                        ),
                       ),
                     ),
-                  ),
-                  Html(
-                    data: _controller.singlePost.value.post?.description ?? "",
-                  ),
-                ],
+                    Html(
+                      data:
+                          _controller.singlePost.value.post?.description ?? "",
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
-import 'package:nityahealth/modules/diet/model/single_post_model.dart';
+import 'package:nityahealth/modules/food/model/single_post_model.dart';
 import 'package:nityahealth/modules/fitness/model/fitness_model.dart';
 import 'package:nityahealth/modules/fitness/service/fitness_webservice.dart';
 
@@ -33,11 +33,16 @@ class FitnessController extends GetxController {
   }
 
   getSingleFitnessPost(int id) async {
+    // isLoading.value = true;
+    singlePost.value = SinglePostModel();
     try {
       var response = await FitnessWebservice.getSingleFitnessPost(id);
+      isLoading.value = false;
       singlePost.value = response;
       log("response= ${json.encode(singlePost.value)}");
     } catch (ex) {
+      isLoading.value = false;
+
       log("Exception = ${ex.toString()}");
     }
   }

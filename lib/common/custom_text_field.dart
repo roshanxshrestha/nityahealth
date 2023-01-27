@@ -60,20 +60,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontSize: 14,
           fontWeight: FontWeight.w300,
         ),
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(10),
-        //   borderSide: const BorderSide(
-        //     color: accent1Color,
-        //     width: 1,
-        //   ),
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.circular(10),
-        //   borderSide: const BorderSide(
-        //     color: Colors.blue,
-        //     width: 1,
-        //   ),
-        // ),
       ),
       obscureText: widget.isPassword ?? false,
       validator: ((value) {

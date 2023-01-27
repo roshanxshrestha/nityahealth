@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:nityahealth/utils/pref_manager.dart';
 
@@ -22,6 +24,7 @@ class LoginController extends GetxController {
       // Map dataResponse = mapResponse["message"];
 
     }
+    log("response = $response");
     return response;
   }
 }

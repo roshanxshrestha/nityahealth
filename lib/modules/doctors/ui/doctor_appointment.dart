@@ -8,6 +8,7 @@ import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 import '../../../common/custom_appbar.dart';
+import '../../../common/gender_dropdown.dart';
 
 class DoctorAppointment extends StatefulWidget {
   const DoctorAppointment({super.key});
@@ -65,12 +66,7 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
             const SizedBox(height: 8),
             const GenderDropdown(),
             const SizedBox(height: 8),
-            // DatePicker(),
-            CustomTextField(
-              hintText: "Date",
-              controller: dateController,
-              message: "date required",
-            ),
+            const DatePicker(),
             const SizedBox(height: 8),
             CustomTextField(
               hintText: "Time",
@@ -294,55 +290,6 @@ Widget appointmentConfirmedDialog(BuildContext context) {
   );
 }
 
-class GenderDropdown extends StatefulWidget {
-  const GenderDropdown({super.key});
-
-  @override
-  State<GenderDropdown> createState() => _GenderDropdownState();
-}
-
-class _GenderDropdownState extends State<GenderDropdown> {
-  List<String> items = [
-    'Gender',
-    'Male',
-    'Female',
-    'Others',
-  ];
-  String? selectedItem = "Gender";
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: DropdownButtonFormField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: primaryColor,
-              width: 1,
-            ),
-          ),
-        ),
-        value: selectedItem,
-        items: items
-            .map((item) => DropdownMenuItem<String>(
-                value: item,
-                child: Text(
-                  item,
-                  style: GoogleFonts.comfortaa(
-                    color: accent3Color,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                  ),
-                )))
-            .toList(),
-        onChanged: (String? item) {
-          setState(() => selectedItem = item);
-        },
-      ),
-    );
-  }
-}
-
 //date picker overflow error
 
 class DatePicker extends StatefulWidget {
@@ -357,26 +304,38 @@ class _DatePickerState extends State<DatePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: TextFormField(
-        controller: _date,
-        decoration: const InputDecoration(
-          label: Text("Date"),
-          icon: Icon(Icons.arrow_downward),
+    return TextFormField(
+      controller: _date,
+      decoration: InputDecoration(
+        hintText: "Date",
+        hintStyle: GoogleFonts.comfortaa(
+          color: accent1Color,
+          fontSize: 14,
+          fontWeight: FontWeight.w300,
         ),
-        onTap: () async {
-          DateTime? pickedDate = await showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime.now(),
-              lastDate: DateTime(2029));
-          if (pickedDate != null) {
-            setState(() {
-              _date.text = DateFormat("yyyy-MM-dd").format(pickedDate);
-            });
-          }
-        },
+
+        prefixIcon: const Icon(Icons.calendar_today_outlined),
+        // label: Text("Date"),
       ),
+      onTap: () async {
+        DateTime? pickedDate = await showDatePicker(
+            builder: (context, child) {
+              return Theme(
+                  data: Theme.of(context).copyWith(
+                      colorScheme: const ColorScheme.light(
+                          primary: AppColor.primaryColor)),
+                  child: child!);
+            },
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2029));
+        if (pickedDate != null) {
+          setState(() {
+            _date.text = DateFormat("yyyy-MM-dd").format(pickedDate);
+          });
+        }
+      },
     );
   }
 }

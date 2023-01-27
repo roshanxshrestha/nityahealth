@@ -8,5 +8,6 @@ class PrefKey {
   static const IS_UPDATE_PROFILE = "is_update_profile";
   static const IS_GOOGLE_LOGIN = "is_google_login";
   static const NAME = "name";
+  static const ADDRESS = "address";
   static const IMAGE = "image";
 }

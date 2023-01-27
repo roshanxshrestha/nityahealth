@@ -24,7 +24,7 @@ Widget button1(
         children: [
           TextButton.icon(
             onPressed: (() {
-              Navigator.pushNamed(context, routeName);
+              Get.toNamed(routeName);
             }),
             icon: Icon(
               icon,
