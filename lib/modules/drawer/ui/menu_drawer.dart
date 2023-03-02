@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/text_style.dart';
+import 'package:nityahealth/modules/user/controller/user_profile_controller.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import '../../../utils/pref_manager.dart';
 
@@ -15,6 +16,7 @@ class MenuDrawer extends StatefulWidget {
 class _MenuDrawerState extends State<MenuDrawer> {
   var name = "Falano";
   var address = "Kathmandu";
+  var imageController = "";
 
   getName() async {
     setState(() async {
@@ -22,9 +24,13 @@ class _MenuDrawerState extends State<MenuDrawer> {
     });
   }
 
+  final _controller = Get.put(UserProfileController());
+
   @override
   void initState() {
     getName();
+    imageController = _controller.userprofile.value.user?.image ??
+        "assets/images/profile/user/profile.jpeg";
     super.initState();
   }
 
@@ -51,9 +57,8 @@ class _MenuDrawerState extends State<MenuDrawer> {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            currentAccountPicture: const CircleAvatar(
-              backgroundImage:
-                  AssetImage("assets/images/profile/user/profile.jpeg"),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: AssetImage(imageController),
             ),
             decoration: const BoxDecoration(
               color: primaryColor,

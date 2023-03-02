@@ -34,25 +34,28 @@ Widget customButton1(String title, String routeName, BuildContext context) {
 }
 
 Widget customButton2(String title, BuildContext context, Callback callback) {
-  return GestureDetector(
-    onTap: callback,
-    child: Container(
-      alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width,
-      height: 50,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: primaryColor,
-        border: Border.all(
+  return MouseRegion(
+    cursor: SystemMouseCursors.click,
+    child: GestureDetector(
+      onTap: callback,
+      child: Container(
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
           color: primaryColor,
+          border: Border.all(
+            color: primaryColor,
+          ),
         ),
-      ),
-      child: Text(
-        title,
-        style: GoogleFonts.comfortaa(
-          color: Colors.white,
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
+        child: Text(
+          title,
+          style: GoogleFonts.comfortaa(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     ),

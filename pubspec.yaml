@@ -47,6 +47,9 @@ dependencies:
   pull_to_refresh: ^2.0.0
   flutter_html: ^2.2.1
   google_sign_in: ^5.4.3
+  image_picker: ^0.8.6+3
+  number_inc_dec: ^0.8.0
+
   # calendar_timeline: 1.1.0
 
   # The following adds the Cupertino Icons font to your application.

@@ -11,30 +11,19 @@ class UserUpdateController extends GetxController {
 
   Future<UserUpdateModel?> updateProfile(
     String name,
-    address,
-    email,
-    meals,
-    image,
-    gender,
-    phone,
-    age,
-    height,
-    weight,
-    blood,
+    String address,
+    String email,
+    String meals,
+    String image,
+    String gender,
+    String phone,
+    String age,
+    String height,
+    String weight,
+    String blood,
   ) async {
-    var response = await UserUpdateWebservice().updateProfile(
-      name,
-      image,
-      address,
-      email,
-      meals,
-      gender,
-      phone,
-      age,
-      height,
-      weight,
-      blood,
-    );
+    var response = await UserUpdateWebservice().updateProfile(name, image,
+        address, email, meals, gender, phone, age, height, weight, blood);
     if (response?.success == true) {
       // var authToken = response?.data?.token ?? "";
       // PrefManager.saveToken(authToken);

@@ -2,21 +2,20 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/user/model/user_update_model.dart';
-import '../../../utils/pref_manager.dart';
 
 class UserUpdateWebservice extends GetConnect {
   Future<UserUpdateModel?> updateProfile(
     String name,
-    address,
-    email,
-    meals,
-    image,
-    gender,
-    phone,
-    age,
-    height,
-    weight,
-    blood,
+    String address,
+    String email,
+    String meals,
+    String image,
+    String gender,
+    String phone,
+    String age,
+    String height,
+    String weight,
+    String blood,
   ) async {
     var baseUrl = "http://health.sajiloweb.com/api";
 
@@ -46,8 +45,6 @@ class UserUpdateWebservice extends GetConnect {
     if (response.statusCode == 200 && response.body["success"] == true) {
       UserUpdateModel model = UserUpdateModel.fromJson(response.body);
 
-      // PrefManager.saveToken(
-      //     model.data!.token == null ? "" : model.data!.token!);
       return model;
     } else {
       // Get.snackbar("Error", response.body["message"]);

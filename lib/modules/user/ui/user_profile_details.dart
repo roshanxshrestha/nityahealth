@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nityahealth/common/custom_button.dart';
@@ -13,6 +14,55 @@ import 'package:nityahealth/common/profile_setting_buttons.dart';
 class UserProfileDetails extends StatelessWidget {
   final _controller = Get.put(UserProfileController());
   UserProfileDetails({super.key});
+
+  XFile? pickedFile;
+
+  ImagePicker imagePicker = ImagePicker();
+
+  void pickImage(ImageSource source) async {
+    final pickedImage =
+        await imagePicker.pickImage(source: source, imageQuality: 100);
+    pickedFile = XFile(pickedImage!.path);
+  }
+
+  void pickerImage(context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: SizedBox(
+            height: 120,
+            child: Column(
+              children: [
+                ListTile(
+                  onTap: () {
+                    pickImage(ImageSource.camera);
+                    // Navigator.pop(context);
+                  },
+                  leading: const Icon(
+                    Icons.camera_alt_outlined,
+                    color: AppColor.accent1Color,
+                  ),
+                  title: textF14W300("Camera"),
+                ),
+                ListTile(
+                  onTap: () {
+                    pickImage(ImageSource.gallery);
+                    // Navigator.pop(context);
+                  },
+                  leading: const Icon(
+                    Icons.photo,
+                    color: AppColor.accent1Color,
+                  ),
+                  title: textF14W300("Gallery"),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,21 +139,26 @@ class UserProfileDetails extends StatelessWidget {
                           Positioned(
                             bottom: 10,
                             right: 10,
-                            child: Container(
-                              height: 35,
-                              width: 35,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  width: 4,
-                                  color: accent2Color,
+                            child: GestureDetector(
+                              onTap: () {
+                                pickerImage(context);
+                              },
+                              child: Container(
+                                height: 35,
+                                width: 35,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    width: 4,
+                                    color: accent2Color,
+                                  ),
+                                  color: primaryColor,
                                 ),
-                                color: primaryColor,
-                              ),
-                              child: const Icon(
-                                MdiIcons.cameraPlus,
-                                color: accent2Color,
-                                size: 18,
+                                child: const Icon(
+                                  MdiIcons.cameraPlus,
+                                  color: accent2Color,
+                                  size: 18,
+                                ),
                               ),
                             ),
                           ),
@@ -181,7 +236,9 @@ class UserProfileDetails extends StatelessWidget {
                     // textF16W700("Medical Condition"),
                     // const SizedBox(height: 10),
                     customButton1(
-                        "See Medical Records", "usermedicalrecords", context)
+                        "See Medical Records", "usermedicalrecords", context),
+                    const SizedBox(height: 30),
+
                     //Medical records data from api
                     // SizedBox(
                     //   child: Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
@@ -48,6 +49,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter(
+            (widget.isPhone == true ? RegExp(r'[0-9]') : RegExp(r'.*')),
+            allow: true),
+        LengthLimitingTextInputFormatter(widget.isPhone == true ? 10 : 1000),
+      ],
       keyboardType: TextInputType.emailAddress,
       textInputAction: TextInputAction.next,
       controller: widget.controller,

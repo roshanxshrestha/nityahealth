@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:nityahealth/common/bloodgroup_dropdown.dart';
 import 'package:nityahealth/common/custom_button.dart';
+import 'package:nityahealth/common/foodtype_dropdown.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/doctors/ui/doctor_appointment.dart';
 import 'package:nityahealth/modules/user/controller/user_update_controller.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
+import 'package:number_inc_dec/number_inc_dec.dart';
 
 import '../../../common/custom_text_field.dart';
 import '../../../common/gender_dropdown.dart';
@@ -74,7 +77,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
         shadowColor: Colors.transparent,
         backgroundColor: primaryColor,
         title: Text(
-          "My Profile",
+          "Edit Personal Details",
           style: GoogleFonts.comfortaa(
             fontSize: 18,
             color: accent2Color,
@@ -138,43 +141,89 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       const SizedBox(height: 20),
                       customText("Age", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      CustomTextField(
-                        message: "age required",
-                        hintText: "in years",
-                        controller: ageController,
+                      NumberInputWithIncrementDecrement(
+                        widgetContainerDecoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        numberFieldDecoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintStyle: GoogleFonts.comfortaa(
+                            color: accent1Color,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        textAlign: TextAlign.left,
+                        min: 0,
+                        max: 150,
+                        incDecBgColor: Colors.white,
+                        controller: TextEditingController(),
+                        initialValue: int.parse(ageController.text),
                       ),
                       const SizedBox(height: 20),
-                      customText("Height", 14, FontWeight.w400),
+                      customText("Height (ft)", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      CustomTextField(
-                        message: "height required",
-                        hintText: "in cm",
+                      NumberInputWithIncrementDecrement(
+                        widgetContainerDecoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        numberFieldDecoration: InputDecoration(
+                          // border: InputBorder.none,
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintStyle: GoogleFonts.comfortaa(
+                            color: accent1Color,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        isInt: false,
+                        incDecFactor: 0.1,
+                        textAlign: TextAlign.left,
+                        min: 0,
+                        max: 300,
+                        incDecBgColor: Colors.white,
                         controller: heightController,
+                        initialValue: double.parse(heightController.text),
                       ),
                       const SizedBox(height: 20),
-                      customText("Weight", 14, FontWeight.w400),
+                      customText("Weight (kg)", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      CustomTextField(
-                        message: "weight required",
-                        hintText: "in kgs",
+                      NumberInputWithIncrementDecrement(
+                        widgetContainerDecoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.transparent,
+                          ),
+                        ),
+                        numberFieldDecoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintStyle: GoogleFonts.comfortaa(
+                            color: accent1Color,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                          ),
+                        ),
+                        textAlign: TextAlign.left,
+                        min: 0,
+                        max: 300,
+                        incDecBgColor: Colors.white,
+                        initialValue: int.parse(weightController.text),
                         controller: weightController,
                       ),
                       const SizedBox(height: 20),
                       customText("Blood Group", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      CustomTextField(
-                        message: "required",
-                        hintText: "blood group",
-                        controller: bloodController,
-                      ),
+                      const BloodGroupDropdown(),
                       const SizedBox(height: 20),
                       customText("Food Type", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      CustomTextField(
-                        message: "food type required",
-                        hintText: "veg/non-veg",
-                        controller: foodTypeController,
-                      ),
+                      const FoodTypeDropdown(),
                       const SizedBox(height: 25),
                       customButton2(
                         "Save",
@@ -217,19 +266,19 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                     height,
                                     weight,
                                     blood)
-                                .then((value) {
-                              if (value == null) {
-                                // Get.snackbar(
-                                //     "Error", "Something went wrong!");
-                              } else {
-                                if (value.success!) {
+                                .then(
+                              (value) {
+                                if (value != null && value.success!) {
                                   Get.to(UserProfileDetails());
+                                  // Get.snackbar(
+                                  //     "Error", "Something went wrong!");
                                 }
-                              }
-                            });
+                              },
+                            );
                           }
                         },
                       ),
+                      const SizedBox(height: 25),
                     ],
                   ),
                 ],
