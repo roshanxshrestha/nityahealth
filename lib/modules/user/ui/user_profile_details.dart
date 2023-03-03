@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,18 +13,20 @@ import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/profile_setting_buttons.dart';
 
-class UserProfileDetails extends StatelessWidget {
+class UserProfileDetails extends StatelessWidget with ChangeNotifier {
   final _controller = Get.put(UserProfileController());
   UserProfileDetails({super.key});
 
-  XFile? pickedFile;
+  final picker = ImagePicker();
 
-  ImagePicker imagePicker = ImagePicker();
+  XFile? _image;
+  XFile? get image => _image;
 
   void pickImage(ImageSource source) async {
-    final pickedImage =
-        await imagePicker.pickImage(source: source, imageQuality: 100);
-    pickedFile = XFile(pickedImage!.path);
+    final pickedFile =
+        await picker.pickImage(source: source, imageQuality: 100);
+    _image = XFile(pickedFile!.path);
+    notifyListeners();
   }
 
   void pickerImage(context) {
@@ -37,7 +41,7 @@ class UserProfileDetails extends StatelessWidget {
                 ListTile(
                   onTap: () {
                     pickImage(ImageSource.camera);
-                    // Navigator.pop(context);
+                    Navigator.pop(context);
                   },
                   leading: const Icon(
                     Icons.camera_alt_outlined,
@@ -47,8 +51,8 @@ class UserProfileDetails extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
+                    Navigator.pop(context);
                     pickImage(ImageSource.gallery);
-                    // Navigator.pop(context);
                   },
                   leading: const Icon(
                     Icons.photo,
@@ -128,11 +132,19 @@ class UserProfileDetails extends StatelessWidget {
                                 color: primaryColor,
                               ),
                               shape: BoxShape.circle,
-                              image: DecorationImage(
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: //image == null ?
+                                  Image(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    _controller.userprofile.value.user?.image ??
-                                        ""),
+                                image: image == null
+                                    ? NetworkImage(_controller
+                                            .userprofile.value.user?.image ??
+                                        "assets/images/profile/user/profile.jpeg")
+                                    : Image.file(
+                                        File(image!.path),
+                                      ) as ImageProvider,
                               ),
                             ),
                           ),
@@ -238,93 +250,6 @@ class UserProfileDetails extends StatelessWidget {
                     customButton1(
                         "See Medical Records", "usermedicalrecords", context),
                     const SizedBox(height: 30),
-
-                    //Medical records data from api
-                    // SizedBox(
-                    //   child: Column(
-                    //     children: [
-                    //       ListView.builder(
-                    //         physics: const NeverScrollableScrollPhysics(),
-                    //         // scrollDirection: Axis.horizontal,
-                    //         shrinkWrap: true,
-                    //         itemCount: _controller.userprofile.value.user
-                    //                     ?.medicalConditions ==
-                    //                 null
-                    //             ? 0
-                    //             : _controller.userprofile.value.user
-                    //                 ?.medicalConditions?.length,
-                    //         itemBuilder: (context, id) {
-                    //           MedicalConditions? mcond = _controller.userprofile
-                    //               .value.user?.medicalConditions?[id];
-                    //           return Column(
-                    //             children: [
-                    //               const SizedBox(height: 16),
-                    //               button2("Disease", (MdiIcons.virus),
-                    //                   mcond?.diseaseName ?? "", "", context),
-                    //               button2("Type", (Icons.category),
-                    //                   mcond?.type ?? "", "", context),
-                    //               button2("Cured?", (MdiIcons.virus),
-                    //                   mcond?.isCured ?? "", "", context),
-                    //               _controller.userprofile.value.user
-                    //                           ?.medicalConditions?[id].id !=
-                    //                       _controller.userprofile.value.user
-                    //                           ?.mdicalRecords?[id].diseaseId
-                    //                   ? SizedBox(
-                    //                       child: ListView.builder(
-                    //                         physics:
-                    //                             const NeverScrollableScrollPhysics(),
-                    //                         shrinkWrap: true,
-                    //                         itemCount: _controller
-                    //                                     .userprofile
-                    //                                     .value
-                    //                                     .user
-                    //                                     ?.mdicalRecords ==
-                    //                                 null
-                    //                             ? 0
-                    //                             : _controller
-                    //                                 .userprofile
-                    //                                 .value
-                    //                                 .user
-                    //                                 ?.mdicalRecords
-                    //                                 ?.length,
-                    //                         itemBuilder: (context, ind) {
-                    //                           MdicalRecords? mrecord =
-                    //                               _controller
-                    //                                   .userprofile
-                    //                                   .value
-                    //                                   .user
-                    //                                   ?.mdicalRecords?[ind];
-                    //                           return Column(
-                    //                             children: [
-                    //                               button2(
-                    //                                   "Medicine Name",
-                    //                                   (MdiIcons.pill),
-                    //                                   mrecord?.medicineName ??
-                    //                                       "",
-                    //                                   "",
-                    //                                   context),
-                    //                               button2(
-                    //                                   "Medicine Duration",
-                    //                                   (MdiIcons.timerAlert),
-                    //                                   mrecord?.duration ?? "",
-                    //                                   "",
-                    //                                   context),
-                    //                             ],
-                    //                           );
-                    //                         },
-                    //                       ),
-                    //                     )
-                    //                   : const SizedBox(),
-                    //               customButton1("Add Medicine", "", context),
-                    //             ],
-                    //           );
-                    //         },
-                    //       ),
-                    //       // customButton1(
-                    //       //     "Add Medical Condition Records", "", context),
-                    //     ],
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

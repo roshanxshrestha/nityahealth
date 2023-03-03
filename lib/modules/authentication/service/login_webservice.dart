@@ -6,7 +6,7 @@ import '../../../utils/pref_manager.dart';
 
 class LoginWebService extends GetConnect {
   Future<LoginResponseModel?> login(String email, String password) async {
-    var baseUrl = "http://health.sajiloweb.com/api";
+    var baseUrl = "http://health.sajiloweb.com/api/";
 
     Map<String, String> map = {};
     map["email"] = email;
@@ -17,13 +17,13 @@ class LoginWebService extends GetConnect {
     // headers["AuthToken"] ="Application/json";
 
     var response = await super.post(
-      "http://health.sajiloweb.com/api/login",
+      "${baseUrl}login",
       json.encode(map),
       contentType: "Application/json",
       headers: headersmap,
     );
 
-    log("response = ${response.statusCode}, \n  baseUrl= $baseUrl");
+    log("response = ${response.statusCode}, \n  baseUrl= $baseUrl ");
 
     if (response.statusCode == 200 && response.body["success"] == true) {
       LoginResponseModel model = LoginResponseModel.fromJson(response.body);

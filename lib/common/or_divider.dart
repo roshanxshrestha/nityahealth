@@ -10,7 +10,7 @@ Widget orDivider() {
         child: Divider(color: accent4Color),
       ),
       Text(
-        " or ",
+        " Or continue with ",
         style: GoogleFonts.comfortaa(
           fontSize: 14,
           color: accent3Color,

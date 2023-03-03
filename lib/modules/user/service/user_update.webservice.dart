@@ -17,7 +17,7 @@ class UserUpdateWebservice extends GetConnect {
     String weight,
     String blood,
   ) async {
-    var baseUrl = "http://health.sajiloweb.com/api";
+    var baseUrl = "http://health.sajiloweb.com/api/";
 
     Map<String, String> map = {};
     map["name"] = name;
@@ -36,7 +36,7 @@ class UserUpdateWebservice extends GetConnect {
     headersmap["Content-type"] = "Application/json";
 
     var response = await super.post(
-      "http://health.sajiloweb.com/api/update/user/profile",
+      "${baseUrl}update/user/profile",
       json.encode(map),
       contentType: "Application/json",
       headers: headersmap,
@@ -49,6 +49,7 @@ class UserUpdateWebservice extends GetConnect {
     } else {
       // Get.snackbar("Error", response.body["message"]);
       // log("error: ${response.body["message"]}");
+
       return null;
     }
   }

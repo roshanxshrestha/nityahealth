@@ -73,8 +73,25 @@ class _LoginOptionState extends State<LoginOption> {
                       const SizedBox(height: 20),
                       orDivider(),
                       const SizedBox(height: 20),
-                      customButton1(
-                          "Sign in with Google", "google_login", context),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.toNamed("");
+                          },
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: Colors.white,
+                              image: const DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/logo/google-logo.png"),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

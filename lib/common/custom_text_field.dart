@@ -8,7 +8,7 @@ class CustomTextField extends StatefulWidget {
   String? name;
   String? address;
   String? hintText;
-  bool? isPassword;
+  bool? isPassword = false;
   bool? isEmail = false;
   bool? isPhone = false;
   IconData? icon;
@@ -34,9 +34,13 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   late final TextEditingController controller;
+  bool _passwordObscured = true;
+
   @override
   void initState() {
     super.initState();
+    _passwordObscured = true;
+
     controller = TextEditingController(text: "hello");
   }
 
@@ -67,8 +71,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontSize: 14,
           fontWeight: FontWeight.w300,
         ),
+        suffixIcon: (widget.isPassword == true
+            ? IconButton(
+                icon: Icon(
+                  _passwordObscured ? Icons.visibility : Icons.visibility_off,
+                  color: AppColor.accent1Color,
+                ),
+                onPressed: () {
+                  setState(
+                    () {
+                      _passwordObscured = !_passwordObscured;
+                    },
+                  );
+                },
+              )
+            : null),
       ),
-      obscureText: widget.isPassword ?? false,
+      obscureText: (widget.isPassword == true ? _passwordObscured : false),
       validator: ((value) {
         if (value?.isEmpty == false) {
           if (widget.isEmail == true &&
