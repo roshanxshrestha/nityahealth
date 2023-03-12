@@ -1,23 +1,30 @@
-import 'package:flutter/material.dart';
 import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../common/custom_button.dart';
-import '../../common/datepicker.dart';
 import '../../common/text_style.dart';
 import '../../utils/constants/app_theme.dart';
 import '../user/controller/user_profile_controller.dart';
 import '../user/model/user_model.dart';
 
-class MedicineRecord extends StatefulWidget {
-  const MedicineRecord({super.key});
+class MedicalRecord extends StatefulWidget {
+  const MedicalRecord({super.key});
 
   @override
-  State<MedicineRecord> createState() => _MedicineRecordState();
+  State<MedicalRecord> createState() => _MedicalRecordState();
 }
 
-class _MedicineRecordState extends State<MedicineRecord> {
+class _MedicalRecordState extends State<MedicalRecord> {
   final _controller = Get.put(UserProfileController());
+  var diseaseNameController = TextEditingController();
+  var diseaseTypeController = TextEditingController();
+
+  List<String> items = [
+    'Yes',
+    'No',
+  ];
+  String? selectedItem = "Yes";
 
   @override
   Widget build(BuildContext context) {
@@ -27,25 +34,59 @@ class _MedicineRecordState extends State<MedicineRecord> {
         child: Obx(
           () => Column(
             children: [
-              customButton2("+ Add medicine record", context, () {
+              customButton2("+ Add medical condition", context, () {
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: textF16W700("+ Add medicine record"),
+                      title: textF16W700("+ Add medical condition"),
                       content: SizedBox(
                         height: 305,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            customText("Medicine Name*", 14, FontWeight.w400),
-                            const TextField(),
+                            customText("Disease Name*", 14, FontWeight.w400),
+                            TextField(
+                              controller: diseaseNameController,
+                            ),
                             const SizedBox(height: 20),
-                            customText("Disease Name", 14, FontWeight.w400),
-                            const TextField(),
+                            customText("Disease Type", 14, FontWeight.w400),
+                            TextField(
+                              controller: diseaseTypeController,
+                            ),
                             const SizedBox(height: 20),
-                            customText("Duration", 14, FontWeight.w400),
-                            const DatePicker(),
+                            customText("is Cured?", 14, FontWeight.w400),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 0),
+                              child: Center(
+                                child: DropdownButtonFormField(
+                                  decoration: const InputDecoration(
+                                    fillColor: AppColor.accent1Color,
+                                  ),
+                                  value: selectedItem,
+                                  items: items
+                                      .map((item) => DropdownMenuItem<String>(
+                                          value: item,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                            child: Text(
+                                              item,
+                                              style: GoogleFonts.comfortaa(
+                                                color: accent3Color,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )))
+                                      .toList(),
+                                  onChanged: (String? item) {
+                                    setState(() => selectedItem = item);
+                                  },
+                                ),
+                              ),
+                            ),
                             const SizedBox(height: 20),
                             Row(
                               children: [
@@ -117,13 +158,13 @@ class _MedicineRecordState extends State<MedicineRecord> {
                       flex: 1, child: customText("S.N", 14, FontWeight.bold)),
                   Expanded(
                       flex: 4,
-                      child: customText("Medicine Name", 14, FontWeight.bold)),
-                  Expanded(
-                      flex: 4,
                       child: customText("Disease Name", 14, FontWeight.bold)),
                   Expanded(
-                      flex: 3,
-                      child: customText("Duration", 14, FontWeight.bold)),
+                      flex: 4,
+                      child: customText("Disease Type", 14, FontWeight.bold)),
+                  Expanded(
+                      flex: 2,
+                      child: customText("Cured?", 14, FontWeight.bold)),
                   Expanded(
                       flex: 2,
                       child: customText("Action", 14, FontWeight.bold)),
@@ -142,13 +183,18 @@ class _MedicineRecordState extends State<MedicineRecord> {
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   itemCount: _controller
-                          .userprofile.value.user?.mdicalRecords?.length ??
+                          .userprofile.value.user?.medicalConditions?.length ??
                       0,
                   itemBuilder: (context, index) {
-                    MdicalRecords? mdCond = _controller
-                        .userprofile.value.user?.mdicalRecords?[index];
-                    log("count = ${_controller.userprofile.value.user?.mdicalRecords?.length}");
-
+                    MedicalConditions? mdCond = _controller
+                        .userprofile.value.user?.medicalConditions?[index];
+                    log("count = ${_controller.userprofile.value.user?.medicalConditions?.length}");
+                    diseaseNameController.text = _controller.userprofile.value
+                            .user?.medicalConditions?[1].diseaseName ??
+                        "";
+                    diseaseNameController.text = _controller.userprofile.value
+                            .user?.medicalConditions?[index].type ??
+                        "";
                     return Row(
                       children: [
                         Expanded(
@@ -157,16 +203,13 @@ class _MedicineRecordState extends State<MedicineRecord> {
                         const SizedBox(width: 10),
                         Expanded(
                             flex: 4,
-                            child: textF14W300(mdCond?.medicineName ?? "")),
+                            child: textF14W300(mdCond?.diseaseName ?? "")),
                         const SizedBox(width: 10),
                         Expanded(
-                            flex: 4,
-                            child: textF14W300(
-                                mdCond?.diseaseId.toString() ?? "")),
+                            flex: 4, child: textF14W300(mdCond?.type ?? "")),
                         const SizedBox(width: 10),
                         Expanded(
-                            flex: 3,
-                            child: textF14W300(mdCond?.duration ?? "")),
+                            flex: 2, child: textF14W300(mdCond?.isCured ?? "")),
                         const SizedBox(width: 10),
                         Expanded(
                           flex: 2,
@@ -184,7 +227,7 @@ class _MedicineRecordState extends State<MedicineRecord> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        textF16W700("Edit Medicine Record"),
+                                        textF16W700("Edit Medical Condition"),
                                         GestureDetector(
                                           onTap: () {
                                             Get.back();
@@ -207,54 +250,66 @@ class _MedicineRecordState extends State<MedicineRecord> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          customText("Medicine Name*", 14,
-                                              FontWeight.w400),
-                                          const TextField(),
-                                          const SizedBox(height: 20),
                                           customText("Disease Name*", 14,
                                               FontWeight.w400),
-                                          // Padding(
-                                          //   padding: const EdgeInsets.symmetric(
-                                          //       horizontal: 0),
-                                          //   child: Center(
-
-                                          //     // DropdownButton(
-                                          //     //   hint: Text('hooseNumber'),
-                                          //     //   items: categoryItemlist
-                                          //     //       .map((item) {
-                                          //     //     return DropdownMenuItem(
-                                          //     //       value: item['ClassCode']
-                                          //     //           .toString(),
-                                          //     //       child: Text(
-                                          //     //           item['ClassName']
-                                          //     //               .toString()),
-                                          //     //     );
-                                          //     //   }).toList(),
-                                          //     //   onChanged: (newVal) {
-                                          //     //     setState(() {
-                                          //     //       dropdownvalue = newVal;
-                                          //     //     });
-                                          //     //   },
-                                          //     //   value: dropdownvalue,
-                                          //     // ),
-                                          //     child: DropdownButtonFormField(
-                                          //       onChanged: (value){},
-
-                                          //       decoration:
-                                          //           const InputDecoration(
-                                          //         fillColor:
-                                          //             AppColor.accent1Color,
-                                          //       ),
-                                          //       // value: selectedItem,
-                                          //       items:
-
-                                          //   ),
-                                          // ),
-                                          // ),
+                                          TextField(
+                                            controller: diseaseNameController,
+                                          ),
+                                          const SizedBox(height: 20),
+                                          customText("Disease Type", 14,
+                                              FontWeight.w400),
+                                          TextField(
+                                            controller: diseaseTypeController,
+                                          ),
                                           const SizedBox(height: 20),
                                           customText(
-                                              "Duration", 14, FontWeight.w400),
-                                          const DatePicker(),
+                                              "Cured?", 14, FontWeight.w400),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 0),
+                                            child: Center(
+                                              child: DropdownButtonFormField(
+                                                decoration:
+                                                    const InputDecoration(
+                                                  fillColor:
+                                                      AppColor.accent1Color,
+                                                ),
+                                                value: selectedItem,
+                                                items: items
+                                                    .map(
+                                                      (item) =>
+                                                          DropdownMenuItem<
+                                                              String>(
+                                                        value: item,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  horizontal:
+                                                                      10),
+                                                          child: Text(
+                                                            item,
+                                                            style: GoogleFonts
+                                                                .comfortaa(
+                                                              color:
+                                                                  accent3Color,
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    )
+                                                    .toList(),
+                                                onChanged: (String? item) {
+                                                  setState(() =>
+                                                      selectedItem = item);
+                                                },
+                                              ),
+                                            ),
+                                          ),
                                           const SizedBox(height: 20),
                                           Row(
                                             children: [

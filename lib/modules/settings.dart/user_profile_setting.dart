@@ -34,21 +34,6 @@ class _UserProfileState extends State<UserProfileSetting> {
             fontWeight: FontWeight.w300,
           ),
         ),
-        // actions: [
-        //   Padding(
-        //     padding: const EdgeInsets.only(right: 20.0),
-        //     child: GestureDetector(
-        //       onTap: () {
-        //         Get.to(() => const UserProfileSetting());
-        //       },
-        //       child: const Icon(
-        //         Icons.account_circle,
-        //         size: 25,
-        //         color: accent2Color,
-        //       ),
-        //     ),
-        //   ),
-        // ],
       ),
       body: SingleChildScrollView(
         child: Padding(

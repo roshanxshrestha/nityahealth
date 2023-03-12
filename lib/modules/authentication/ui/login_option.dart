@@ -70,26 +70,49 @@ class _LoginOptionState extends State<LoginOption> {
                       const SizedBox(height: 30),
                       customButton1(
                           "Sign in with email", "sign_in_email", context),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
                       orDivider(),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
                       Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed("");
-                          },
-                          child: Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.white,
-                              image: const DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/logo/google-logo.png"),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed("");
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/logo/google-logo.png"),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            const SizedBox(width: 20),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed("");
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/logo/logo-facebook.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 10),

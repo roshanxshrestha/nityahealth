@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nityahealth/modules/user_medical/medicalrec.dart';
+import 'package:nityahealth/modules/user_medical/medical_cond.dart';
 import 'package:nityahealth/modules/user_medical/medicine_rec.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 

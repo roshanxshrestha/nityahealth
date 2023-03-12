@@ -139,22 +139,45 @@ class _SignInEmailState extends State<SignInEmail> {
                       orDivider(),
                       const SizedBox(height: 20),
                       Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Get.toNamed("");
-                          },
-                          child: Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              color: Colors.white,
-                              image: const DecorationImage(
-                                image: AssetImage(
-                                    "assets/images/logo/google-logo.png"),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed("");
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/logo/google-logo.png"),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            const SizedBox(width: 20),
+                            GestureDetector(
+                              onTap: () {
+                                Get.toNamed("");
+                              },
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.white,
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/logo/logo-facebook.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(height: 10),

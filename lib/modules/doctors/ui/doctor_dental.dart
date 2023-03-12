@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/doctors/ui/doctor_appointment.dart';
+import 'package:nityahealth/modules/appointment/doctor_appointment.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 
 import '../../../common/custom_appbar.dart';
