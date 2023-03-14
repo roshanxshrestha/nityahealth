@@ -25,14 +25,14 @@ class UserProfileController extends GetxController {
     isLoading.value = false;
     log("Response: $response");
   }
-  // getPersonalDetails()async{
+}
 
-  //   try {
-  //     var response = await UserWebservice().getUserInfo();
-  //     personalDetails.value = response;
-  //     log("response = $response");
-  //   } catch (ex) {
-  //     log("Exception = ${ex.toString()}");
-  //   }
-  // }
+class ImageUpdateController extends GetxController {
+  var isProfileImgPathSet = false.obs;
+  var profileImgPath = "".obs;
+
+  void setProfileImagePath(String path) {
+    profileImgPath.value = path;
+    isProfileImgPathSet.value = true;
+  }
 }

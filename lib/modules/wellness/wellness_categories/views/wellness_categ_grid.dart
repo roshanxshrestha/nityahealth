@@ -42,7 +42,7 @@ class GridViewList extends StatelessWidget {
                   maxCrossAxisExtent: 200,
                   childAspectRatio: 1,
                   crossAxisSpacing: 16,
-                  mainAxisSpacing: 0,
+                  mainAxisSpacing: 16,
                 ),
                 shrinkWrap: true,
                 itemCount:

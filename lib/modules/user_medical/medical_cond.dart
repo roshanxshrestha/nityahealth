@@ -190,7 +190,7 @@ class _MedicalRecordState extends State<MedicalRecord> {
                         .userprofile.value.user?.medicalConditions?[index];
                     log("count = ${_controller.userprofile.value.user?.medicalConditions?.length}");
                     diseaseNameController.text = _controller.userprofile.value
-                            .user?.medicalConditions?[1].diseaseName ??
+                            .user?.medicalConditions?[index].diseaseName ??
                         "";
                     diseaseNameController.text = _controller.userprofile.value
                             .user?.medicalConditions?[index].type ??

@@ -16,56 +16,10 @@ class UserProfileDetails extends StatelessWidget with ChangeNotifier {
   final _controller = Get.put(UserProfileController());
   UserProfileDetails({super.key});
 
-  final picker = ImagePicker();
-
-  XFile? _image;
-  XFile? get image => _image;
-
-  void pickImage(ImageSource source) async {
-    final pickedFile =
-        await picker.pickImage(source: source, imageQuality: 100);
-    _image = XFile(pickedFile!.path);
-    notifyListeners();
-  }
-
-  void pickerImage(context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: SizedBox(
-            height: 120,
-            child: Column(
-              children: [
-                ListTile(
-                  onTap: () {
-                    pickImage(ImageSource.camera);
-                    Navigator.pop(context);
-                  },
-                  leading: const Icon(
-                    Icons.camera_alt_outlined,
-                    color: AppColor.accent1Color,
-                  ),
-                  title: textF14W300("Camera"),
-                ),
-                ListTile(
-                  onTap: () {
-                    Navigator.pop(context);
-                    pickImage(ImageSource.gallery);
-                  },
-                  leading: const Icon(
-                    Icons.photo,
-                    color: AppColor.accent1Color,
-                  ),
-                  title: textF14W300("Gallery"),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
+  ImageUpdateController imageUpdateController =
+      Get.put(ImageUpdateController());
+  File? pickedFile;
+  ImagePicker imagePicker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -122,55 +76,53 @@ class UserProfileDetails extends StatelessWidget with ChangeNotifier {
                     Center(
                       child: Stack(
                         children: [
-                          Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 3,
-                                color: primaryColor,
-                              ),
-                              shape: BoxShape.circle,
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: //image == null ?
-                                  Image(
-                                fit: BoxFit.cover,
-                                image: image == null
-                                    ? NetworkImage(_controller
+                          Obx(
+                            () => CircleAvatar(
+                              radius: 83,
+                              backgroundColor: AppColor.primaryColor,
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                backgroundImage: imageUpdateController
+                                            .isProfileImgPathSet.value ==
+                                        true
+                                    ? FileImage(File(imageUpdateController
+                                        .profileImgPath.value)) as ImageProvider
+                                    : NetworkImage(_controller
                                             .userprofile.value.user?.image ??
-                                        "assets/images/profile/user/profile.jpeg")
-                                    : Image.file(
-                                        File(image!.path),
-                                      ) as ImageProvider,
+                                        "assets/images/profile/user/profile.jpeg"),
+                                radius: 80,
                               ),
                             ),
                           ),
                           Positioned(
-                            bottom: 10,
-                            right: 10,
-                            child: GestureDetector(
-                              onTap: () {
-                                pickerImage(context);
-                              },
+                            bottom: 0,
+                            left: 105,
+                            child: InkWell(
                               child: Container(
                                 height: 35,
                                 width: 35,
                                 decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
                                   border: Border.all(
-                                    width: 4,
-                                    color: accent2Color,
+                                    color: Colors.white,
+                                    width: 3,
                                   ),
-                                  color: primaryColor,
+                                  color: AppColor.primaryColor,
+                                  borderRadius: BorderRadius.circular(50),
                                 ),
                                 child: const Icon(
                                   MdiIcons.cameraPlus,
-                                  color: accent2Color,
-                                  size: 18,
+                                  color: Colors.white,
+                                  size: 16,
                                 ),
                               ),
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) {
+                                    return bottomSheet(context);
+                                  },
+                                );
+                              },
                             ),
                           ),
                         ],
@@ -257,5 +209,75 @@ class UserProfileDetails extends StatelessWidget with ChangeNotifier {
         ),
       ),
     );
+  }
+
+  Widget bottomSheet(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: size.height / 5,
+      margin: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          const Text(
+            "Choose profile image",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          const SizedBox(height: 25),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.image,
+                      size: 30,
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      "Gallery",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 80),
+              InkWell(
+                onTap: () {
+                  takePhoto(ImageSource.camera);
+                },
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.camera_alt_outlined,
+                      size: 30,
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      "Camera",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedImage =
+        await imagePicker.pickImage(source: source, imageQuality: 100);
+
+    pickedFile = File(pickedImage!.path);
+    imageUpdateController.setProfileImagePath(pickedFile!.path);
+
+    Get.back();
   }
 }

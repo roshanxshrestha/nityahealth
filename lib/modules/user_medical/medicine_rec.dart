@@ -213,44 +213,7 @@ class _MedicineRecordState extends State<MedicineRecord> {
                                           const SizedBox(height: 20),
                                           customText("Disease Name*", 14,
                                               FontWeight.w400),
-                                          // Padding(
-                                          //   padding: const EdgeInsets.symmetric(
-                                          //       horizontal: 0),
-                                          //   child: Center(
-
-                                          //     // DropdownButton(
-                                          //     //   hint: Text('hooseNumber'),
-                                          //     //   items: categoryItemlist
-                                          //     //       .map((item) {
-                                          //     //     return DropdownMenuItem(
-                                          //     //       value: item['ClassCode']
-                                          //     //           .toString(),
-                                          //     //       child: Text(
-                                          //     //           item['ClassName']
-                                          //     //               .toString()),
-                                          //     //     );
-                                          //     //   }).toList(),
-                                          //     //   onChanged: (newVal) {
-                                          //     //     setState(() {
-                                          //     //       dropdownvalue = newVal;
-                                          //     //     });
-                                          //     //   },
-                                          //     //   value: dropdownvalue,
-                                          //     // ),
-                                          //     child: DropdownButtonFormField(
-                                          //       onChanged: (value){},
-
-                                          //       decoration:
-                                          //           const InputDecoration(
-                                          //         fillColor:
-                                          //             AppColor.accent1Color,
-                                          //       ),
-                                          //       // value: selectedItem,
-                                          //       items:
-
-                                          //   ),
-                                          // ),
-                                          // ),
+                                          const TextField(),
                                           const SizedBox(height: 20),
                                           customText(
                                               "Duration", 14, FontWeight.w400),
