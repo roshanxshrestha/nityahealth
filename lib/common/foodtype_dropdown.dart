@@ -1,22 +1,35 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:nityahealth/modules/user/controller/user_update_controller.dart';
 import '../utils/constants/app_theme.dart';
 
 class FoodTypeDropdown extends StatefulWidget {
-  const FoodTypeDropdown({super.key});
+  final String selectedValue;
+  const FoodTypeDropdown({super.key, required this.selectedValue});
 
   @override
   State<FoodTypeDropdown> createState() => _FoodTypeDropdownState();
 }
 
 class _FoodTypeDropdownState extends State<FoodTypeDropdown> {
+  var controller = Get.find<UserUpdateController>();
   List<String> items = [
-    'Veg',
-    'Non-Veg',
-    'Vegan',
+    'veg',
+    'non veg',
+    'vegan',
   ];
-  String? selectedItem = "Veg";
+  String? selectedItem = "veg";
+
+  @override
+  void initState() {
+    selectedItem = widget.selectedValue;
+    log("foodType = $selectedItem");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,6 +56,7 @@ class _FoodTypeDropdownState extends State<FoodTypeDropdown> {
                   )))
               .toList(),
           onChanged: (String? item) {
+            controller.selectedFoodType.value = item ?? "veg";
             setState(() => selectedItem = item);
           },
         ),

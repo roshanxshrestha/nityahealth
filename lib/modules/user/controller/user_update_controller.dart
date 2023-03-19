@@ -1,35 +1,27 @@
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:nityahealth/modules/user/model/user_update_model.dart';
 
 import '../../../utils/pref_manager.dart';
-import '../service/user_update.webservice.dart';
+import '../model/user_model.dart';
+import '../service/user_update_webservice.dart';
 
 class UserUpdateController extends GetxController {
+  var userprofile = UserModel().obs;
   var updateUserProfileProcess = false.obs;
+  var selectedGender = "male".obs;
+  var selectedBloodGroup = "select".obs;
+  var selectedFoodType = "veg".obs;
 
-  Future<UserUpdateModel?> updateProfile(
-    String name,
-    String address,
-    String email,
-    String meals,
-    String image,
-    String gender,
-    String phone,
-    String age,
-    String height,
-    String weight,
-    String blood,
-  ) async {
-    var response = await UserUpdateWebservice().updateProfile(name, image,
-        address, email, meals, gender, phone, age, height, weight, blood);
+  Future<UserUpdateModel?> updateProfile(Map<String, dynamic> map) async {
+    var response = await UserUpdateWebservice().updateProfile(map);
     if (response?.success == true) {
-      // var authToken = response?.data?.token ?? "";
-      // PrefManager.saveToken(authToken);
       PrefManager.isUpdateProfile(true);
     }
-    log("Response - ${json.encode(response)}");
+
+    log("Response = ${json.encode(response)}");
     return response;
   }
 }

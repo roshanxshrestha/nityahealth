@@ -1,13 +1,18 @@
+import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
 import 'package:nityahealth/common/bloodgroup_dropdown.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/foodtype_dropdown.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/user/controller/user_update_controller.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
-import 'package:number_inc_dec/number_inc_dec.dart';
 
 import '../../../common/custom_text_field.dart';
 import '../../../common/gender_dropdown.dart';
@@ -15,32 +20,50 @@ import '../../../utils/constants/app_theme.dart';
 import '../controller/user_profile_controller.dart';
 
 class UpdateProfile extends StatefulWidget {
-  const UpdateProfile({super.key});
+  UpdateProfile({super.key});
 
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();
 }
 
 class _UpdateProfileState extends State<UpdateProfile> {
+  ImageUpdateController imageUpdateController =
+      Get.put(ImageUpdateController());
+
+  File? pickedFile;
+
+  ImagePicker imagePicker = ImagePicker();
+
   final _controller = Get.put(UserUpdateController());
+
   final _updateController = Get.put(UserProfileController());
+
   var nameController = TextEditingController();
+
   var genderController = TextEditingController();
+
   var emailController = TextEditingController();
+
   var addressController = TextEditingController();
+
   var phoneController = TextEditingController();
+
   var ageController = TextEditingController();
+
   var heightController = TextEditingController();
+
   var weightController = TextEditingController();
+
   var bloodController = TextEditingController();
+
   var foodTypeController = TextEditingController();
+
   var imageController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
   get message => null;
 
-  @override
   void initState() {
     nameController.text = _updateController.userprofile.value.user?.name ?? "";
     genderController.text =
@@ -60,7 +83,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
         _updateController.userprofile.value.user?.bloodGrp ?? "";
     foodTypeController.text =
         _updateController.userprofile.value.user?.meals ?? "";
-    super.initState();
+    // super.initState();
   }
 
   @override
@@ -100,6 +123,62 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Center(
+                        child: Stack(
+                          children: [
+                            Obx(
+                              () => CircleAvatar(
+                                radius: 83,
+                                backgroundColor: AppColor.primaryColor,
+                                child: CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  backgroundImage: imageUpdateController
+                                              .isProfileImgPathSet.value ==
+                                          true
+                                      ? FileImage(File(imageUpdateController
+                                          .profileImgPath
+                                          .value)) as ImageProvider
+                                      : NetworkImage(_controller
+                                              .userprofile.value.user?.image ??
+                                          "assets/images/profile/user/profile.jpeg"),
+                                  radius: 80,
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              left: 105,
+                              child: InkWell(
+                                child: Container(
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white,
+                                      width: 3,
+                                    ),
+                                    color: AppColor.primaryColor,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: const Icon(
+                                    MdiIcons.cameraPlus,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
+                                ),
+                                onTap: () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    builder: (context) {
+                                      return bottomSheet(context);
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       customText("Name", 14, FontWeight.w400),
                       const SizedBox(height: 5),
                       CustomTextField(
@@ -110,7 +189,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       const SizedBox(height: 20),
                       customText("Gender", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      const GenderDropdown(),
+                      GenderDropdown(
+                          _updateController.userprofile.value.user?.gender ??
+                              ""),
                       const SizedBox(height: 20),
                       customText("Address", 14, FontWeight.w400),
                       const SizedBox(height: 5),
@@ -140,94 +221,49 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       const SizedBox(height: 20),
                       customText("Age", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      NumberInputWithIncrementDecrement(
-                        widgetContainerDecoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.transparent,
-                          ),
-                        ),
-                        numberFieldDecoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintStyle: GoogleFonts.comfortaa(
-                            color: accent1Color,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        textAlign: TextAlign.left,
-                        min: 0,
-                        max: 150,
-                        incDecBgColor: Colors.white,
-                        controller: TextEditingController(),
-                        initialValue: int.parse(ageController.text),
+                      CustomTextField(
+                        message: "age required",
+                        hintText: "age",
+                        controller: ageController,
                       ),
                       const SizedBox(height: 20),
                       customText("Height (ft)", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      NumberInputWithIncrementDecrement(
-                        widgetContainerDecoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.transparent,
-                          ),
-                        ),
-                        numberFieldDecoration: InputDecoration(
-                          // border: InputBorder.none,
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintStyle: GoogleFonts.comfortaa(
-                            color: accent1Color,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        isInt: false,
-                        incDecFactor: 0.1,
-                        textAlign: TextAlign.left,
-                        min: 0,
-                        max: 300,
-                        incDecBgColor: Colors.white,
+                      CustomTextField(
+                        message: "height required",
+                        hintText: "height",
                         controller: heightController,
-                        initialValue: double.parse(heightController.text),
                       ),
                       const SizedBox(height: 20),
                       customText("Weight (kg)", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      NumberInputWithIncrementDecrement(
-                        widgetContainerDecoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.transparent,
-                          ),
-                        ),
-                        numberFieldDecoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintStyle: GoogleFonts.comfortaa(
-                            color: accent1Color,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                        textAlign: TextAlign.left,
-                        min: 0,
-                        max: 300,
-                        incDecBgColor: Colors.white,
-                        initialValue: int.parse(weightController.text),
+                      CustomTextField(
+                        message: "weight required",
+                        hintText: "weight",
                         controller: weightController,
                       ),
                       const SizedBox(height: 20),
                       customText("Blood Group", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      const BloodGroupDropdown(),
+                      BloodGroupDropdown(
+                          selectedValue: _updateController
+                                  .userprofile.value.user?.bloodGrp ??
+                              ""),
                       const SizedBox(height: 20),
                       customText("Food Type", 14, FontWeight.w400),
                       const SizedBox(height: 5),
-                      const FoodTypeDropdown(),
+                      FoodTypeDropdown(
+                          selectedValue:
+                              _updateController.userprofile.value.user?.meals ??
+                                  ""),
+                      const SizedBox(height: 25),
+                      customButton2("image", context, uploadImage),
                       const SizedBox(height: 25),
                       customButton2(
                         "Save",
                         context,
                         () async {
+                          uploadImage();
                           // showDialog(
                           //   context: context,
                           //   builder: (context) {
@@ -243,35 +279,30 @@ class _UpdateProfileState extends State<UpdateProfile> {
                             var name = nameController.text.trim();
                             var address = addressController.text.trim();
                             var email = emailController.text.trim();
-                            var foodType = foodTypeController.text.trim();
                             var image = imageController.text.trim();
-                            var gender = genderController.text.trim();
                             var phone = phoneController.text.trim();
                             var age = ageController.text.trim();
                             var height = heightController.text.trim();
                             var weight = weightController.text.trim();
-                            var blood = bloodController.text.trim();
 
-                            _controller
-                                .updateProfile(
-                                    name,
-                                    address,
-                                    email,
-                                    foodType,
-                                    image,
-                                    gender,
-                                    phone,
-                                    age,
-                                    height,
-                                    weight,
-                                    blood)
-                                .then(
+                            Map<String, String> map = {};
+                            map["name"] = name;
+                            map["image"] = image;
+                            map["address"] = address;
+                            map["email"] = email;
+                            map["meals"] = _controller.selectedFoodType.value;
+                            map["gender"] =
+                                _controller.selectedGender.value.toLowerCase();
+                            map["phone"] = phone;
+                            map["age"] = age;
+                            map["height"] = height;
+                            map["weight"] = weight;
+                            map["blood"] = _controller.selectedBloodGroup.value
+                                .toUpperCase();
+
+                            _controller.updateProfile(map).then(
                               (value) {
-                                if (value != null && value.success!) {
-                                  Get.to(UserProfileDetails());
-                                  // Get.snackbar(
-                                  //     "Error", "Something went wrong!");
-                                }
+                                Get.offAll(() => UserProfileDetails());
                               },
                             );
                           }
@@ -287,5 +318,93 @@ class _UpdateProfileState extends State<UpdateProfile> {
         ),
       ),
     );
+  }
+
+  Widget bottomSheet(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      width: double.infinity,
+      height: size.height / 5,
+      margin: const EdgeInsets.all(16),
+      child: Column(
+        children: [
+          const Text(
+            "Choose profile image",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+          const SizedBox(height: 25),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.image,
+                      size: 30,
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      "Gallery",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 80),
+              InkWell(
+                onTap: () {
+                  takePhoto(ImageSource.camera);
+                },
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.camera_alt_outlined,
+                      size: 30,
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      "Camera",
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future takePhoto(ImageSource source) async {
+    final pickedImage =
+        await imagePicker.pickImage(source: source, imageQuality: 100);
+
+    pickedFile = File(pickedImage!.path);
+    imageUpdateController.setProfileImagePath(pickedFile!.path);
+
+    Get.back();
+  }
+
+  Future<void> uploadImage() async {
+    var stream = http.ByteStream(pickedFile!.openRead());
+    stream.cast();
+
+    var length = await pickedFile!.length();
+    var uri = Uri.parse("http://health.sajiloweb.com/api/update/user/profile");
+    var request = http.MultipartRequest("POST", uri);
+    request.fields["image"] = "Static Profile Image";
+    var multipart = http.MultipartFile("image", stream, length);
+    request.files.add(multipart);
+    var response = await request.send();
+    if (response.statusCode == 200) {
+      log("image uploaded");
+    } else {
+      log("Failed");
+    }
   }
 }

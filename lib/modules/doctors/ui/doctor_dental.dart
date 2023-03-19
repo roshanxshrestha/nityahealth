@@ -18,79 +18,81 @@ class DentalDoctor extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // textF16W700("Find your desired doctor"),
-              // const SizedBox(height: 8),
-              TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // textF16W700("Find your desired doctor"),
+                // const SizedBox(height: 8),
+                TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    suffixIcon: const Icon(Icons.search),
+                    hintText: 'Search Doctors',
                   ),
-                  suffixIcon: const Icon(Icons.search),
-                  hintText: 'Search Doctors',
                 ),
-              ),
-              const SizedBox(height: 16),
-              textF16W700("Dental Surgeons"),
-              const SizedBox(height: 16),
+                const SizedBox(height: 16),
+                textF16W700("Dental Surgeons"),
+                const SizedBox(height: 16),
 
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 1.4,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: const [
-                      DoctorsOverview(
-                        name: "Dr. Stella Kane",
-                        info: "Dental Surgeon",
-                        experience: "7 years experience",
-                        percentage: "87%",
-                        history: "69 Patient Stories",
-                        imageurl: "assets/images/doctors/shruti.jpg",
-                        availability: "11 Jan",
-                        routeName: "doctorprofile",
-                      ),
-                      SizedBox(height: 8),
-                      DoctorsOverview(
-                        name: "Dr. Crownover",
-                        info: "Dental Surgeon",
-                        experience: "7 years experience",
-                        percentage: "87%",
-                        history: "69 Patient Stories",
-                        imageurl: "assets/images/doctors/crownover.png",
-                        availability: "10 am, Tomorrow",
-                        routeName: "",
-                      ),
-                      SizedBox(height: 8),
-                      DoctorsOverview(
-                        name: "Dr. Watamaniuk",
-                        info: "Dental Surgeon",
-                        experience: "7 years experience",
-                        percentage: "87%",
-                        history: "69 Patient Stories",
-                        imageurl: "assets/images/doctors/watamaniuk.png",
-                        availability: "11 Jan",
-                        routeName: "",
-                      ),
-                      SizedBox(height: 8),
-                      DoctorsOverview(
-                        name: "Dr. Balestra",
-                        info: "Dental Surgeon",
-                        experience: "7 years experience",
-                        percentage: "87%",
-                        history: "69 Patient Stories",
-                        imageurl: "assets/images/doctors/balestra.png",
-                        availability: "10 am, 11 Jan",
-                        routeName: "",
-                      ),
-                      SizedBox(height: 8),
-                    ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 1.4,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: const [
+                        DoctorsOverview(
+                          name: "Dr. Stella Kane",
+                          info: "Dental Surgeon",
+                          experience: "7 years experience",
+                          percentage: "87%",
+                          history: "69 Patient Stories",
+                          imageurl: "assets/images/doctors/shruti.jpg",
+                          availability: "11 Jan",
+                          routeName: "doctorprofile",
+                        ),
+                        SizedBox(height: 8),
+                        DoctorsOverview(
+                          name: "Dr. Crownover",
+                          info: "Dental Surgeon",
+                          experience: "7 years experience",
+                          percentage: "87%",
+                          history: "69 Patient Stories",
+                          imageurl: "assets/images/doctors/crownover.png",
+                          availability: "10 am, Tomorrow",
+                          routeName: "",
+                        ),
+                        SizedBox(height: 8),
+                        DoctorsOverview(
+                          name: "Dr. Watamaniuk",
+                          info: "Dental Surgeon",
+                          experience: "7 years experience",
+                          percentage: "87%",
+                          history: "69 Patient Stories",
+                          imageurl: "assets/images/doctors/watamaniuk.png",
+                          availability: "11 Jan",
+                          routeName: "",
+                        ),
+                        SizedBox(height: 8),
+                        DoctorsOverview(
+                          name: "Dr. Balestra",
+                          info: "Dental Surgeon",
+                          experience: "7 years experience",
+                          percentage: "87%",
+                          history: "69 Patient Stories",
+                          imageurl: "assets/images/doctors/balestra.png",
+                          availability: "10 am, 11 Jan",
+                          routeName: "",
+                        ),
+                        SizedBox(height: 8),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

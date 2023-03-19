@@ -14,7 +14,6 @@ class LoginWebService extends GetConnect {
 
     Map<String, String> headersmap = {};
     headersmap["Content-type"] = "Application/json";
-    // headers["AuthToken"] ="Application/json";
 
     var response = await super.post(
       "${baseUrl}login",

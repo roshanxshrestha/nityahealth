@@ -25,11 +25,11 @@ class FindDoctors extends StatelessWidget {
                 const CircularProgressIndicator(color: AppColor.primaryColor),
             isLoading: _controller.isLoading.value,
             opacity: 0.2,
-            child: SingleChildScrollView(
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

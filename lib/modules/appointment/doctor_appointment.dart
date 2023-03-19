@@ -8,8 +8,6 @@ import 'package:nityahealth/common/ratings.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import '../../common/custom_appbar.dart';
-import '../../common/datepicker.dart';
-import '../../common/gender_dropdown.dart';
 
 class DoctorAppointment extends StatefulWidget {
   const DoctorAppointment({super.key});
@@ -68,7 +66,6 @@ class _DoctorAppointmentState extends State<DoctorAppointment> {
                 message: "age required",
               ),
               const SizedBox(height: 8),
-              const GenderDropdown(),
               const SizedBox(height: 8),
               CustomTextField(
                 hintText: "Address",
@@ -277,42 +274,44 @@ Widget appointmentConfirmedDialog(BuildContext context) {
       builder: (BuildContext context) => AlertDialog(
         content: SizedBox(
           height: MediaQuery.of(context).size.height / 3.5,
-          child: Column(
-            children: [
-              Image.asset(
-                "assets/images/common/like.png",
-                height: 120,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Thank You",
-                style: GoogleFonts.comfortaa(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                  color: primaryColor,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Image.asset(
+                  "assets/images/common/like.png",
+                  height: 120,
                 ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Your Appointment is Successful",
-                style: GoogleFonts.comfortaa(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w300,
-                  color: accent3Color,
+                const SizedBox(height: 10),
+                Text(
+                  "Thank You",
+                  style: GoogleFonts.comfortaa(
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700,
+                    color: primaryColor,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Text(
-                "You have an appointment with Dr. Pediatrician Purpieson on February 21, at 02:00 PM",
-                style: GoogleFonts.comfortaa(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: accent3Color,
-                  height: 1.5,
+                const SizedBox(height: 10),
+                Text(
+                  "Your Appointment is Successful",
+                  style: GoogleFonts.comfortaa(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w300,
+                    color: accent3Color,
+                  ),
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+                const SizedBox(height: 16),
+                Text(
+                  "You have an appointment with Dr. Pediatrician Purpieson on February 21, at 02:00 PM",
+                  style: GoogleFonts.comfortaa(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300,
+                    color: accent3Color,
+                    height: 1.5,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
           ),
         ),
         actions: <Widget>[

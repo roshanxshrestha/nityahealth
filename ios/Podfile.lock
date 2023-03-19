@@ -19,6 +19,8 @@ PODS:
   - GTMSessionFetcher/Core (2.0.0)
   - image_picker_ios (0.0.1):
     - Flutter
+  - modal_progress_hud_nsn (0.0.1):
+    - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
   - shared_preferences_ios (0.0.1):
@@ -34,6 +36,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - modal_progress_hud_nsn (from `.symlinks/plugins/modal_progress_hud_nsn/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
   - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
@@ -54,6 +57,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  modal_progress_hud_nsn:
+    :path: ".symlinks/plugins/modal_progress_hud_nsn/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   shared_preferences_ios:
@@ -73,6 +78,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 681175626052e03fdde7952f7e9c7a9785719506
   image_picker_ios: 58b9c4269cb176f89acea5e5d043c9358f2d25f8
+  modal_progress_hud_nsn: f6fb744cd060653d66ed8f325360ef3650eb2fde
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff

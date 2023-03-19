@@ -62,7 +62,7 @@ class AppRoutes {
       GetPage(name: '/dashboard', page: () => const Dashboard()),
       GetPage(name: '/notification', page: () => const NotificationUser()),
       GetPage(name: '/userprofiledetails', page: () => UserProfileDetails()),
-      GetPage(name: '/profileupdate', page: () => const UpdateProfile()),
+      GetPage(name: '/profileupdate', page: () => UpdateProfile()),
       GetPage(
           name: '/userprofilesetting', page: () => const UserProfileSetting()),
       GetPage(name: '/wellness', page: () => WellnessDashboard()),

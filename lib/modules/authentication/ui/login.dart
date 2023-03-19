@@ -97,9 +97,8 @@ class _SignInEmailState extends State<SignInEmail> {
                             var password = passwordController.text.trim();
 
                             _controller.login(email, password).then(
-                              (response) {
-                                _controller.loginProcess.value = false;
-                                if (response != null && response.success!) {
+                              (value) {
+                                if (value != null && value.success!) {
                                   Get.offAll(() => const Dashboard());
                                 }
                               },

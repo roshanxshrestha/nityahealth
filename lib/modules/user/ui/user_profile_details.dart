@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:nityahealth/common/custom_button.dart';
@@ -12,14 +11,12 @@ import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/profile_setting_buttons.dart';
 
-class UserProfileDetails extends StatelessWidget with ChangeNotifier {
+class UserProfileDetails extends StatelessWidget {
   final _controller = Get.put(UserProfileController());
   UserProfileDetails({super.key});
 
   ImageUpdateController imageUpdateController =
       Get.put(ImageUpdateController());
-  File? pickedFile;
-  ImagePicker imagePicker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +49,7 @@ class UserProfileDetails extends StatelessWidget with ChangeNotifier {
                 padding: const EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => const UpdateProfile());
+                    Get.to(() => UpdateProfile());
                   },
                   child: const Icon(
                     Icons.edit,
@@ -74,58 +71,23 @@ class UserProfileDetails extends StatelessWidget with ChangeNotifier {
                   padding: const EdgeInsets.only(top: 30),
                   children: [
                     Center(
-                      child: Stack(
-                        children: [
-                          Obx(
-                            () => CircleAvatar(
-                              radius: 83,
-                              backgroundColor: AppColor.primaryColor,
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                backgroundImage: imageUpdateController
-                                            .isProfileImgPathSet.value ==
-                                        true
-                                    ? FileImage(File(imageUpdateController
-                                        .profileImgPath.value)) as ImageProvider
-                                    : NetworkImage(_controller
-                                            .userprofile.value.user?.image ??
-                                        "assets/images/profile/user/profile.jpeg"),
-                                radius: 80,
-                              ),
-                            ),
+                      child: Obx(
+                        () => CircleAvatar(
+                          radius: 83,
+                          backgroundColor: AppColor.primaryColor,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            backgroundImage: imageUpdateController
+                                        .isProfileImgPathSet.value ==
+                                    true
+                                ? FileImage(File(imageUpdateController
+                                    .profileImgPath.value)) as ImageProvider
+                                : NetworkImage(_controller
+                                        .userprofile.value.user?.image ??
+                                    "assets/images/profile/user/profile.jpeg"),
+                            radius: 80,
                           ),
-                          Positioned(
-                            bottom: 0,
-                            left: 105,
-                            child: InkWell(
-                              child: Container(
-                                height: 35,
-                                width: 35,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 3,
-                                  ),
-                                  color: AppColor.primaryColor,
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                child: const Icon(
-                                  MdiIcons.cameraPlus,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              ),
-                              onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) {
-                                    return bottomSheet(context);
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -209,75 +171,5 @@ class UserProfileDetails extends StatelessWidget with ChangeNotifier {
         ),
       ),
     );
-  }
-
-  Widget bottomSheet(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      width: double.infinity,
-      height: size.height / 5,
-      margin: const EdgeInsets.all(16),
-      child: Column(
-        children: [
-          const Text(
-            "Choose profile image",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          const SizedBox(height: 25),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () {
-                  takePhoto(ImageSource.gallery);
-                },
-                child: Column(
-                  children: const [
-                    Icon(
-                      Icons.image,
-                      size: 30,
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Gallery",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 80),
-              InkWell(
-                onTap: () {
-                  takePhoto(ImageSource.camera);
-                },
-                child: Column(
-                  children: const [
-                    Icon(
-                      Icons.camera_alt_outlined,
-                      size: 30,
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Camera",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  void takePhoto(ImageSource source) async {
-    final pickedImage =
-        await imagePicker.pickImage(source: source, imageQuality: 100);
-
-    pickedFile = File(pickedImage!.path);
-    imageUpdateController.setProfileImagePath(pickedFile!.path);
-
-    Get.back();
   }
 }

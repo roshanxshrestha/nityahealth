@@ -190,10 +190,10 @@ class _MedicalRecordState extends State<MedicalRecord> {
                         .userprofile.value.user?.medicalConditions?[index];
                     log("count = ${_controller.userprofile.value.user?.medicalConditions?.length}");
                     diseaseNameController.text = _controller.userprofile.value
-                            .user?.medicalConditions?[index].diseaseName ??
+                            .user?.medicalConditions?[0].diseaseName ??
                         "";
-                    diseaseNameController.text = _controller.userprofile.value
-                            .user?.medicalConditions?[index].type ??
+                    diseaseTypeController.text = _controller.userprofile.value
+                            .user?.medicalConditions?[0].type ??
                         "";
                     return Row(
                       children: [
@@ -377,7 +377,7 @@ class _MedicalRecordState extends State<MedicalRecord> {
                                                 ),
                                               ),
                                             ],
-                                          )
+                                          ),
                                         ],
                                       ),
                                     ),

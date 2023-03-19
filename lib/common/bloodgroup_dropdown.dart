@@ -1,16 +1,21 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:nityahealth/modules/user/controller/user_update_controller.dart';
 import '../utils/constants/app_theme.dart';
 
 class BloodGroupDropdown extends StatefulWidget {
-  const BloodGroupDropdown({super.key});
+  final String selectedValue;
+  const BloodGroupDropdown({super.key, required this.selectedValue});
 
   @override
   State<BloodGroupDropdown> createState() => _BloodGroupDropdownState();
 }
 
 class _BloodGroupDropdownState extends State<BloodGroupDropdown> {
+  var controller = Get.find<UserUpdateController>();
   List<String> items = [
     'Select',
     'A+',
@@ -23,6 +28,13 @@ class _BloodGroupDropdownState extends State<BloodGroupDropdown> {
     'AB-',
   ];
   String? selectedItem = "Select";
+  @override
+  void initState() {
+    selectedItem = widget.selectedValue;
+    super.initState();
+    log("blood = $selectedItem");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,6 +61,7 @@ class _BloodGroupDropdownState extends State<BloodGroupDropdown> {
                   )))
               .toList(),
           onChanged: (String? item) {
+            controller.selectedBloodGroup.value = item ?? "select";
             setState(() => selectedItem = item);
           },
         ),
