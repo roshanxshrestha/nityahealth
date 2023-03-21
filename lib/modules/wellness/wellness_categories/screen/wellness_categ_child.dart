@@ -7,7 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/wellness/wellness_categories/model/wellness_list_model.dart';
-import 'package:nityahealth/modules/wellness/wellness_categories/views/single_post_page.dart';
+import 'package:nityahealth/modules/wellness/wellness_categories/screen/single_post_page.dart';
 import 'package:nityahealth/modules/wellness/wellness_presentation/controller/wellness_controller.dart';
 import '../../../../utils/constants/app_theme.dart';
 

@@ -34,11 +34,13 @@ import 'package:nityahealth/modules/authentication/ui/register_screen.dart';
 import 'package:nityahealth/modules/authentication/ui/password_reset.dart';
 import 'package:nityahealth/modules/authentication/ui/login_option.dart';
 import 'package:nityahealth/modules/settings.dart/user_profile_setting.dart';
-import 'package:nityahealth/modules/yoga/ui/exercise_timer.dart';
+import 'package:nityahealth/modules/yoga/ui/yoga_timer.dart';
 import 'package:nityahealth/modules/yoga/ui/yoga_screen.dart';
 import 'package:nityahealth/modules/yoga/ui/yoga_menu.dart';
 
+import '../modules/fitness/ui/fitness_timer.dart';
 import '../modules/user/ui/user_profile_details.dart';
+import '../modules/wellness/wellness_categories/screen/wellness_timer.dart';
 
 class AppRoutes {
   static List<GetPage> generateRoute() {
@@ -84,7 +86,9 @@ class AppRoutes {
       GetPage(
           name: '/usermedicalrecords', page: () => const UserMedicalRecords()),
       // GetPage(name: '/exerciselist', page: () => const ExerciseList()),
-      GetPage(name: '/exercisetimer', page: () => const ExerciseTimer()),
+      GetPage(name: '/yogatimer', page: () => YogaTimer()),
+      GetPage(name: '/fitnesstimer', page: () => FitnessTimer()),
+      GetPage(name: '/wellnesstimer', page: () => WellnessTimer()),
       GetPage(
           name: '/doctorappointment', page: () => const DoctorAppointment()),
     ];

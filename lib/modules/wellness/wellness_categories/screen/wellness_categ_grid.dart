@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/wellness/wellness_categories/views/wellness_categ_child.dart';
+import 'package:nityahealth/modules/wellness/wellness_categories/screen/wellness_categ_child.dart';
 import 'package:nityahealth/modules/wellness/wellness_presentation/controller/wellness_controller.dart';
 import 'package:nityahealth/modules/wellness/wellness_presentation/model/wellness_child_model.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';

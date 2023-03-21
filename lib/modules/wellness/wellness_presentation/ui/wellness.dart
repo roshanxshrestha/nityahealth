@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/wellness/wellness_categories/views/wellness_categ_grid.dart';
+import 'package:nityahealth/modules/wellness/wellness_categories/screen/wellness_categ_grid.dart';
 import 'package:nityahealth/modules/wellness/wellness_presentation/controller/wellness_controller.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 

@@ -3,17 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
-import 'package:nityahealth/common/text_style.dart';
-import 'package:nityahealth/modules/wellness/wellness_presentation/controller/wellness_controller.dart';
+import 'package:nityahealth/common/timer.dart';
+import 'package:nityahealth/modules/fitness/controller/fitness_controller.dart';
+import '../../../common/custom_button.dart';
+import '../../../common/text_style.dart';
 
-class SinglePostPage extends StatelessWidget {
-  SinglePostPage({super.key});
-  final _controller = Get.put(WellnessController());
+class FitnessTimer extends StatelessWidget {
+  FitnessTimer({super.key});
+  final _controller = Get.put(FitnessController());
 
   @override
   Widget build(BuildContext context) {
     log("id= ${_controller.id.value}");
-    _controller.getSinglePostData(_controller.id.value);
+    log("pagetitle= ${_controller.title.value}");
+    _controller.getSingleFitnessPost(_controller.id.value);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(title: _controller.title.value),
@@ -47,10 +50,8 @@ class SinglePostPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Html(
-                      data:
-                          _controller.singlePost.value.post?.description ?? "",
-                    ),
+                    const SizedBox(height: 50),
+                    const TimerWidget(),
                   ],
                 ),
               ),

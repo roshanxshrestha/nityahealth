@@ -14,10 +14,9 @@ import '../../../utils/constants/app_theme.dart';
 import '../model/fitness_model.dart';
 
 class FitnessChild extends StatelessWidget {
-  FitnessChild({required this.pageId, super.key});
   final _controller = Get.put(FitnessController());
-  int pageId;
-
+  final int pageId;
+  FitnessChild({required this.pageId, super.key});
   @override
   Widget build(BuildContext context) {
     log("pageId = ${_controller.pageId.value}");

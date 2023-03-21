@@ -1,24 +1,21 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:loading_overlay/loading_overlay.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
-import 'package:nityahealth/modules/fitness/controller/fitness_controller.dart';
+import 'package:nityahealth/common/text_style.dart';
+import 'package:nityahealth/modules/wellness/wellness_presentation/controller/wellness_controller.dart';
 
-import '../../../common/custom_button.dart';
-import '../../../common/text_style.dart';
+import '../../../../common/custom_button.dart';
 
-class FitnessSinglePost extends StatelessWidget {
-  FitnessSinglePost({super.key});
-  final _controller = Get.put(FitnessController());
+class SinglePostPage extends StatelessWidget {
+  SinglePostPage({super.key});
+  final _controller = Get.put(WellnessController());
 
   @override
   Widget build(BuildContext context) {
     log("id= ${_controller.id.value}");
-    log("pagetitle= ${_controller.title.value}");
-    _controller.getSingleFitnessPost(_controller.id.value);
+    _controller.getSinglePostData(_controller.id.value);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: CustomAppBar(title: _controller.title.value),
@@ -38,7 +35,7 @@ class FitnessSinglePost extends StatelessWidget {
                     )
                   : const SizedBox.shrink(),
               Container(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,7 +53,14 @@ class FitnessSinglePost extends StatelessWidget {
                       data:
                           _controller.singlePost.value.post?.description ?? "",
                     ),
-                    customButton1("Start", "fitnesstimer", context),
+                    _controller.singlePost.value.post?.pageId == "16" ||
+                            _controller.singlePost.value.post?.pageId == "17"
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: customButton1(
+                                "Start", "wellnesstimer", context),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

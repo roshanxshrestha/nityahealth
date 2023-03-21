@@ -12,7 +12,7 @@ import '../model/fitness_model.dart';
 
 class FitnessScreen extends StatelessWidget {
   final _controller = Get.put(FitnessController());
-  int id;
+  final int id;
 
   FitnessScreen(this.id, {super.key});
 

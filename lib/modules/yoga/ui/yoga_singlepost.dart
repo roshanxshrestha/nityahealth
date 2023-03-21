@@ -2,9 +2,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:loading_overlay/loading_overlay.dart';
+import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/yoga/controller/yoga_controller.dart';
 import '../../../common/custom_appbar.dart';
+import '../../../utils/constants/app_theme.dart';
 
 class YogaSinglePost extends StatelessWidget {
   YogaSinglePost({super.key});
@@ -22,42 +25,48 @@ class YogaSinglePost extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 105),
         child: Obx(
-          () => Column(
-            children: [
-              _controller.singlePost.value.post?.image != null
-                  ? SizedBox(
-                      height: 300,
-                      width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        _controller.singlePost.value.post?.image ?? "",
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16.0),
-                      child: Center(
-                        child: customText(
-                          _controller.singlePost.value.post?.title ?? "",
-                          18,
-                          FontWeight.w700,
+          () {
+            return Column(
+              children: [
+                _controller.singlePost.value.post?.image != null
+                    ? SizedBox(
+                        height: 300,
+                        width: MediaQuery.of(context).size.width,
+                        child: Image.network(
+                          _controller.singlePost.value.post?.image ?? "",
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0),
+                        child: Center(
+                          child: customText(
+                            _controller.singlePost.value.post?.title ?? "",
+                            18,
+                            FontWeight.w700,
+                          ),
                         ),
                       ),
-                    ),
-                    Html(
-                      data:
-                          _controller.singlePost.value.post?.description ?? "",
-                    ),
-                  ],
+                      Html(
+                        data: _controller.singlePost.value.post?.description ??
+                            "",
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: customButton1("Start", "yogatimer", context),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
