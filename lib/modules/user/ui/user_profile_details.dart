@@ -11,12 +11,13 @@ import 'package:nityahealth/modules/user/ui/user_update_screen.dart';
 import 'package:nityahealth/utils/constants/app_theme.dart';
 import 'package:nityahealth/common/profile_setting_buttons.dart';
 
+// ignore: must_be_immutable
 class UserProfileDetails extends StatelessWidget {
   final _controller = Get.put(UserProfileController());
-  UserProfileDetails({super.key});
-
   ImageUpdateController imageUpdateController =
       Get.put(ImageUpdateController());
+
+  UserProfileDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class UserProfileDetails extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 20.0),
                 child: GestureDetector(
                   onTap: () {
-                    Get.to(() => UpdateProfile());
+                    Get.to(() => const UpdateProfile(), fullscreenDialog: true);
                   },
                   child: const Icon(
                     Icons.edit,
@@ -84,7 +85,7 @@ class UserProfileDetails extends StatelessWidget {
                                     .profileImgPath.value)) as ImageProvider
                                 : NetworkImage(_controller
                                         .userprofile.value.user?.image ??
-                                    "assets/images/profile/user/profile.jpeg"),
+                                    "https://health.sajiloweb.com/storage/doctors/dr-ashish-wagle1656588242.jpg"),
                             radius: 80,
                           ),
                         ),

@@ -2,12 +2,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:loading_overlay/loading_overlay.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/yoga/controller/yoga_controller.dart';
 import '../../../common/custom_appbar.dart';
-import '../../../utils/constants/app_theme.dart';
 
 class YogaSinglePost extends StatelessWidget {
   YogaSinglePost({super.key});

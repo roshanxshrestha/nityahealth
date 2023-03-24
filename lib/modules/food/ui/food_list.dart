@@ -13,7 +13,7 @@ import '../../../utils/constants/app_theme.dart';
 import 'food_details.dart';
 
 class FoodList extends StatelessWidget {
-  int? id;
+  final int? id;
 
   FoodList(this.id, {super.key});
   final _controller = Get.put(FoodController());

@@ -156,11 +156,14 @@ class _TimerWidgetState extends State<TimerWidget> {
           )
         : SizedBox(
             height: 80,
-            child: Text("Completed!",
-                style: GoogleFonts.comfortaa(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w300,
-                    color: AppColor.primaryColor)),
+            child: Text(
+              "Completed!",
+              style: GoogleFonts.comfortaa(
+                fontSize: 24,
+                fontWeight: FontWeight.w300,
+                color: AppColor.primaryColor,
+              ),
+            ),
           );
   }
 }

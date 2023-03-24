@@ -3,24 +3,24 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import 'package:nityahealth/common/bloodgroup_dropdown.dart';
 import 'package:nityahealth/common/custom_button.dart';
 import 'package:nityahealth/common/foodtype_dropdown.dart';
 import 'package:nityahealth/common/text_style.dart';
 import 'package:nityahealth/modules/user/controller/user_update_controller.dart';
 import 'package:nityahealth/modules/user/ui/user_profile_details.dart';
-
 import '../../../common/custom_text_field.dart';
 import '../../../common/gender_dropdown.dart';
 import '../../../utils/constants/app_theme.dart';
 import '../controller/user_profile_controller.dart';
+import 'package:http_parser/http_parser.dart';
 
 class UpdateProfile extends StatefulWidget {
-  UpdateProfile({super.key});
+  const UpdateProfile({super.key});
 
   @override
   State<UpdateProfile> createState() => _UpdateProfileState();
@@ -31,40 +31,26 @@ class _UpdateProfileState extends State<UpdateProfile> {
       Get.put(ImageUpdateController());
 
   File? pickedFile;
-
   ImagePicker imagePicker = ImagePicker();
-
   final _controller = Get.put(UserUpdateController());
-
   final _updateController = Get.put(UserProfileController());
-
   var nameController = TextEditingController();
-
   var genderController = TextEditingController();
-
   var emailController = TextEditingController();
-
   var addressController = TextEditingController();
-
   var phoneController = TextEditingController();
-
   var ageController = TextEditingController();
-
   var heightController = TextEditingController();
-
   var weightController = TextEditingController();
-
   var bloodController = TextEditingController();
-
   var foodTypeController = TextEditingController();
-
   var imageController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
-
   get message => null;
 
+  @override
   void initState() {
+    super.initState();
     nameController.text = _updateController.userprofile.value.user?.name ?? "";
     genderController.text =
         _updateController.userprofile.value.user?.gender ?? "";
@@ -83,7 +69,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
         _updateController.userprofile.value.user?.bloodGrp ?? "";
     foodTypeController.text =
         _updateController.userprofile.value.user?.meals ?? "";
-    // super.initState();
   }
 
   @override
@@ -123,60 +108,70 @@ class _UpdateProfileState extends State<UpdateProfile> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Center(
-                        child: Stack(
-                          children: [
-                            Obx(
-                              () => CircleAvatar(
-                                radius: 83,
-                                backgroundColor: AppColor.primaryColor,
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  backgroundImage: imageUpdateController
-                                              .isProfileImgPathSet.value ==
-                                          true
-                                      ? FileImage(File(imageUpdateController
-                                          .profileImgPath
-                                          .value)) as ImageProvider
-                                      : NetworkImage(_controller
-                                              .userprofile.value.user?.image ??
-                                          "assets/images/profile/user/profile.jpeg"),
-                                  radius: 80,
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return bottomSheet(context);
+                            },
+                          );
+                        },
+                        child: Center(
+                          child: Stack(
+                            children: [
+                              Obx(
+                                () => CircleAvatar(
+                                  radius: 83,
+                                  backgroundColor: AppColor.primaryColor,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    backgroundImage: imageUpdateController
+                                                .isProfileImgPathSet.value ==
+                                            true
+                                        ? FileImage(File(imageUpdateController
+                                            .profileImgPath
+                                            .value)) as ImageProvider
+                                        : NetworkImage(_controller.userprofile
+                                                .value.user?.image ??
+                                            "https://health.sajiloweb.com/storage/doctors/dr-ashish-wagle1656588242.jpg"),
+                                    radius: 80,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Positioned(
-                              bottom: 0,
-                              left: 105,
-                              child: InkWell(
-                                child: Container(
-                                  height: 35,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 3,
+                              Positioned(
+                                bottom: 0,
+                                left: 105,
+                                child: InkWell(
+                                  child: Container(
+                                    height: 35,
+                                    width: 35,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 3,
+                                      ),
+                                      color: AppColor.primaryColor,
+                                      borderRadius: BorderRadius.circular(50),
                                     ),
-                                    color: AppColor.primaryColor,
-                                    borderRadius: BorderRadius.circular(50),
+                                    child: const Icon(
+                                      MdiIcons.cameraPlus,
+                                      color: Colors.white,
+                                      size: 16,
+                                    ),
                                   ),
-                                  child: const Icon(
-                                    MdiIcons.cameraPlus,
-                                    color: Colors.white,
-                                    size: 16,
-                                  ),
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) {
+                                        return bottomSheet(context);
+                                      },
+                                    );
+                                  },
                                 ),
-                                onTap: () {
-                                  showModalBottomSheet(
-                                    context: context,
-                                    builder: (context) {
-                                      return bottomSheet(context);
-                                    },
-                                  );
-                                },
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       customText("Name", 14, FontWeight.w400),
@@ -257,50 +252,54 @@ class _UpdateProfileState extends State<UpdateProfile> {
                               _updateController.userprofile.value.user?.meals ??
                                   ""),
                       const SizedBox(height: 25),
-                      customButton2("image", context, uploadImage),
-                      const SizedBox(height: 25),
                       customButton2(
                         "Save",
                         context,
                         () async {
-                          uploadImage();
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (context) {
-                          //     return const Center(
-                          //       child: CircularProgressIndicator(
-                          //         color: AppColor.primaryColor,
-                          //       ),
-                          //     );
-                          //   },
-                          // );
                           if (_formKey.currentState?.validate() == true) {
                             _formKey.currentState?.save();
                             var name = nameController.text.trim();
                             var address = addressController.text.trim();
                             var email = emailController.text.trim();
-                            var image = imageController.text.trim();
                             var phone = phoneController.text.trim();
                             var age = ageController.text.trim();
                             var height = heightController.text.trim();
                             var weight = weightController.text.trim();
 
-                            Map<String, String> map = {};
-                            map["name"] = name;
-                            map["image"] = image;
-                            map["address"] = address;
-                            map["email"] = email;
-                            map["meals"] = _controller.selectedFoodType.value;
-                            map["gender"] =
-                                _controller.selectedGender.value.toLowerCase();
-                            map["phone"] = phone;
-                            map["age"] = age;
-                            map["height"] = height;
-                            map["weight"] = weight;
-                            map["blood"] = _controller.selectedBloodGroup.value
-                                .toUpperCase();
+                            FormData formData = FormData({
+                              "image": await MultipartFile(pickedFile?.path,
+                                  contentType: "image/png",
+                                  filename: "profile"),
+                              'name': name,
+                              'email': email,
+                              'address': address,
+                              'meals': _controller.selectedFoodType.value,
+                              'gender': _controller.selectedGender.value
+                                  .toLowerCase(),
+                              'age': age,
+                              'height': height,
+                              'weight': weight,
+                              'blood': _controller.selectedBloodGroup.value
+                                  .toUpperCase(),
+                              'phone': phone,
+                            });
 
-                            _controller.updateProfile(map).then(
+                            // Map<String, String> map = {};
+                            // map["name"] = name;
+                            // map["image"] = image;
+                            // map["address"] = address;
+                            // map["email"] = email;
+                            // map["meals"] = _controller.selectedFoodType.value;
+                            // map["gender"] =
+                            //     _controller.selectedGender.value.toLowerCase();
+                            // map["phone"] = phone;
+                            // map["age"] = age;
+                            // map["height"] = height;
+                            // map["weight"] = weight;
+                            // map["blood"] = _controller.selectedBloodGroup.value
+                            //     .toUpperCase();
+
+                            _controller.updateProfile(formData).then(
                               (value) {
                                 Get.offAll(() => UserProfileDetails());
                               },
@@ -386,7 +385,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
     pickedFile = File(pickedImage!.path);
     imageUpdateController.setProfileImagePath(pickedFile!.path);
-
+    log("IMAGE URL = $pickedFile");
     Get.back();
   }
 
@@ -397,7 +396,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
     var length = await pickedFile!.length();
     var uri = Uri.parse("http://health.sajiloweb.com/api/update/user/profile");
     var request = http.MultipartRequest("POST", uri);
-    request.fields["image"] = "Static Profile Image";
+    request.fields["image"] = "";
     var multipart = http.MultipartFile("image", stream, length);
     request.files.add(multipart);
     var response = await request.send();
@@ -408,3 +407,38 @@ class _UpdateProfileState extends State<UpdateProfile> {
     }
   }
 }
+
+// // Future<String> uploadData(File imageFile, String name, email, meals, address, gender, age,) async {
+//   var request = http.MultipartRequest(
+//     'POST',
+//     Uri.parse('http://health.sajiloweb.com/api/update/user/profile'),
+//   );
+
+//   // add image file to request
+//   var imageStream = http.ByteStream(imageFile.openRead());
+//   var imageLength = await imageFile.length();
+//   var multipartImage = http.MultipartFile(
+//     'image',
+//     imageStream,
+//     imageLength,
+//     filename: imageFile.path.split('/').last,
+//   );
+//   request.files.add(multipartImage);
+
+//   // add other fields to request
+//   request.fields['name'] = name;
+//   request.fields['address'] = address;
+//   request.fields['meals'] = meals;
+//   request.fields['gender'] = gender;
+//   request.fields['phone'] = phone;
+//   request.fields['age'] = age;
+//   request.fields['height'] = height;
+//   request.fields['weight'] = weight;
+//   request.fields['blood'] = blood;
+
+
+//   var response = await request.send();
+//   var responseData = await response.stream.toBytes();
+//   var responseString = String.fromCharCodes(responseData);
+//   return responseString;
+// }

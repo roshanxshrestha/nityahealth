@@ -11,7 +11,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class GridViewList extends StatelessWidget {
   final _controller = Get.put(WellnessController());
-  int id;
+  final int id;
   GridViewList(this.id, {super.key});
 
   final _refreshKey = GlobalKey<ScaffoldState>();

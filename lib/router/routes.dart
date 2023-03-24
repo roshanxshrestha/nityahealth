@@ -64,7 +64,7 @@ class AppRoutes {
       GetPage(name: '/dashboard', page: () => const Dashboard()),
       GetPage(name: '/notification', page: () => const NotificationUser()),
       GetPage(name: '/userprofiledetails', page: () => UserProfileDetails()),
-      GetPage(name: '/profileupdate', page: () => UpdateProfile()),
+      GetPage(name: '/profileupdate', page: () => const UpdateProfile()),
       GetPage(
           name: '/userprofilesetting', page: () => const UserProfileSetting()),
       GetPage(name: '/wellness', page: () => WellnessDashboard()),
@@ -85,7 +85,6 @@ class AppRoutes {
       GetPage(name: '/doctorprofile', page: () => const DoctorProfile()),
       GetPage(
           name: '/usermedicalrecords', page: () => const UserMedicalRecords()),
-      // GetPage(name: '/exerciselist', page: () => const ExerciseList()),
       GetPage(name: '/yogatimer', page: () => YogaTimer()),
       GetPage(name: '/fitnesstimer', page: () => FitnessTimer()),
       GetPage(name: '/wellnesstimer', page: () => WellnessTimer()),

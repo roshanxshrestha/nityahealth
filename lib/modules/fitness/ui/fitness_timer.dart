@@ -1,11 +1,9 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:nityahealth/common/custom_appbar.dart';
 import 'package:nityahealth/common/timer.dart';
 import 'package:nityahealth/modules/fitness/controller/fitness_controller.dart';
-import '../../../common/custom_button.dart';
 import '../../../common/text_style.dart';
 
 class FitnessTimer extends StatelessWidget {

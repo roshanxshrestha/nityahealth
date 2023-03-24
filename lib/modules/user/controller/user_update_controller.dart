@@ -15,8 +15,8 @@ class UserUpdateController extends GetxController {
   var selectedBloodGroup = "select".obs;
   var selectedFoodType = "veg".obs;
 
-  Future<UserUpdateModel?> updateProfile(Map<String, dynamic> map) async {
-    var response = await UserUpdateWebservice().updateProfile(map);
+  Future<UserUpdateModel?> updateProfile(FormData formData) async {
+    var response = await UserUpdateWebservice().updateProfile(formData);
     if (response?.success == true) {
       PrefManager.isUpdateProfile(true);
     }

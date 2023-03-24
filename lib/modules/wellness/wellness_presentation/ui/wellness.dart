@@ -45,7 +45,7 @@ class WellnessDashboard extends StatelessWidget {
                           ),
                           tabs: [
                             for (Wellness wellness
-                                in _wellnessController.wellnessList.value)
+                                in _wellnessController.wellnessList)
                               Container(
                                 height: 40,
                                 width: 150,
